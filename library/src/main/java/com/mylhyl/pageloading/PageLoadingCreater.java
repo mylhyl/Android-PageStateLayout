@@ -23,14 +23,14 @@ public class PageLoadingCreater implements PageLoading {
     private ViewGroup.LayoutParams mLayoutParams = new ViewGroup.LayoutParams(ViewGroup
             .LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
     private boolean showErrorClickLoading = true;
-    private int mProgressLayoutId = View.NO_ID, mEmptyLayoutId = View.NO_ID, mErrorLayoutId = View.NO_ID, mErrorNetLayoutId = View.NO_ID;
+    private int mProgressLayout = View.NO_ID, mEmptyLayout = View.NO_ID, mErrorLayout = View.NO_ID, mErrorNetLayout = View.NO_ID;
     private int mProgressTipViewId = View.NO_ID, mEmptyTipViewId = View.NO_ID, mErrorTipViewId = View.NO_ID, mErrorNetTipViewId = View.NO_ID;
 
     public PageLoadingCreater() {
-        setProgressLayoutId(mPageLoadingDelegate.getProgressLayoutId());
-        setEmptyLayoutId(mPageLoadingDelegate.getEmptyLayoutId());
-        setErrorLayoutId(mPageLoadingDelegate.getErrorLayoutId());
-        setErrorNetLayoutId(mPageLoadingDelegate.getErrorNetLayoutId());
+        setProgressLayout(mPageLoadingDelegate.getProgressLayout());
+        setEmptyLayout(mPageLoadingDelegate.getEmptyLayout());
+        setErrorLayout(mPageLoadingDelegate.getErrorLayout());
+        setErrorNetLayout(mPageLoadingDelegate.getErrorNetLayout());
 
         setProgressTipViewId(mPageLoadingDelegate.getProgressTipViewId());
         setEmptyTipViewId(mPageLoadingDelegate.getEmptyTipViewId());
@@ -38,20 +38,20 @@ public class PageLoadingCreater implements PageLoading {
         setErrorNetTipViewId(mPageLoadingDelegate.getErrorNetTipViewId());
     }
 
-    protected void setProgressLayoutId(int progressLayoutId) {
-        this.mProgressLayoutId = progressLayoutId;
+    protected void setProgressLayout(int progressLayoutId) {
+        this.mProgressLayout = progressLayoutId;
     }
 
-    protected void setEmptyLayoutId(int emptyLayoutId) {
-        this.mEmptyLayoutId = emptyLayoutId;
+    protected void setEmptyLayout(int emptyLayoutId) {
+        this.mEmptyLayout = emptyLayoutId;
     }
 
-    protected void setErrorLayoutId(int errorLayoutId) {
-        this.mErrorLayoutId = errorLayoutId;
+    protected void setErrorLayout(int errorLayoutId) {
+        this.mErrorLayout = errorLayoutId;
     }
 
-    protected void setErrorNetLayoutId(int errorNetLayoutId) {
-        this.mErrorNetLayoutId = errorNetLayoutId;
+    protected void setErrorNetLayout(int errorNetLayoutId) {
+        this.mErrorNetLayout = errorNetLayoutId;
     }
 
     protected void setProgressTipViewId(int progressTipViewId) {
@@ -233,10 +233,10 @@ public class PageLoadingCreater implements PageLoading {
     @Override
     public void create() {
 
-        mProgressView = inflate(mProgressLayoutId);
-        mEmptyView = inflate(mEmptyLayoutId);
-        mErrorView = inflate(mErrorLayoutId);
-        mErrorNetView = inflate(mErrorNetLayoutId);
+        mProgressView = inflate(mProgressLayout);
+        mEmptyView = inflate(mEmptyLayout);
+        mErrorView = inflate(mErrorLayout);
+        mErrorNetView = inflate(mErrorNetLayout);
 
         if (mProgressView != null) {
             mRootView.addView(mProgressView, mLayoutParams);

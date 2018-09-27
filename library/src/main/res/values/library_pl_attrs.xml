@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PageLoading">
+        <attr name="pl_progressLayout" format="integer"/>
+        <attr name="pl_emptyLayout" format="integer"/>
+        <attr name="pl_errorLayout" format="integer"/>
+        <attr name="pl_errorNetLayout" format="integer"/>
+    </declare-styleable>
+</resources>

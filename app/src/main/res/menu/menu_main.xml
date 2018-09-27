@@ -21,4 +21,8 @@
         android:id="@+id/menu_progress"
         android:title="加载视图"
         app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/menu_customEmpty"
+        android:title="自定义空视图"
+        app:showAsAction="ifRoom"/>
 </menu>

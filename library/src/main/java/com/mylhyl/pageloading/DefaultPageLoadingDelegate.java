@@ -6,23 +6,23 @@ package com.mylhyl.pageloading;
 public class DefaultPageLoadingDelegate extends PageLoadingDelegate {
 
     @Override
-    protected int getProgressLayoutId() {
-        return R.layout.page_loading_progress;
+    protected int getProgressLayout() {
+        return R.layout.library_pl_progress;
     }
 
     @Override
-    protected int getEmptyLayoutId() {
-        return R.layout.page_loading_empty;
+    protected int getEmptyLayout() {
+        return R.layout.library_pl_empty;
     }
 
     @Override
-    protected int getErrorLayoutId() {
-        return R.layout.page_loading_error;
+    protected int getErrorLayout() {
+        return R.layout.library_pl_error;
     }
 
     @Override
-    protected int getErrorNetLayoutId() {
-        return R.layout.page_loading_error_net;
+    protected int getErrorNetLayout() {
+        return R.layout.library_pl_error_net;
     }
 
     @Override

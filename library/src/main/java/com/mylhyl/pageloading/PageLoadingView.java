@@ -30,9 +30,21 @@ public class PageLoadingView extends FrameLayout implements PageLoading {
     }
 
     private void init(@Nullable AttributeSet attrs) {
-        setRootView(this);
         TypedArray ta = getContext().obtainStyledAttributes(attrs, R.styleable.PageLoading);
-        int progressLayoutId = ta.getInt(R.styleable.PageLoading_pl_progressLayoutId, 0);
+        int progressLayout = ta.getResourceId(R.styleable.PageLoading_pl_progressLayout, NO_ID);
+        int emptyLayout = ta.getResourceId(R.styleable.PageLoading_pl_emptyLayout, NO_ID);
+        int errorLayout = ta.getResourceId(R.styleable.PageLoading_pl_errorLayout, NO_ID);
+        int errorNetLayout = ta.getResourceId(R.styleable.PageLoading_pl_errorNetLayout, NO_ID);
+        if (!isInEditMode()) {
+            if (progressLayout != NO_ID)
+                mPageLoadingCreater.setProgressLayout(progressLayout);
+            if (emptyLayout != NO_ID)
+                mPageLoadingCreater.setEmptyLayout(emptyLayout);
+            if (errorLayout != NO_ID)
+                mPageLoadingCreater.setErrorLayout(errorLayout);
+            if (errorNetLayout != NO_ID)
+                mPageLoadingCreater.setErrorNetLayout(errorNetLayout);
+        }
         ta.recycle();
     }
 
@@ -42,9 +54,12 @@ public class PageLoadingView extends FrameLayout implements PageLoading {
         if (getChildCount() > 1) {
             throw new IllegalStateException("PageLoadingView can host only one direct child");
         }
-        View view = getChildAt(0);
-        setContentView(view);
-        mPageLoadingCreater.create();
+        if (!isInEditMode()) {
+            setRootView(this);
+            View view = getChildAt(0);
+            setContentView(view);
+            mPageLoadingCreater.create();
+        }
     }
 
     @Override

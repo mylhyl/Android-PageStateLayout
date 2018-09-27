@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center_horizontal"
+              android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="390px"
+        android:src="@mipmap/ic_network_invalid"/>
+
+    <TextView
+        android:id="@+id/page_tv_error_net"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20px"
+        android:text="世界上最遥远的距离就是没有网络"
+        android:textColor="#7e7e7e"
+        android:textSize="15sp"/>
+</LinearLayout>

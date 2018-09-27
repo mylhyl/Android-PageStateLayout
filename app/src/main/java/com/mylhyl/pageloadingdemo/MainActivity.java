@@ -1,5 +1,6 @@
 package com.mylhyl.pageloadingdemo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -133,6 +134,9 @@ public class MainActivity extends AppCompatActivity implements OnRefreshListener
                 break;
             case R.id.menu_progress:
                 mType = 5;
+                break;
+            case R.id.menu_customEmpty:
+                startActivity(new Intent(this, CustomEmptyActivity.class));
                 break;
         }
         mRefreshLayout.autoRefresh();

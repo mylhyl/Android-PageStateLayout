@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CustomEmptyActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/AppTheme.Toolbar"
+        app:navigationIcon="?attr/homeAsUpIndicator"
+        app:title="自定义空视图"/>
+
+    <com.mylhyl.pageloading.PageLoadingView
+        android:id="@+id/pageLoadingView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:pl_emptyLayout="@layout/share_page_empty">
+    </com.mylhyl.pageloading.PageLoadingView>
+</LinearLayout>
