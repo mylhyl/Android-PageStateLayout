@@ -1,6 +1,7 @@
 package com.mylhyl.pageloading;
 
 import android.support.annotation.IdRes;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.StringRes;
 import android.view.View;
 import android.widget.TextView;
@@ -9,6 +10,22 @@ import android.widget.TextView;
  * Created by hupei on 2018/9/27 10:13.
  */
 public interface PageLoading {
+
+    void setProgressLayout(@LayoutRes int progressLayoutId);
+
+    void setEmptyLayout(@LayoutRes int emptyLayoutId);
+
+    void setErrorLayout(@LayoutRes int errorLayoutId);
+
+    void setErrorNetLayout(@LayoutRes int errorNetLayoutId);
+
+    void setProgressTipViewId(@IdRes int progressTipViewId);
+
+    void setEmptyTipViewId(@IdRes int emptyTipViewId);
+
+    void setErrorTipViewId(@IdRes int errorTipViewId);
+
+    void setErrorNetTipViewId(@IdRes int errorNetTipViewId);
 
     /**
      * 点击错误视图时是否显示加载视图

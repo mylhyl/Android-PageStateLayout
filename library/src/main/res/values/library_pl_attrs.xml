@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="PageLoading">
+    <declare-styleable name="PageLoadingView">
         <attr name="pl_progressLayout" format="integer"/>
         <attr name="pl_emptyLayout" format="integer"/>
         <attr name="pl_errorLayout" format="integer"/>
         <attr name="pl_errorNetLayout" format="integer"/>
+        <attr name="pl_progressTipViewId" format="integer"/>
+        <attr name="pl_emptyTipViewId" format="integer"/>
+        <attr name="pl_errorTipViewId" format="integer"/>
+        <attr name="pl_errorNetTipViewId" format="integer"/>
     </declare-styleable>
 </resources>

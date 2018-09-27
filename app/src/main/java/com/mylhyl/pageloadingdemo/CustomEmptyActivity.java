@@ -15,6 +15,6 @@ public class CustomEmptyActivity extends AppCompatActivity {
 
         mPageLoadingView = findViewById(R.id.pageLoadingView);
         mPageLoadingView.showEmptyView();
-//        mPageLoadingView.setEmptyTip("自定义的");
+        mPageLoadingView.setEmptyTip("自定义的");
     }
 }

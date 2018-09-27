@@ -18,6 +18,7 @@
         android:id="@+id/pageLoadingView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:pl_emptyLayout="@layout/share_page_empty">
+        app:pl_emptyLayout="@layout/share_page_empty"
+        app:pl_emptyTipViewId="@id/share_page_emptyTip">
     </com.mylhyl.pageloading.PageLoadingView>
 </LinearLayout>

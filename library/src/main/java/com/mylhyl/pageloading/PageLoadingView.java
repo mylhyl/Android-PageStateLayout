@@ -2,8 +2,11 @@ package com.mylhyl.pageloading;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.support.annotation.IdRes;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -30,11 +33,16 @@ public class PageLoadingView extends FrameLayout implements PageLoading {
     }
 
     private void init(@Nullable AttributeSet attrs) {
-        TypedArray ta = getContext().obtainStyledAttributes(attrs, R.styleable.PageLoading);
-        int progressLayout = ta.getResourceId(R.styleable.PageLoading_pl_progressLayout, NO_ID);
-        int emptyLayout = ta.getResourceId(R.styleable.PageLoading_pl_emptyLayout, NO_ID);
-        int errorLayout = ta.getResourceId(R.styleable.PageLoading_pl_errorLayout, NO_ID);
-        int errorNetLayout = ta.getResourceId(R.styleable.PageLoading_pl_errorNetLayout, NO_ID);
+        TypedArray ta = getContext().obtainStyledAttributes(attrs, R.styleable.PageLoadingView);
+        int progressLayout = ta.getResourceId(R.styleable.PageLoadingView_pl_progressLayout, NO_ID);
+        int emptyLayout = ta.getResourceId(R.styleable.PageLoadingView_pl_emptyLayout, NO_ID);
+        int errorLayout = ta.getResourceId(R.styleable.PageLoadingView_pl_errorLayout, NO_ID);
+        int errorNetLayout = ta.getResourceId(R.styleable.PageLoadingView_pl_errorNetLayout, NO_ID);
+
+        int progressTipViewId = ta.getResourceId(R.styleable.PageLoadingView_pl_progressTipViewId, NO_ID);
+        int emptyTipViewId = ta.getResourceId(R.styleable.PageLoadingView_pl_emptyTipViewId, NO_ID);
+        int errorTipViewId = ta.getResourceId(R.styleable.PageLoadingView_pl_errorTipViewId, NO_ID);
+        int errorNetTipViewId = ta.getResourceId(R.styleable.PageLoadingView_pl_errorNetTipViewId, NO_ID);
         if (!isInEditMode()) {
             if (progressLayout != NO_ID)
                 mPageLoadingCreater.setProgressLayout(progressLayout);
@@ -44,6 +52,15 @@ public class PageLoadingView extends FrameLayout implements PageLoading {
                 mPageLoadingCreater.setErrorLayout(errorLayout);
             if (errorNetLayout != NO_ID)
                 mPageLoadingCreater.setErrorNetLayout(errorNetLayout);
+
+            if (progressTipViewId != NO_ID)
+                mPageLoadingCreater.setProgressTipViewId(progressTipViewId);
+            if (emptyTipViewId != NO_ID)
+                mPageLoadingCreater.setEmptyTipViewId(emptyTipViewId);
+            if (errorTipViewId != NO_ID)
+                mPageLoadingCreater.setErrorTipViewId(errorTipViewId);
+            if (errorNetTipViewId != NO_ID)
+                mPageLoadingCreater.setErrorNetTipViewId(errorNetTipViewId);
         }
         ta.recycle();
     }
@@ -63,6 +80,46 @@ public class PageLoadingView extends FrameLayout implements PageLoading {
     }
 
     @Override
+    public void setProgressLayout(@LayoutRes int progressLayoutId) {
+        mPageLoadingCreater.setProgressLayout(progressLayoutId);
+    }
+
+    @Override
+    public void setEmptyLayout(@LayoutRes int emptyLayoutId) {
+        mPageLoadingCreater.setErrorLayout(emptyLayoutId);
+    }
+
+    @Override
+    public void setErrorLayout(@LayoutRes int errorLayoutId) {
+        mPageLoadingCreater.setErrorLayout(errorLayoutId);
+    }
+
+    @Override
+    public void setErrorNetLayout(@LayoutRes int errorNetLayoutId) {
+        mPageLoadingCreater.setErrorNetLayout(errorNetLayoutId);
+    }
+
+    @Override
+    public void setProgressTipViewId(@IdRes int progressTipViewId) {
+        mPageLoadingCreater.setProgressTipViewId(progressTipViewId);
+    }
+
+    @Override
+    public void setEmptyTipViewId(@IdRes int emptyTipViewId) {
+        mPageLoadingCreater.setEmptyTipViewId(emptyTipViewId);
+    }
+
+    @Override
+    public void setErrorTipViewId(@IdRes int errorTipViewId) {
+        mPageLoadingCreater.setErrorTipViewId(errorTipViewId);
+    }
+
+    @Override
+    public void setErrorNetTipViewId(@IdRes int errorNetTipViewId) {
+        mPageLoadingCreater.setErrorNetTipViewId(errorNetTipViewId);
+    }
+
+    @Override
     public void setErrorClickShowProgress(boolean show) {
         mPageLoadingCreater.setErrorClickShowProgress(show);
     }
@@ -73,7 +130,7 @@ public class PageLoadingView extends FrameLayout implements PageLoading {
     }
 
     @Override
-    public void setContentView(int contentId) {
+    public void setContentView(@IdRes int contentId) {
         mPageLoadingCreater.setContentView(contentId);
     }
 
@@ -93,22 +150,22 @@ public class PageLoadingView extends FrameLayout implements PageLoading {
     }
 
     @Override
-    public void setEmptyTip(int resId) {
+    public void setEmptyTip(@StringRes int resId) {
         mPageLoadingCreater.setEmptyTip(resId);
     }
 
     @Override
-    public void setErrorTip(int resId) {
+    public void setErrorTip(@StringRes int resId) {
         mPageLoadingCreater.setEmptyTip(resId);
     }
 
     @Override
-    public void setErrorNetTip(int resId) {
+    public void setErrorNetTip(@StringRes int resId) {
         mPageLoadingCreater.setErrorNetTip(resId);
     }
 
     @Override
-    public void showProgressView(int resId) {
+    public void showProgressView(@StringRes int resId) {
         mPageLoadingCreater.showProgressView(resId);
     }
 
@@ -158,7 +215,7 @@ public class PageLoadingView extends FrameLayout implements PageLoading {
     }
 
     @Override
-    public void setProgressTip(int resId) {
+    public void setProgressTip(@StringRes int resId) {
         mPageLoadingCreater.setProgressTip(resId);
     }
 

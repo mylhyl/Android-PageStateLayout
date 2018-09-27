@@ -2,6 +2,7 @@ package com.mylhyl.pageloading;
 
 import android.content.Context;
 import android.support.annotation.IdRes;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.StringRes;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,40 +39,44 @@ public class PageLoadingCreater implements PageLoading {
         setErrorNetTipViewId(mPageLoadingDelegate.getErrorNetTipViewId());
     }
 
-    protected void setProgressLayout(int progressLayoutId) {
+    @Override
+    public void setProgressLayout(@LayoutRes int progressLayoutId) {
         this.mProgressLayout = progressLayoutId;
     }
 
-    protected void setEmptyLayout(int emptyLayoutId) {
+    @Override
+    public void setEmptyLayout(@LayoutRes int emptyLayoutId) {
         this.mEmptyLayout = emptyLayoutId;
     }
 
-    protected void setErrorLayout(int errorLayoutId) {
+    @Override
+    public void setErrorLayout(@LayoutRes int errorLayoutId) {
         this.mErrorLayout = errorLayoutId;
     }
 
-    protected void setErrorNetLayout(int errorNetLayoutId) {
+    @Override
+    public void setErrorNetLayout(@LayoutRes int errorNetLayoutId) {
         this.mErrorNetLayout = errorNetLayoutId;
     }
 
-    protected void setProgressTipViewId(int progressTipViewId) {
+    @Override
+    public void setProgressTipViewId(@IdRes int progressTipViewId) {
         this.mProgressTipViewId = progressTipViewId;
     }
 
-    public void setEmptyTipViewId(int emptyTipViewId) {
+    @Override
+    public void setEmptyTipViewId(@IdRes int emptyTipViewId) {
         this.mEmptyTipViewId = emptyTipViewId;
     }
 
-    public void setErrorTipViewId(int errorTipViewId) {
+    @Override
+    public void setErrorTipViewId(@IdRes int errorTipViewId) {
         this.mErrorTipViewId = errorTipViewId;
     }
 
-    public void setErrorNetTipViewId(int errorNetTipViewId) {
+    @Override
+    public void setErrorNetTipViewId(@IdRes int errorNetTipViewId) {
         this.mErrorNetTipViewId = errorNetTipViewId;
-    }
-
-    public static void setLoadingDelegate(PageLoadingDelegate pageLoadingDelegate) {
-        mPageLoadingDelegate = pageLoadingDelegate;
     }
 
     @Override
@@ -295,5 +300,9 @@ public class PageLoadingCreater implements PageLoading {
         if (mEmptyView != null) mEmptyView.setVisibility(View.GONE);
         if (mErrorView != null) mErrorView.setVisibility(View.GONE);
         if (mErrorNetView != null) mErrorNetView.setVisibility(View.GONE);
+    }
+
+    public static void setLoadingDelegate(PageLoadingDelegate pageLoadingDelegate) {
+        mPageLoadingDelegate = pageLoadingDelegate;
     }
 }
