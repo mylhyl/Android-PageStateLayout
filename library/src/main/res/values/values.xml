@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PageLoading">
+        <attr name="pl_progressLayoutId" format="string"/>
+        <attr name="pl_emptyLayoutId" format="reference"/>
+        <attr name="pl_errorLayoutId" format="boolean"/>
+        <attr name="pl_errorNetLayoutId" format="boolean"/>
+    </declare-styleable>
+    <item name="lottie_layer_name" type="id"/>
+</resources>
