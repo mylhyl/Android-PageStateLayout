@@ -18,7 +18,7 @@ import static android.view.View.NO_ID;
  */
 public class PageStateLayoutCreater implements PageState {
 
-    private static PageStateDelegate mPageStateDelegate = new DefaultPageStateDelegate();
+    private static PageStateConfig mPageStateConfig = new DefaultPageStateConfig();
     private Context mContext;
     private ViewGroup mRootView;
     private View mContentView, mLoadingView, mEmptyView, mErrorView, mErrorNetView;
@@ -32,19 +32,19 @@ public class PageStateLayoutCreater implements PageState {
     private int mLoadingTipViewId = NO_ID, mEmptyTipViewId = NO_ID, mErrorTipViewId = NO_ID, mErrorNetTipViewId = NO_ID;
 
     public PageStateLayoutCreater() {
-        setLoadingLayout(mPageStateDelegate.getLoadingLayout());
-        setEmptyLayout(mPageStateDelegate.getEmptyLayout());
-        setErrorLayout(mPageStateDelegate.getErrorLayout());
-        setErrorNetLayout(mPageStateDelegate.getErrorNetLayout());
+        setLoadingLayout(mPageStateConfig.getLoadingLayout());
+        setEmptyLayout(mPageStateConfig.getEmptyLayout());
+        setErrorLayout(mPageStateConfig.getErrorLayout());
+        setErrorNetLayout(mPageStateConfig.getErrorNetLayout());
 
-        setEmptyImgId(mPageStateDelegate.getEmptyImgId());
-        setErrorImgId(mPageStateDelegate.getErrorImgId());
-        setErrorNetImgId(mPageStateDelegate.getErrorNetImgId());
+        setEmptyImgId(mPageStateConfig.getEmptyImgId());
+        setErrorImgId(mPageStateConfig.getErrorImgId());
+        setErrorNetImgId(mPageStateConfig.getErrorNetImgId());
 
-        setLoadingTipViewId(mPageStateDelegate.getLoadingTipViewId());
-        setEmptyTipViewId(mPageStateDelegate.getEmptyTipViewId());
-        setErrorTipViewId(mPageStateDelegate.getErrorTipViewId());
-        setErrorNetTipViewId(mPageStateDelegate.getErrorNetTipViewId());
+        setLoadingTipViewId(mPageStateConfig.getLoadingTipViewId());
+        setEmptyTipViewId(mPageStateConfig.getEmptyTipViewId());
+        setErrorTipViewId(mPageStateConfig.getErrorTipViewId());
+        setErrorNetTipViewId(mPageStateConfig.getErrorNetTipViewId());
     }
 
     @Override
@@ -404,7 +404,7 @@ public class PageStateLayoutCreater implements PageState {
         if (mErrorNetView != null) mErrorNetView.setVisibility(View.GONE);
     }
 
-    public static void setLoadingDelegate(PageStateDelegate pageStateDelegate) {
-        mPageStateDelegate = pageStateDelegate;
+    public static void setPageStateConfig(PageStateConfig pageStateConfig) {
+        mPageStateConfig = pageStateConfig;
     }
 }

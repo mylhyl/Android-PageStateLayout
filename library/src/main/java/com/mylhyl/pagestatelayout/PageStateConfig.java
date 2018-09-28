@@ -5,7 +5,7 @@ import android.view.View;
 /**
  * Created by hupei on 2018/9/27 10:17.
  */
-public abstract class PageStateDelegate {
+public abstract class PageStateConfig {
 
     /**
      * 获取加载数据视图控件ID，子类实现

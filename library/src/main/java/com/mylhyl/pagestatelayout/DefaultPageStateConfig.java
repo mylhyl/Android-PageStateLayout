@@ -3,7 +3,7 @@ package com.mylhyl.pagestatelayout;
 /**
  * Created by hupei on 2018/9/27 10:17.
  */
-public class DefaultPageStateDelegate extends PageStateDelegate {
+public class DefaultPageStateConfig extends PageStateConfig {
 
     @Override
     protected int getLoadingLayout() {
