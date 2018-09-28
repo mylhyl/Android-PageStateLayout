@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements OnRefreshListener
     private PageStateLayout mPageStateLayout;
     private RecyclerView mRecyclerView;
     private BaseQuickAdapter mAdapter;
-    private int mType = 1;
+    private int mType = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements OnRefreshListener
                         mPageStateLayout.showEmptyView();
                     }
                 }, 200l);
+                mType = 5;
                 break;
             case 3:
                 mRefreshLayout.getLayout().postDelayed(new Runnable() {
@@ -93,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements OnRefreshListener
                 }, 200l);
                 break;
             case 5:
-                mRefreshLayout.autoRefresh();
+                mPageStateLayout.showLoadingView();
                 mRefreshLayout.getLayout().postDelayed(new Runnable() {
                     @Override
                     public void run() {

@@ -41,8 +41,18 @@ public class DefaultPageStateDelegate extends PageStateDelegate {
     }
 
     @Override
+    protected int getErrorImgId() {
+        return R.id.library_psl_imgError;
+    }
+
+    @Override
     protected int getErrorTipViewId() {
         return R.id.library_psl_tipError;
+    }
+
+    @Override
+    protected int getErrorNetImgId() {
+        return R.id.library_psl_imgErrorNet;
     }
 
     @Override

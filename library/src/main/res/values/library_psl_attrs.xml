@@ -8,7 +8,9 @@
         <attr name="psl_emptyImgId" format="reference"/>
         <attr name="psl_emptyImgSrc" format="reference"/>
         <attr name="psl_errorImgId" format="reference"/>
+        <attr name="psl_errorImgSrc" format="reference"/>
         <attr name="psl_errorNetImgId" format="reference"/>
+        <attr name="psl_errorNetImgSrc" format="reference"/>
         <attr name="psl_loadingTipViewId" format="reference"/>
         <attr name="psl_emptyTipViewId" format="reference"/>
         <attr name="psl_errorTipViewId" format="reference"/>

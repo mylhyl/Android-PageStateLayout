@@ -57,12 +57,20 @@ public abstract class PageStateDelegate {
         return View.NO_ID;
     }
 
+    protected int getErrorImgId() {
+        return View.NO_ID;
+    }
+
     /**
      * 获取错误视图文字描述控件ID，子类实现
      *
      * @return
      */
     protected int getErrorTipViewId() {
+        return View.NO_ID;
+    }
+
+    protected int getErrorNetImgId() {
         return View.NO_ID;
     }
 

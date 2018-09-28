@@ -1,7 +1,7 @@
 package com.mylhyl.pagestatelayout;
 
 import android.content.Context;
-import android.support.annotation.DrawableRes;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.StringRes;
@@ -22,7 +22,7 @@ public class PageStateLayoutCreater implements PageState {
     private Context mContext;
     private ViewGroup mRootView;
     private View mContentView, mLoadingView, mEmptyView, mErrorView, mErrorNetView;
-    private ImageView mEmptyImg;
+    private ImageView mEmptyImg, mErrorImg, mErrorNetImg;
     private TextView mLoadingTipView, mEmptyTipView, mErrorTipView, mErrorNetTipView;
     private OnErrorClickListener mOnErrorClickListener;
     private OnErrorNetClickListener mOnErrorNetClickListener;
@@ -30,7 +30,7 @@ public class PageStateLayoutCreater implements PageState {
             .LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
     private boolean showErrorClickLoading = true;
     private int mLoadingLayout = NO_ID, mEmptyLayout = NO_ID, mErrorLayout = NO_ID, mErrorNetLayout = NO_ID;
-    private int mEmptyImgId = NO_ID;
+    private int mEmptyImgId = NO_ID, mErrorImgId = NO_ID, mErrorNetImgId = NO_ID;
     private int mLoadingTipViewId = NO_ID, mEmptyTipViewId = NO_ID, mErrorTipViewId = NO_ID, mErrorNetTipViewId = NO_ID;
 
     public PageStateLayoutCreater() {
@@ -40,6 +40,8 @@ public class PageStateLayoutCreater implements PageState {
         setErrorNetLayout(mPageStateDelegate.getErrorNetLayout());
 
         setEmptyImgId(mPageStateDelegate.getEmptyImgId());
+        setErrorImgId(mPageStateDelegate.getErrorImgId());
+        setErrorNetImgId(mPageStateDelegate.getErrorNetImgId());
 
         setLoadingTipViewId(mPageStateDelegate.getLoadingTipViewId());
         setEmptyTipViewId(mPageStateDelegate.getEmptyTipViewId());
@@ -83,8 +85,18 @@ public class PageStateLayoutCreater implements PageState {
     }
 
     @Override
+    public void setErrorImgId(int errorImgId) {
+        this.mErrorImgId = errorImgId;
+    }
+
+    @Override
     public void setErrorTipViewId(@IdRes int errorTipViewId) {
         this.mErrorTipViewId = errorTipViewId;
+    }
+
+    @Override
+    public void setErrorNetImgId(int errorNetImgId) {
+        this.mErrorNetImgId = errorNetImgId;
     }
 
     @Override
@@ -124,9 +136,9 @@ public class PageStateLayoutCreater implements PageState {
     }
 
     @Override
-    public void setEmptyImgSrc(@DrawableRes int resId) {
+    public void setEmptyImgDrawable(Drawable drawable) {
         if (mEmptyImg != null) {
-            mEmptyImg.setImageResource(resId);
+            mEmptyImg.setImageDrawable(drawable);
             mEmptyImg.setVisibility(View.VISIBLE);
         }
     }
@@ -139,9 +151,25 @@ public class PageStateLayoutCreater implements PageState {
     }
 
     @Override
+    public void setErrorImgDrawable(Drawable drawable) {
+        if (mErrorImg != null) {
+            mErrorImg.setImageDrawable(drawable);
+            mErrorImg.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @Override
     public void setErrorTip(@StringRes int resId) {
         if (mErrorTipView != null) {
             mErrorTipView.setText(resId);
+        }
+    }
+
+    @Override
+    public void setErrorNetImgDrawable(Drawable drawable) {
+        if (mErrorNetImg != null) {
+            mErrorNetImg.setImageDrawable(drawable);
+            mErrorNetImg.setVisibility(View.VISIBLE);
         }
     }
 
@@ -297,6 +325,9 @@ public class PageStateLayoutCreater implements PageState {
                     }
                 }
             });
+            if (mErrorImgId != NO_ID) {
+                mErrorImg = mErrorView.findViewById(mErrorImgId);
+            }
             if (mErrorTipViewId != NO_ID) {
                 mErrorTipView = mErrorView.findViewById(mErrorTipViewId);
             }
@@ -317,6 +348,9 @@ public class PageStateLayoutCreater implements PageState {
                     }
                 }
             });
+            if (mErrorNetImgId != NO_ID) {
+                mErrorNetImg = mErrorNetView.findViewById(mErrorNetImgId);
+            }
             if (mErrorNetTipViewId != NO_ID) {
                 mErrorNetTipView = mErrorNetView.findViewById(mErrorNetTipViewId);
             }
