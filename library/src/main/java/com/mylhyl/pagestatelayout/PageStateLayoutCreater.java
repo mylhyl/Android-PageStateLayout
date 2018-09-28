@@ -1,4 +1,4 @@
-package com.mylhyl.pageloading;
+package com.mylhyl.pagestatelayout;
 
 import android.content.Context;
 import android.support.annotation.IdRes;
@@ -12,36 +12,36 @@ import android.widget.TextView;
 /**
  * Created by hupei on 2018/9/27 10:16.
  */
-public class PageLoadingCreater implements PageLoading {
+public class PageStateLayoutCreater implements PageState {
 
-    private static PageLoadingDelegate mPageLoadingDelegate = new DefaultPageLoadingDelegate();
+    private static PageStateDelegate mPageStateDelegate = new DefaultPageStateDelegate();
     private Context mContext;
     private ViewGroup mRootView;
-    private View mContentView, mProgressView, mEmptyView, mErrorView, mErrorNetView;
-    private TextView mProgressTipView, mEmptyTipView, mErrorTipView, mErrorNetTipView;
+    private View mContentView, mLoadingView, mEmptyView, mErrorView, mErrorNetView;
+    private TextView mLoadingTipView, mEmptyTipView, mErrorTipView, mErrorNetTipView;
     private OnErrorClickListener mOnErrorClickListener;
     private OnErrorNetClickListener mOnErrorNetClickListener;
     private ViewGroup.LayoutParams mLayoutParams = new ViewGroup.LayoutParams(ViewGroup
             .LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
     private boolean showErrorClickLoading = true;
-    private int mProgressLayout = View.NO_ID, mEmptyLayout = View.NO_ID, mErrorLayout = View.NO_ID, mErrorNetLayout = View.NO_ID;
-    private int mProgressTipViewId = View.NO_ID, mEmptyTipViewId = View.NO_ID, mErrorTipViewId = View.NO_ID, mErrorNetTipViewId = View.NO_ID;
+    private int mLoadingLayout = View.NO_ID, mEmptyLayout = View.NO_ID, mErrorLayout = View.NO_ID, mErrorNetLayout = View.NO_ID;
+    private int mLoadingTipViewId = View.NO_ID, mEmptyTipViewId = View.NO_ID, mErrorTipViewId = View.NO_ID, mErrorNetTipViewId = View.NO_ID;
 
-    public PageLoadingCreater() {
-        setProgressLayout(mPageLoadingDelegate.getProgressLayout());
-        setEmptyLayout(mPageLoadingDelegate.getEmptyLayout());
-        setErrorLayout(mPageLoadingDelegate.getErrorLayout());
-        setErrorNetLayout(mPageLoadingDelegate.getErrorNetLayout());
+    public PageStateLayoutCreater() {
+        setLoadingLayout(mPageStateDelegate.getLoadingLayout());
+        setEmptyLayout(mPageStateDelegate.getEmptyLayout());
+        setErrorLayout(mPageStateDelegate.getErrorLayout());
+        setErrorNetLayout(mPageStateDelegate.getErrorNetLayout());
 
-        setProgressTipViewId(mPageLoadingDelegate.getProgressTipViewId());
-        setEmptyTipViewId(mPageLoadingDelegate.getEmptyTipViewId());
-        setErrorTipViewId(mPageLoadingDelegate.getErrorTipViewId());
-        setErrorNetTipViewId(mPageLoadingDelegate.getErrorNetTipViewId());
+        setProgressTipViewId(mPageStateDelegate.getLoadingTipViewId());
+        setEmptyTipViewId(mPageStateDelegate.getEmptyTipViewId());
+        setErrorTipViewId(mPageStateDelegate.getErrorTipViewId());
+        setErrorNetTipViewId(mPageStateDelegate.getErrorNetTipViewId());
     }
 
     @Override
-    public void setProgressLayout(@LayoutRes int progressLayoutId) {
-        this.mProgressLayout = progressLayoutId;
+    public void setLoadingLayout(@LayoutRes int loadingLayoutId) {
+        this.mLoadingLayout = loadingLayoutId;
     }
 
     @Override
@@ -61,7 +61,7 @@ public class PageLoadingCreater implements PageLoading {
 
     @Override
     public void setProgressTipViewId(@IdRes int progressTipViewId) {
-        this.mProgressTipViewId = progressTipViewId;
+        this.mLoadingTipViewId = progressTipViewId;
     }
 
     @Override
@@ -80,7 +80,7 @@ public class PageLoadingCreater implements PageLoading {
     }
 
     @Override
-    public void setErrorClickShowProgress(boolean show) {
+    public void setErrorClickShowLoading(boolean show) {
         this.showErrorClickLoading = show;
     }
 
@@ -132,16 +132,16 @@ public class PageLoadingCreater implements PageLoading {
     }
 
     @Override
-    public void showProgressView(@StringRes int resId) {
-        showProgressView();
-        setProgressTip(resId);
+    public void showLoadingView(@StringRes int resId) {
+        showLoadingView();
+        setLoadingTip(resId);
     }
 
     @Override
-    public void showProgressView() {
+    public void showLoadingView() {
         //显示错误页面，其他页面隐藏
         goneAllView();
-        if (mProgressView != null) mProgressView.setVisibility(View.VISIBLE);
+        if (mLoadingView != null) mLoadingView.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -188,14 +188,14 @@ public class PageLoadingCreater implements PageLoading {
     }
 
     @Override
-    public TextView getProgressTipView() {
-        return mProgressTipView;
+    public TextView getLoadingTipView() {
+        return mLoadingTipView;
     }
 
     @Override
-    public void setProgressTip(@StringRes int resId) {
-        if (mProgressTipView != null) {
-            mProgressTipView.setText(resId);
+    public void setLoadingTip(@StringRes int resId) {
+        if (mLoadingTipView != null) {
+            mLoadingTipView.setText(resId);
         }
     }
 
@@ -238,14 +238,14 @@ public class PageLoadingCreater implements PageLoading {
     @Override
     public void create() {
 
-        mProgressView = inflate(mProgressLayout);
+        mLoadingView = inflate(mLoadingLayout);
         mEmptyView = inflate(mEmptyLayout);
         mErrorView = inflate(mErrorLayout);
         mErrorNetView = inflate(mErrorNetLayout);
 
-        if (mProgressView != null) {
-            mRootView.addView(mProgressView, mLayoutParams);
-            mProgressTipView = (TextView) mProgressView.findViewById(mProgressTipViewId);
+        if (mLoadingView != null) {
+            mRootView.addView(mLoadingView, mLayoutParams);
+            mLoadingTipView = (TextView) mLoadingView.findViewById(mLoadingTipViewId);
         }
 
         if (mEmptyView != null) {
@@ -262,7 +262,7 @@ public class PageLoadingCreater implements PageLoading {
                     if (mOnErrorClickListener != null) {
                         //点击时显示加载视图
                         if (showErrorClickLoading)
-                            showProgressView();
+                            showLoadingView();
                         else
                             goneAllView();
                         mOnErrorClickListener.onErrorClick();
@@ -279,7 +279,7 @@ public class PageLoadingCreater implements PageLoading {
                 public void onClick(View v) {
                     if (mOnErrorNetClickListener != null) {
                         if (showErrorClickLoading)
-                            showProgressView();
+                            showLoadingView();
                         else
                             goneAllView();
                         mOnErrorNetClickListener.onErrorNetClick();
@@ -295,14 +295,14 @@ public class PageLoadingCreater implements PageLoading {
     }
 
     private void goneAllView() {
-        if (mProgressView != null) mProgressView.setVisibility(View.GONE);
+        if (mLoadingView != null) mLoadingView.setVisibility(View.GONE);
         if (mContentView != null) mContentView.setVisibility(View.GONE);
         if (mEmptyView != null) mEmptyView.setVisibility(View.GONE);
         if (mErrorView != null) mErrorView.setVisibility(View.GONE);
         if (mErrorNetView != null) mErrorNetView.setVisibility(View.GONE);
     }
 
-    public static void setLoadingDelegate(PageLoadingDelegate pageLoadingDelegate) {
-        mPageLoadingDelegate = pageLoadingDelegate;
+    public static void setLoadingDelegate(PageStateDelegate pageStateDelegate) {
+        mPageStateDelegate = pageStateDelegate;
     }
 }

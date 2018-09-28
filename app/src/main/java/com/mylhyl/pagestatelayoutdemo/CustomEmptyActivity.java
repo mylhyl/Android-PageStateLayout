@@ -1,20 +1,20 @@
-package com.mylhyl.pageloadingdemo;
+package com.mylhyl.pagestatelayoutdemo;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.mylhyl.pageloading.PageLoadingView;
+import com.mylhyl.pagestatelayout.PageStateLayout;
 
 public class CustomEmptyActivity extends AppCompatActivity {
-    private PageLoadingView mPageLoadingView;
+    private PageStateLayout mPageStateLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_empty);
 
-        mPageLoadingView = findViewById(R.id.pageLoadingView);
-        mPageLoadingView.showEmptyView();
-        mPageLoadingView.setEmptyTip("自定义的");
+        mPageStateLayout = findViewById(R.id.pageLoadingView);
+        mPageStateLayout.showEmptyView();
+        mPageStateLayout.setEmptyTip("自定义的");
     }
 }

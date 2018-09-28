@@ -1,4 +1,4 @@
-package com.mylhyl.pageloadingdemo;
+package com.mylhyl.pagestatelayoutdemo;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +11,7 @@ import android.view.MenuItem;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.mylhyl.pageloading.PageLoadingView;
+import com.mylhyl.pagestatelayout.PageStateLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements OnRefreshListener
 
     private Toolbar mToolbar;
     private RefreshLayout mRefreshLayout;
-    private PageLoadingView mPageLoadingView;
+    private PageStateLayout mPageStateLayout;
     private RecyclerView mRecyclerView;
     private BaseQuickAdapter mAdapter;
     private int mType = 1;
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements OnRefreshListener
         };
         mRecyclerView.setAdapter(mAdapter);
 
-        mPageLoadingView = findViewById(R.id.pageLoadingView);
+        mPageStateLayout = findViewById(R.id.pageLoadingView);
 
         mRefreshLayout.autoRefresh();
     }
@@ -62,11 +62,38 @@ public class MainActivity extends AppCompatActivity implements OnRefreshListener
                     @Override
                     public void run() {
                         mRefreshLayout.finishRefresh();
-                        mPageLoadingView.showEmptyView();
+                        mPageStateLayout.showLoadingView();
                     }
                 }, 200l);
                 break;
             case 2:
+                mRefreshLayout.getLayout().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mRefreshLayout.finishRefresh();
+                        mPageStateLayout.showEmptyView();
+                    }
+                }, 200l);
+                break;
+            case 3:
+                mRefreshLayout.getLayout().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mRefreshLayout.finishRefresh();
+                        mPageStateLayout.showErrorView();
+                    }
+                }, 200l);
+                break;
+            case 4:
+                mRefreshLayout.getLayout().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mRefreshLayout.finishRefresh();
+                        mPageStateLayout.showErrorNetView();
+                    }
+                }, 200l);
+                break;
+            case 5:
                 mRefreshLayout.autoRefresh();
                 mRefreshLayout.getLayout().postDelayed(new Runnable() {
                     @Override
@@ -77,36 +104,9 @@ public class MainActivity extends AppCompatActivity implements OnRefreshListener
                         }
                         mAdapter.setNewData(listData);
                         mRefreshLayout.finishRefresh();
-                        mPageLoadingView.showContentView();
+                        mPageStateLayout.showContentView();
                     }
                 }, 2000);
-                break;
-            case 3:
-                mRefreshLayout.getLayout().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        mRefreshLayout.finishRefresh();
-                        mPageLoadingView.showErrorView();
-                    }
-                }, 200l);
-                break;
-            case 4:
-                mRefreshLayout.getLayout().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        mRefreshLayout.finishRefresh();
-                        mPageLoadingView.showErrorNetView();
-                    }
-                }, 200l);
-                break;
-            case 5:
-                mRefreshLayout.getLayout().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        mRefreshLayout.finishRefresh();
-                        mPageLoadingView.showProgressView();
-                    }
-                }, 200l);
                 break;
         }
     }
@@ -120,10 +120,10 @@ public class MainActivity extends AppCompatActivity implements OnRefreshListener
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menu_empty:
+            case R.id.menu_loading:
                 mType = 1;
                 break;
-            case R.id.menu_content:
+            case R.id.menu_empty:
                 mType = 2;
                 break;
             case R.id.menu_error:
@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity implements OnRefreshListener
             case R.id.menu_errorNet:
                 mType = 4;
                 break;
-            case R.id.menu_progress:
+            case R.id.menu_content:
                 mType = 5;
                 break;
             case R.id.menu_customEmpty:

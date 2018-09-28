@@ -1,4 +1,4 @@
-package com.mylhyl.pageloadingdemo;
+package com.mylhyl.pagestatelayoutdemo;
 
 import org.junit.Test;
 

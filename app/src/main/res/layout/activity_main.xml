@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.mylhyl.pageloading.PageLoadingView
+        <com.mylhyl.pagestatelayout.PageStateLayout
             android:id="@+id/pageLoadingView"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -28,6 +28,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 
-        </com.mylhyl.pageloading.PageLoadingView>
+        </com.mylhyl.pagestatelayout.PageStateLayout>
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 </LinearLayout>

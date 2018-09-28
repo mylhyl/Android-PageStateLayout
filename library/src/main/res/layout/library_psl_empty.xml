@@ -5,11 +5,16 @@
               android:gravity="center"
               android:orientation="vertical">
 
+    <ImageView
+        android:id="@id/library_psl_imgEmpty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
     <TextView
-        android:id="@+id/page_loading_tv_error_net"
+        android:id="@id/library_psl_tipEmpty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="无法连接到网络请检查"
+        android:text="暂无数据"
         android:textColor="#B6B6B6"
         android:textSize="15sp"/>
 </LinearLayout>

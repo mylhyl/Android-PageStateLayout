@@ -1,18 +1,18 @@
-package com.mylhyl.pageloading;
+package com.mylhyl.pagestatelayout;
 
 import android.view.View;
 
 /**
  * Created by hupei on 2018/9/27 10:17.
  */
-public abstract class PageLoadingDelegate {
+public abstract class PageStateDelegate {
 
     /**
      * 获取加载数据视图控件ID，子类实现
      *
      * @return
      */
-    protected abstract int getProgressLayout();
+    protected abstract int getLoadingLayout();
 
     /**
      * 获取空数据视图控件ID，子类实现
@@ -40,7 +40,7 @@ public abstract class PageLoadingDelegate {
      *
      * @return
      */
-    protected int getProgressTipViewId() {
+    protected int getLoadingTipViewId() {
         return View.NO_ID;
     }
 

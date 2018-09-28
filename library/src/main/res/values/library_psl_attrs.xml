@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PageStateLayout">
+        <attr name="psl_loadingLayout" format="integer"/>
+        <attr name="psl_emptyLayout" format="integer"/>
+        <attr name="psl_errorLayout" format="integer"/>
+        <attr name="psl_errorNetLayout" format="integer"/>
+        <attr name="psl_progressTipViewId" format="integer"/>
+        <attr name="psl_emptyTipViewId" format="integer"/>
+        <attr name="psl_errorTipViewId" format="integer"/>
+        <attr name="psl_errorNetTipViewId" format="integer"/>
+    </declare-styleable>
+</resources>

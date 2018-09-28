@@ -5,11 +5,18 @@
               android:gravity="center"
               android:orientation="vertical">
 
+    <ProgressBar
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
     <TextView
-        android:id="@+id/page_loading_tv_empty"
-        android:layout_width="wrap_content"
+        android:id="@id/library_psl_tipLoading"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="暂无数据"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="正在加载..."
         android:textColor="#B6B6B6"
         android:textSize="15sp"/>
 </LinearLayout>

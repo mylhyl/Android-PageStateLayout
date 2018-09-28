@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="library_psl_tipLoading" type="id"/>
+    <item name="library_psl_imgEmpty" type="id"/>
+    <item name="library_psl_tipEmpty" type="id"/>
+    <item name="library_psl_imgError" type="id"/>
+    <item name="library_psl_tipError" type="id"/>
+    <item name="library_psl_imgErrorNet" type="id"/>
+    <item name="library_psl_tipErrorNet" type="id"/>
+</resources>

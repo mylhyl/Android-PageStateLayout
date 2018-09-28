@@ -1,19 +1,19 @@
-package com.mylhyl.pageloadingdemo;
+package com.mylhyl.pagestatelayoutdemo;
 
 import android.app.Application;
 
-import com.mylhyl.pageloading.PageLoadingCreater;
-import com.mylhyl.pageloading.PageLoadingDelegate;
+import com.mylhyl.pagestatelayout.PageStateLayoutCreater;
+import com.mylhyl.pagestatelayout.PageStateDelegate;
 
 /**
  * Created by hupei on 2018/9/27 19:57.
  */
 public class APP extends Application {
     static {
-        PageLoadingCreater.setLoadingDelegate(new PageLoadingDelegate() {
+        PageStateLayoutCreater.setLoadingDelegate(new PageStateDelegate() {
             @Override
-            protected int getProgressLayout() {
-                return R.layout.share_page_progress;
+            protected int getLoadingLayout() {
+                return R.layout.share_page_loading;
             }
 
             @Override

@@ -1,4 +1,4 @@
-package com.mylhyl.pageloading;
+package com.mylhyl.pagestatelayout;
 
 /**
  * Created by hupei on 2018/9/27 10:15.

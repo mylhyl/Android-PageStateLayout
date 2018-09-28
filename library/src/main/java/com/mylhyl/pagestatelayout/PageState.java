@@ -1,4 +1,4 @@
-package com.mylhyl.pageloading;
+package com.mylhyl.pagestatelayout;
 
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
@@ -9,9 +9,9 @@ import android.widget.TextView;
 /**
  * Created by hupei on 2018/9/27 10:13.
  */
-public interface PageLoading {
+public interface PageState {
 
-    void setProgressLayout(@LayoutRes int progressLayoutId);
+    void setLoadingLayout(@LayoutRes int loadingLayoutId);
 
     void setEmptyLayout(@LayoutRes int emptyLayoutId);
 
@@ -32,7 +32,7 @@ public interface PageLoading {
      *
      * @param show
      */
-    void setErrorClickShowProgress(boolean show);
+    void setErrorClickShowLoading(boolean show);
 
     /**
      * 设置根视图
@@ -90,12 +90,12 @@ public interface PageLoading {
      *
      * @param resId 视图文字描述id
      */
-    void showProgressView(@StringRes int resId);
+    void showLoadingView(@StringRes int resId);
 
     /**
      * 显示加载数据视图
      */
-    void showProgressView();
+    void showLoadingView();
 
     /**
      * 显示数据视图
@@ -143,14 +143,14 @@ public interface PageLoading {
      *
      * @return
      */
-    TextView getProgressTipView();
+    TextView getLoadingTipView();
 
     /**
      * 设置加载数据视图的文字描述
      *
      * @param resId
      */
-    void setProgressTip(@StringRes int resId);
+    void setLoadingTip(@StringRes int resId);
 
     /**
      * 获取空数据文字描述控件

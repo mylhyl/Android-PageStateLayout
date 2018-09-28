@@ -1,4 +1,4 @@
-package com.mylhyl.pageloadingdemo;
+package com.mylhyl.pagestatelayout;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.mylhyl.pageloadingdemo", appContext.getPackageName());
+        assertEquals("com.mylhyl.pageloading.test", appContext.getPackageName());
     }
 }
