@@ -15,6 +15,6 @@ public class CustomEmptyActivity extends AppCompatActivity {
 
         mPageStateLayout = findViewById(R.id.pageStateLayout);
         mPageStateLayout.showEmptyView();
-        mPageStateLayout.setEmptyTip("自定义的");
+//        mPageStateLayout.setEmptyTip("自定义的");
     }
 }

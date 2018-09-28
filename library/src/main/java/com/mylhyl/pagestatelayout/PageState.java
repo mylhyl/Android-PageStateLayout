@@ -175,6 +175,9 @@ public interface PageState {
      */
     void setLoadingTip(@StringRes int resId);
 
+    void setLoadingTip(CharSequence text);
+
+
     /**
      * 获取空数据文字描述控件
      *
@@ -182,7 +185,7 @@ public interface PageState {
      */
     TextView getEmptyTipView();
 
-    void setEmptyTip(String text);
+    void setEmptyTip(CharSequence text);
 
     /**
      * 获取错误提示文字描述控件
@@ -196,7 +199,7 @@ public interface PageState {
      *
      * @param text
      */
-    void setErrorTip(String text);
+    void setErrorTip(CharSequence text);
 
     /**
      * 获取网络错误提示文字描述控件
@@ -210,7 +213,7 @@ public interface PageState {
      *
      * @param text
      */
-    void setErrorNetTip(String text);
+    void setErrorNetTip(CharSequence text);
 
     /**
      * 创建

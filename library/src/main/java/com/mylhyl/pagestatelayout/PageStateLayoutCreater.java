@@ -26,8 +26,6 @@ public class PageStateLayoutCreater implements PageState {
     private TextView mLoadingTipView, mEmptyTipView, mErrorTipView, mErrorNetTipView;
     private OnErrorClickListener mOnErrorClickListener;
     private OnErrorNetClickListener mOnErrorNetClickListener;
-    private ViewGroup.LayoutParams mLayoutParams = new ViewGroup.LayoutParams(ViewGroup
-            .LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
     private boolean showErrorClickLoading = true;
     private int mLoadingLayout = NO_ID, mEmptyLayout = NO_ID, mErrorLayout = NO_ID, mErrorNetLayout = NO_ID;
     private int mEmptyImgId = NO_ID, mErrorImgId = NO_ID, mErrorNetImgId = NO_ID;
@@ -123,6 +121,8 @@ public class PageStateLayoutCreater implements PageState {
     @Override
     public void setContentView(View contentView) {
         this.mContentView = contentView;
+        if (this.mContentView != null)
+            this.mContentView.setVisibility(View.GONE);
     }
 
     @Override
@@ -137,46 +137,46 @@ public class PageStateLayoutCreater implements PageState {
 
     @Override
     public void setEmptyImgDrawable(Drawable drawable) {
-        if (mEmptyImg != null) {
-            mEmptyImg.setImageDrawable(drawable);
-            mEmptyImg.setVisibility(View.VISIBLE);
+        if (this.mEmptyImg != null) {
+            this.mEmptyImg.setImageDrawable(drawable);
+            this.mEmptyImg.setVisibility(View.VISIBLE);
         }
     }
 
     @Override
     public void setEmptyTip(@StringRes int resId) {
-        if (mEmptyTipView != null) {
-            mEmptyTipView.setText(resId);
+        if (this.mEmptyTipView != null) {
+            this.mEmptyTipView.setText(resId);
         }
     }
 
     @Override
     public void setErrorImgDrawable(Drawable drawable) {
-        if (mErrorImg != null) {
-            mErrorImg.setImageDrawable(drawable);
-            mErrorImg.setVisibility(View.VISIBLE);
+        if (this.mErrorImg != null) {
+            this.mErrorImg.setImageDrawable(drawable);
+            this.mErrorImg.setVisibility(View.VISIBLE);
         }
     }
 
     @Override
     public void setErrorTip(@StringRes int resId) {
-        if (mErrorTipView != null) {
-            mErrorTipView.setText(resId);
+        if (this.mErrorTipView != null) {
+            this.mErrorTipView.setText(resId);
         }
     }
 
     @Override
     public void setErrorNetImgDrawable(Drawable drawable) {
-        if (mErrorNetImg != null) {
-            mErrorNetImg.setImageDrawable(drawable);
-            mErrorNetImg.setVisibility(View.VISIBLE);
+        if (this.mErrorNetImg != null) {
+            this.mErrorNetImg.setImageDrawable(drawable);
+            this.mErrorNetImg.setVisibility(View.VISIBLE);
         }
     }
 
     @Override
     public void setErrorNetTip(@StringRes int resId) {
-        if (mErrorNetTipView != null) {
-            mErrorNetTipView.setText(resId);
+        if (this.mErrorNetTipView != null) {
+            this.mErrorNetTipView.setText(resId);
         }
     }
 
@@ -190,21 +190,27 @@ public class PageStateLayoutCreater implements PageState {
     public void showLoadingView() {
         //显示错误页面，其他页面隐藏
         goneAllView();
-        if (mLoadingView != null) mLoadingView.setVisibility(View.VISIBLE);
+        if (this.mLoadingView != null) {
+            this.mLoadingView.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
     public void showContentView() {
         //显示数据页面，其他页面隐藏
         goneAllView();
-        if (mContentView != null) mContentView.setVisibility(View.VISIBLE);
+        if (this.mContentView != null) {
+            this.mContentView.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
     public void showEmptyView() {
         //显示List空页面，其他页面隐藏
         goneAllView();
-        if (mEmptyView != null) mEmptyView.setVisibility(View.VISIBLE);
+        if (this.mEmptyView != null) {
+            this.mEmptyView.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -218,148 +224,176 @@ public class PageStateLayoutCreater implements PageState {
     public void showErrorNetView() {
         //显示错误页面，其他页面隐藏
         goneAllView();
-        if (mErrorNetView != null) mErrorNetView.setVisibility(View.VISIBLE);
+        if (this.mErrorNetView != null) {
+            this.mErrorNetView.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
     public View getEmptyView() {
-        return mEmptyView;
+        return this.mEmptyView;
     }
 
     @Override
     public View getErrorView() {
-        return mErrorView;
+        return this.mErrorView;
     }
 
     @Override
     public View getErrorNetView() {
-        return mErrorNetView;
+        return this.mErrorNetView;
     }
 
     @Override
     public TextView getLoadingTipView() {
-        return mLoadingTipView;
+        return this.mLoadingTipView;
     }
 
     @Override
     public void setLoadingTip(@StringRes int resId) {
-        if (mLoadingTipView != null) {
-            mLoadingTipView.setText(resId);
+        setLoadingTip(mContext.getString(resId));
+    }
+
+    @Override
+    public void setLoadingTip(CharSequence text) {
+        if (this.mLoadingTipView != null) {
+            this.mLoadingTipView.setText(text);
         }
     }
 
     @Override
     public TextView getEmptyTipView() {
-        return mEmptyTipView;
+        return this.mEmptyTipView;
     }
 
     @Override
-    public void setEmptyTip(String text) {
-        if (mEmptyTipView != null) {
-            mEmptyTipView.setText(text);
+    public void setEmptyTip(CharSequence text) {
+        if (this.mEmptyTipView != null) {
+            this.mEmptyTipView.setText(text);
         }
     }
 
     @Override
     public TextView getErrorTip() {
-        return mErrorTipView;
+        return this.mErrorTipView;
     }
 
     @Override
-    public void setErrorTip(String text) {
-        if (mErrorTipView != null) {
-            mErrorTipView.setText(text);
+    public void setErrorTip(CharSequence text) {
+        if (this.mErrorTipView != null) {
+            this.mErrorTipView.setText(text);
         }
     }
 
     @Override
     public TextView getErrorNetTip() {
-        return mErrorNetTipView;
+        return this.mErrorNetTipView;
     }
 
     @Override
-    public void setErrorNetTip(String text) {
-        if (mErrorNetTipView != null) {
-            mErrorNetTipView.setText(text);
+    public void setErrorNetTip(CharSequence text) {
+        if (this.mErrorNetTipView != null) {
+            this.mErrorNetTipView.setText(text);
         }
     }
 
     @Override
     public void create() {
+        checkParams();
+        this.mLoadingView = inflate(mLoadingLayout);
+        this.mEmptyView = inflate(mEmptyLayout);
+        this.mErrorView = inflate(mErrorLayout);
+        this.mErrorNetView = inflate(mErrorNetLayout);
 
-        mLoadingView = inflate(mLoadingLayout);
-        mEmptyView = inflate(mEmptyLayout);
-        mErrorView = inflate(mErrorLayout);
-        mErrorNetView = inflate(mErrorNetLayout);
+        final ViewGroup.LayoutParams LayoutParams = new ViewGroup.LayoutParams(ViewGroup
+                .LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        this.mRootView.addView(mLoadingView, LayoutParams);
+        this.mRootView.addView(mEmptyView, LayoutParams);
+        this.mRootView.addView(mErrorView, LayoutParams);
+        this.mRootView.addView(mErrorNetView, LayoutParams);
 
-        if (mLoadingView != null) {
-            mRootView.addView(mLoadingView, mLayoutParams);
-            if (mLoadingTipViewId != NO_ID) {
-                mLoadingTipView = mLoadingView.findViewById(mLoadingTipViewId);
-            }
+        //加载视图
+        if (this.mLoadingTipViewId != NO_ID) {
+            this.mLoadingTipView = mLoadingView.findViewById(mLoadingTipViewId);
         }
 
-        if (mEmptyView != null) {
-            mRootView.addView(mEmptyView, mLayoutParams);
-            if (mEmptyImgId != NO_ID) {
-                mEmptyImg = mEmptyView.findViewById(mEmptyImgId);
-            }
-            if (mEmptyTipViewId != NO_ID) {
-                mEmptyTipView = mEmptyView.findViewById(mEmptyTipViewId);
-            }
+        //空视图
+        if (this.mEmptyImgId != NO_ID) {
+            this.mEmptyImg = mEmptyView.findViewById(mEmptyImgId);
+        }
+        if (this.mEmptyTipViewId != NO_ID) {
+            this.mEmptyTipView = mEmptyView.findViewById(mEmptyTipViewId);
         }
 
-        if (mErrorView != null) {
-            mRootView.addView(mErrorView, mLayoutParams);
-            mErrorView.setOnClickListener(new View.OnClickListener() {
+        //加载失败视图
+        if (this.mOnErrorClickListener != null) {
+            this.mErrorView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (mOnErrorClickListener != null) {
-                        //点击时显示加载视图
-                        if (showErrorClickLoading) {
-                            showLoadingView();
-                        } else {
-                            goneAllView();
-                        }
-                        mOnErrorClickListener.onErrorClick();
+                    //点击时显示加载视图
+                    if (showErrorClickLoading) {
+                        showLoadingView();
+                    } else {
+                        goneAllView();
                     }
+                    mOnErrorClickListener.onErrorClick();
                 }
             });
-            if (mErrorImgId != NO_ID) {
-                mErrorImg = mErrorView.findViewById(mErrorImgId);
-            }
-            if (mErrorTipViewId != NO_ID) {
-                mErrorTipView = mErrorView.findViewById(mErrorTipViewId);
-            }
+        }
+        if (this.mErrorImgId != NO_ID) {
+            this.mErrorImg = mErrorView.findViewById(mErrorImgId);
+        }
+        if (this.mErrorTipViewId != NO_ID) {
+            this.mErrorTipView = mErrorView.findViewById(mErrorTipViewId);
         }
 
-        if (mErrorNetView != null) {
-            mRootView.addView(mErrorNetView, mLayoutParams);
-            mErrorNetView.setOnClickListener(new View.OnClickListener() {
+        //网络异常视图
+        if (this.mOnErrorNetClickListener != null) {
+            this.mErrorNetView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (mOnErrorNetClickListener != null) {
-                        if (showErrorClickLoading) {
-                            showLoadingView();
-                        } else {
-                            goneAllView();
-                        }
-                        mOnErrorNetClickListener.onErrorNetClick();
+                    if (showErrorClickLoading) {
+                        showLoadingView();
+                    } else {
+                        goneAllView();
                     }
+                    mOnErrorNetClickListener.onErrorNetClick();
                 }
             });
-            if (mErrorNetImgId != NO_ID) {
-                mErrorNetImg = mErrorNetView.findViewById(mErrorNetImgId);
-            }
-            if (mErrorNetTipViewId != NO_ID) {
-                mErrorNetTipView = mErrorNetView.findViewById(mErrorNetTipViewId);
-            }
+        }
+        if (this.mErrorNetImgId != NO_ID) {
+            this.mErrorNetImg = mErrorNetView.findViewById(mErrorNetImgId);
+        }
+        if (this.mErrorNetTipViewId != NO_ID) {
+            this.mErrorNetTipView = mErrorNetView.findViewById(mErrorNetTipViewId);
         }
         goneAllView();
     }
 
+    private void checkParams() {
+        if (this.mRootView == null) {
+            throw new NullPointerException("mRootView cannot be null. Please use use setRootView");
+        }
+        if (this.mLoadingLayout == NO_ID) {
+            throw new IllegalArgumentException("mLoadingLayout cannot be null. Please use use " +
+                    "psl_loadingLayout or extends PageStateDelegate#getLoadingLayout");
+        }
+        if (this.mEmptyLayout == NO_ID) {
+            throw new IllegalArgumentException("mEmptyLayout cannot be null. Please use use " +
+                    "psl_loadingLayout or extends PageStateDelegate#getEmptyLayout");
+        }
+        if (this.mErrorLayout == NO_ID) {
+            throw new IllegalArgumentException("mErrorLayout cannot be null. Please use use " +
+                    "psl_loadingLayout or extends PageStateDelegate#getErrorLayout");
+        }
+        if (this.mErrorNetLayout == NO_ID) {
+            throw new IllegalArgumentException("mErrorNetLayout cannot be null. Please use use " +
+                    "psl_loadingLayout or extends PageStateDelegate#getErrorNetLayout");
+        }
+    }
+
     private View inflate(int layoutId) {
-        return LayoutInflater.from(mContext).inflate(layoutId, mRootView, false);
+        return LayoutInflater.from(this.mContext).inflate(layoutId, this.mRootView, false);
     }
 
     private void goneAllView() {

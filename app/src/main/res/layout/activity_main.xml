@@ -13,24 +13,25 @@
         style="@style/AppTheme.Toolbar"
         app:title="@string/app_name"/>
 
-    <com.scwang.smartrefresh.layout.SmartRefreshLayout
-        android:id="@+id/smartRefreshLayout"
+    <!--app:psl_contentLayoutId="@id/recyclerView" 如果不指定，那么本库只能包含一个子视图-->
+    <com.mylhyl.pagestatelayout.PageStateLayout
+        android:id="@+id/pageStateLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:psl_emptyImgSrc="@mipmap/ic_push_msg_empty"
+        app:psl_errorImgSrc="@mipmap/ic_pager_invalid"
+        app:psl_errorNetImgSrc="@mipmap/ic_network_invalid">
 
-        <com.mylhyl.pagestatelayout.PageStateLayout
-            android:id="@+id/pageStateLayout"
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/smartRefreshLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:psl_emptyImgSrc="@mipmap/ic_push_msg_empty"
-            app:psl_errorImgSrc="@mipmap/ic_pager_invalid"
-            app:psl_errorNetImgSrc="@mipmap/ic_network_invalid">
+            android:layout_height="match_parent">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 
-        </com.mylhyl.pagestatelayout.PageStateLayout>
-    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+    </com.mylhyl.pagestatelayout.PageStateLayout>
 </LinearLayout>

@@ -8,6 +8,7 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -18,7 +19,7 @@ import android.widget.TextView;
  */
 public class PageStateLayout extends FrameLayout implements PageState {
 
-    private int mContentLayoutId;
+    private int mContentLayoutId = NO_ID;
 
     private PageStateLayoutCreater mPageStateCreater = new PageStateLayoutCreater();
 
@@ -54,67 +55,78 @@ public class PageStateLayout extends FrameLayout implements PageState {
         int errorTipViewId = ta.getResourceId(R.styleable.PageStateLayout_psl_errorTipViewId, NO_ID);
         int errorNetTipViewId = ta.getResourceId(R.styleable.PageStateLayout_psl_errorNetTipViewId, NO_ID);
 
+        CharSequence loadingTip = ta.getText(R.styleable.PageStateLayout_psl_loadingTip);
+        CharSequence emptyTip = ta.getText(R.styleable.PageStateLayout_psl_emptyTip);
+        CharSequence errorTip = ta.getText(R.styleable.PageStateLayout_psl_errorTip);
+        CharSequence errorNetTip = ta.getText(R.styleable.PageStateLayout_psl_errorNetTip);
+
         mContentLayoutId = ta.getResourceId(R.styleable.PageStateLayout_psl_contentLayoutId, NO_ID);
 
         if (!isInEditMode()) {
             setRootView(this);
             if (loadingLayout != NO_ID) {
-                mPageStateCreater.setLoadingLayout(loadingLayout);
+                setLoadingLayout(loadingLayout);
             }
             if (emptyLayout != NO_ID) {
-                mPageStateCreater.setEmptyLayout(emptyLayout);
+                setEmptyLayout(emptyLayout);
             }
             if (errorLayout != NO_ID) {
-                mPageStateCreater.setErrorLayout(errorLayout);
+                setErrorLayout(errorLayout);
             }
             if (errorNetLayout != NO_ID) {
-                mPageStateCreater.setErrorNetLayout(errorNetLayout);
+                setErrorNetLayout(errorNetLayout);
             }
             if (loadingTipViewId != NO_ID) {
-                mPageStateCreater.setLoadingTipViewId(loadingTipViewId);
+                setLoadingTipViewId(loadingTipViewId);
             }
             if (emptyImgId != NO_ID) {
-                mPageStateCreater.setEmptyImgId(emptyImgId);
+                setEmptyImgId(emptyImgId);
             }
             if (emptyTipViewId != NO_ID) {
-                mPageStateCreater.setEmptyTipViewId(emptyTipViewId);
+                setEmptyTipViewId(emptyTipViewId);
             }
             if (errorImgId != NO_ID) {
-                mPageStateCreater.setErrorImgId(errorImgId);
+                setErrorImgId(errorImgId);
             }
             if (errorTipViewId != NO_ID) {
-                mPageStateCreater.setErrorTipViewId(errorTipViewId);
+                setErrorTipViewId(errorTipViewId);
             }
             if (errorNetImgId != NO_ID) {
-                mPageStateCreater.setErrorNetImgId(errorNetImgId);
+                setErrorNetImgId(errorNetImgId);
             }
             if (errorNetTipViewId != NO_ID) {
-                mPageStateCreater.setErrorNetTipViewId(errorNetTipViewId);
+                setErrorNetTipViewId(errorNetTipViewId);
             }
-            mPageStateCreater.create();
+            create();
 
             if (emptyImgDrawable != null) {
-                mPageStateCreater.setEmptyImgDrawable(emptyImgDrawable);
+                setEmptyImgDrawable(emptyImgDrawable);
             }
             if (errorImgDrawable != null) {
-                mPageStateCreater.setErrorImgDrawable(errorImgDrawable);
+                setErrorImgDrawable(errorImgDrawable);
             }
             if (errorNetImgDrawable != null) {
-                mPageStateCreater.setErrorNetImgDrawable(errorNetImgDrawable);
+                setErrorNetImgDrawable(errorNetImgDrawable);
+            }
+
+            if (!TextUtils.isEmpty(loadingTip)) {
+                setLoadingTip(loadingTip);
+            }
+
+            if (!TextUtils.isEmpty(loadingTip)) {
+                setLoadingTip(loadingTip);
+            }
+            if (!TextUtils.isEmpty(emptyTip)) {
+                setEmptyTip(emptyTip);
+            }
+            if (!TextUtils.isEmpty(errorTip)) {
+                setErrorTip(errorTip);
+            }
+            if (!TextUtils.isEmpty(errorNetTip)) {
+                setErrorNetTip(errorNetTip);
             }
         }
         ta.recycle();
-    }
-
-    @Override
-    protected void onFinishInflate() {
-        super.onFinishInflate();
-        if (getChildCount() > 5) {
-            throw new IllegalStateException("PageLoadingView can host only one direct child");
-        }
-        View view = getChildAt(4);
-        view.setVisibility(GONE);
-        setContentView(view);
     }
 
     @Override
@@ -124,7 +136,7 @@ public class PageStateLayout extends FrameLayout implements PageState {
 
     @Override
     public void setEmptyLayout(@LayoutRes int emptyLayoutId) {
-        mPageStateCreater.setErrorLayout(emptyLayoutId);
+        mPageStateCreater.setEmptyLayout(emptyLayoutId);
     }
 
     @Override
@@ -288,12 +300,17 @@ public class PageStateLayout extends FrameLayout implements PageState {
     }
 
     @Override
+    public void setLoadingTip(CharSequence text) {
+        mPageStateCreater.setLoadingTip(text);
+    }
+
+    @Override
     public TextView getEmptyTipView() {
         return mPageStateCreater.getEmptyTipView();
     }
 
     @Override
-    public void setEmptyTip(String text) {
+    public void setEmptyTip(CharSequence text) {
         mPageStateCreater.setEmptyTip(text);
     }
 
@@ -303,7 +320,7 @@ public class PageStateLayout extends FrameLayout implements PageState {
     }
 
     @Override
-    public void setErrorTip(String text) {
+    public void setErrorTip(CharSequence text) {
         mPageStateCreater.setErrorTip(text);
     }
 
@@ -313,12 +330,27 @@ public class PageStateLayout extends FrameLayout implements PageState {
     }
 
     @Override
-    public void setErrorNetTip(String text) {
+    public void setErrorNetTip(CharSequence text) {
         mPageStateCreater.setErrorNetTip(text);
     }
 
     @Override
     public void create() {
         mPageStateCreater.create();
+    }
+
+    @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+        if (mContentLayoutId == NO_ID) {
+            if (getChildCount() > 5) {
+                throw new IllegalStateException("PageStateLayout can host only one direct child");
+            }
+            View view = getChildAt(4);
+            setContentView(view);
+        } else {
+            View contentLayout = findViewById(mContentLayoutId);
+            setContentView(contentLayout);
+        }
     }
 }

@@ -18,6 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:psl_emptyLayout="@layout/share_page_empty"
+        app:psl_emptyTip="获取不到程序猿"
         app:psl_emptyTipViewId="@id/share_page_emptyTip">
     </com.mylhyl.pagestatelayout.PageStateLayout>
 </LinearLayout>
