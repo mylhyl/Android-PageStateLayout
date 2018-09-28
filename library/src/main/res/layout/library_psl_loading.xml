@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="正在加载..."
+        android:text="@string/psl_loadingTip"
         android:textColor="#B6B6B6"
         android:textSize="15sp"/>
 </LinearLayout>

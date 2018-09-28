@@ -15,7 +15,7 @@
         android:id="@id/library_psl_tipErrorNet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="无法连接到网络\n点击屏幕重试"
+        android:text="@string/psl_errorNetTip"
         android:textColor="#B6B6B6"
         android:textSize="15sp"/>
 </LinearLayout>

@@ -18,6 +18,8 @@ import android.widget.TextView;
  */
 public class PageStateLayout extends FrameLayout implements PageState {
 
+    private int mContentLayoutId;
+
     private PageStateLayoutCreater mPageStateCreater = new PageStateLayoutCreater();
 
     public PageStateLayout(@NonNull Context context) {
@@ -51,6 +53,9 @@ public class PageStateLayout extends FrameLayout implements PageState {
         int emptyTipViewId = ta.getResourceId(R.styleable.PageStateLayout_psl_emptyTipViewId, NO_ID);
         int errorTipViewId = ta.getResourceId(R.styleable.PageStateLayout_psl_errorTipViewId, NO_ID);
         int errorNetTipViewId = ta.getResourceId(R.styleable.PageStateLayout_psl_errorNetTipViewId, NO_ID);
+
+        mContentLayoutId = ta.getResourceId(R.styleable.PageStateLayout_psl_contentLayoutId, NO_ID);
+
         if (!isInEditMode()) {
             setRootView(this);
             if (loadingLayout != NO_ID) {
@@ -107,11 +112,9 @@ public class PageStateLayout extends FrameLayout implements PageState {
         if (getChildCount() > 5) {
             throw new IllegalStateException("PageLoadingView can host only one direct child");
         }
-        if (!isInEditMode()) {
-            View view = getChildAt(4);
-            view.setVisibility(GONE);
-            setContentView(view);
-        }
+        View view = getChildAt(4);
+        view.setVisibility(GONE);
+        setContentView(view);
     }
 
     @Override

@@ -15,7 +15,7 @@
         android:id="@id/library_psl_tipEmpty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="暂无数据"
+        android:text="@string/psl_emptyTip"
         android:textColor="#B6B6B6"
         android:textSize="15sp"/>
 </LinearLayout>

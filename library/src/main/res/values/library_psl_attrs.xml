@@ -5,15 +5,17 @@
         <attr name="psl_emptyLayout" format="reference"/>
         <attr name="psl_errorLayout" format="reference"/>
         <attr name="psl_errorNetLayout" format="reference"/>
+        <attr name="psl_loadingTipViewId" format="reference"/>
         <attr name="psl_emptyImgId" format="reference"/>
         <attr name="psl_emptyImgSrc" format="reference"/>
+        <attr name="psl_emptyTipViewId" format="reference"/>
         <attr name="psl_errorImgId" format="reference"/>
         <attr name="psl_errorImgSrc" format="reference"/>
+        <attr name="psl_errorTipViewId" format="reference"/>
         <attr name="psl_errorNetImgId" format="reference"/>
         <attr name="psl_errorNetImgSrc" format="reference"/>
-        <attr name="psl_loadingTipViewId" format="reference"/>
-        <attr name="psl_emptyTipViewId" format="reference"/>
-        <attr name="psl_errorTipViewId" format="reference"/>
         <attr name="psl_errorNetTipViewId" format="reference"/>
+
+        <attr name="psl_contentLayoutId" format="reference"/>
     </declare-styleable>
 </resources>
