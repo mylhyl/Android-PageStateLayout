@@ -44,6 +44,10 @@ public abstract class PageStateDelegate {
         return View.NO_ID;
     }
 
+    protected int getEmptyImgId() {
+        return View.NO_ID;
+    }
+
     /**
      * 获取空数据视图文字描述控件ID，子类实现
      *

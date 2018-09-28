@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements OnRefreshListener
 
         mToolbar = findViewById(R.id.toolbar);
         mRefreshLayout = findViewById(R.id.smartRefreshLayout);
+        mPageStateLayout = findViewById(R.id.pageStateLayout);
         mRecyclerView = findViewById(R.id.recyclerView);
 
         setSupportActionBar(mToolbar);
@@ -48,8 +49,6 @@ public class MainActivity extends AppCompatActivity implements OnRefreshListener
             }
         };
         mRecyclerView.setAdapter(mAdapter);
-
-        mPageStateLayout = findViewById(R.id.pageLoadingView);
 
         mRefreshLayout.autoRefresh();
     }

@@ -13,7 +13,7 @@ public class CustomEmptyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_empty);
 
-        mPageStateLayout = findViewById(R.id.pageLoadingView);
+        mPageStateLayout = findViewById(R.id.pageStateLayout);
         mPageStateLayout.showEmptyView();
         mPageStateLayout.setEmptyTip("自定义的");
     }

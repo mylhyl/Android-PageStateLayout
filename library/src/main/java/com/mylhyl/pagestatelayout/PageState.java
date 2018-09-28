@@ -1,5 +1,6 @@
 package com.mylhyl.pagestatelayout;
 
+import android.support.annotation.DrawableRes;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.StringRes;
@@ -19,8 +20,20 @@ public interface PageState {
 
     void setErrorNetLayout(@LayoutRes int errorNetLayoutId);
 
-    void setProgressTipViewId(@IdRes int progressTipViewId);
+    void setLoadingTipViewId(@IdRes int loadingTipViewId);
 
+    /**
+     * 设置空数据视图ImageView的id
+     *
+     * @param emptyImgId
+     */
+    void setEmptyImgId(@IdRes int emptyImgId);
+
+    /**
+     * 设置空数据视图TextView的id
+     *
+     * @param emptyTipViewId
+     */
     void setEmptyTipViewId(@IdRes int emptyTipViewId);
 
     void setErrorTipViewId(@IdRes int errorTipViewId);
@@ -63,6 +76,8 @@ public interface PageState {
      * @param listener
      */
     void setOnErrorNetListener(OnErrorNetClickListener listener);
+
+    void setEmptyImgSrc(@DrawableRes int resId);
 
     /**
      * 设置空数据视图的文字描述

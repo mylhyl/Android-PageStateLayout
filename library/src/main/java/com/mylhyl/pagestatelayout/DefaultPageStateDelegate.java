@@ -31,6 +31,11 @@ public class DefaultPageStateDelegate extends PageStateDelegate {
     }
 
     @Override
+    protected int getEmptyImgId() {
+        return R.id.library_psl_imgEmpty;
+    }
+
+    @Override
     protected int getEmptyTipViewId() {
         return R.id.library_psl_tipEmpty;
     }

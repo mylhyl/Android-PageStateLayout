@@ -2,6 +2,7 @@ package com.mylhyl.pagestatelayout;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
@@ -39,28 +40,47 @@ public class PageStateLayout extends FrameLayout implements PageState {
         int errorLayout = ta.getResourceId(R.styleable.PageStateLayout_psl_errorLayout, NO_ID);
         int errorNetLayout = ta.getResourceId(R.styleable.PageStateLayout_psl_errorNetLayout, NO_ID);
 
-        int progressTipViewId = ta.getResourceId(R.styleable.PageStateLayout_psl_progressTipViewId, NO_ID);
+        int emptyImgId = ta.getResourceId(R.styleable.PageStateLayout_psl_emptyImgId, NO_ID);
+        int emptyImgSrc = ta.getResourceId(R.styleable.PageStateLayout_psl_emptyImgSrc, NO_ID);
+
+        int progressTipViewId = ta.getResourceId(R.styleable.PageStateLayout_psl_loadingTipViewId, NO_ID);
         int emptyTipViewId = ta.getResourceId(R.styleable.PageStateLayout_psl_emptyTipViewId, NO_ID);
         int errorTipViewId = ta.getResourceId(R.styleable.PageStateLayout_psl_errorTipViewId, NO_ID);
         int errorNetTipViewId = ta.getResourceId(R.styleable.PageStateLayout_psl_errorNetTipViewId, NO_ID);
         if (!isInEditMode()) {
-            if (loadingLayout != NO_ID)
+            setRootView(this);
+            if (loadingLayout != NO_ID) {
                 mPageStateCreater.setLoadingLayout(loadingLayout);
-            if (emptyLayout != NO_ID)
+            }
+            if (emptyLayout != NO_ID) {
                 mPageStateCreater.setEmptyLayout(emptyLayout);
-            if (errorLayout != NO_ID)
+            }
+            if (errorLayout != NO_ID) {
                 mPageStateCreater.setErrorLayout(errorLayout);
-            if (errorNetLayout != NO_ID)
+            }
+            if (errorNetLayout != NO_ID) {
                 mPageStateCreater.setErrorNetLayout(errorNetLayout);
-
-            if (progressTipViewId != NO_ID)
-                mPageStateCreater.setProgressTipViewId(progressTipViewId);
-            if (emptyTipViewId != NO_ID)
+            }
+            if (emptyImgId != NO_ID) {
+                mPageStateCreater.setEmptyImgId(emptyImgId);
+            }
+            if (progressTipViewId != NO_ID) {
+                mPageStateCreater.setLoadingTipViewId(progressTipViewId);
+            }
+            if (emptyTipViewId != NO_ID) {
                 mPageStateCreater.setEmptyTipViewId(emptyTipViewId);
-            if (errorTipViewId != NO_ID)
+            }
+            if (errorTipViewId != NO_ID) {
                 mPageStateCreater.setErrorTipViewId(errorTipViewId);
-            if (errorNetTipViewId != NO_ID)
+            }
+            if (errorNetTipViewId != NO_ID) {
                 mPageStateCreater.setErrorNetTipViewId(errorNetTipViewId);
+            }
+            mPageStateCreater.create();
+
+            if (emptyImgSrc != NO_ID) {
+                mPageStateCreater.setEmptyImgSrc(emptyImgSrc);
+            }
         }
         ta.recycle();
     }
@@ -68,14 +88,13 @@ public class PageStateLayout extends FrameLayout implements PageState {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        if (getChildCount() > 1) {
+        if (getChildCount() > 5) {
             throw new IllegalStateException("PageLoadingView can host only one direct child");
         }
         if (!isInEditMode()) {
-            setRootView(this);
-            View view = getChildAt(0);
+            View view = getChildAt(4);
+            view.setVisibility(GONE);
             setContentView(view);
-            mPageStateCreater.create();
         }
     }
 
@@ -100,8 +119,13 @@ public class PageStateLayout extends FrameLayout implements PageState {
     }
 
     @Override
-    public void setProgressTipViewId(@IdRes int progressTipViewId) {
-        mPageStateCreater.setProgressTipViewId(progressTipViewId);
+    public void setLoadingTipViewId(@IdRes int loadingTipViewId) {
+        mPageStateCreater.setLoadingTipViewId(loadingTipViewId);
+    }
+
+    @Override
+    public void setEmptyImgId(int emptyImgId) {
+        mPageStateCreater.setEmptyImgId(emptyImgId);
     }
 
     @Override
@@ -147,6 +171,11 @@ public class PageStateLayout extends FrameLayout implements PageState {
     @Override
     public void setOnErrorNetListener(OnErrorNetClickListener listener) {
         mPageStateCreater.setOnErrorNetListener(listener);
+    }
+
+    @Override
+    public void setEmptyImgSrc(@DrawableRes int resId) {
+        mPageStateCreater.setEmptyImgSrc(resId);
     }
 
     @Override

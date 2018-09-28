@@ -1,13 +1,17 @@
 package com.mylhyl.pagestatelayout;
 
 import android.content.Context;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.StringRes;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import static android.view.View.NO_ID;
 
 /**
  * Created by hupei on 2018/9/27 10:16.
@@ -18,14 +22,16 @@ public class PageStateLayoutCreater implements PageState {
     private Context mContext;
     private ViewGroup mRootView;
     private View mContentView, mLoadingView, mEmptyView, mErrorView, mErrorNetView;
+    private ImageView mEmptyImg;
     private TextView mLoadingTipView, mEmptyTipView, mErrorTipView, mErrorNetTipView;
     private OnErrorClickListener mOnErrorClickListener;
     private OnErrorNetClickListener mOnErrorNetClickListener;
     private ViewGroup.LayoutParams mLayoutParams = new ViewGroup.LayoutParams(ViewGroup
             .LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
     private boolean showErrorClickLoading = true;
-    private int mLoadingLayout = View.NO_ID, mEmptyLayout = View.NO_ID, mErrorLayout = View.NO_ID, mErrorNetLayout = View.NO_ID;
-    private int mLoadingTipViewId = View.NO_ID, mEmptyTipViewId = View.NO_ID, mErrorTipViewId = View.NO_ID, mErrorNetTipViewId = View.NO_ID;
+    private int mLoadingLayout = NO_ID, mEmptyLayout = NO_ID, mErrorLayout = NO_ID, mErrorNetLayout = NO_ID;
+    private int mEmptyImgId = NO_ID;
+    private int mLoadingTipViewId = NO_ID, mEmptyTipViewId = NO_ID, mErrorTipViewId = NO_ID, mErrorNetTipViewId = NO_ID;
 
     public PageStateLayoutCreater() {
         setLoadingLayout(mPageStateDelegate.getLoadingLayout());
@@ -33,7 +39,9 @@ public class PageStateLayoutCreater implements PageState {
         setErrorLayout(mPageStateDelegate.getErrorLayout());
         setErrorNetLayout(mPageStateDelegate.getErrorNetLayout());
 
-        setProgressTipViewId(mPageStateDelegate.getLoadingTipViewId());
+        setEmptyImgId(mPageStateDelegate.getEmptyImgId());
+
+        setLoadingTipViewId(mPageStateDelegate.getLoadingTipViewId());
         setEmptyTipViewId(mPageStateDelegate.getEmptyTipViewId());
         setErrorTipViewId(mPageStateDelegate.getErrorTipViewId());
         setErrorNetTipViewId(mPageStateDelegate.getErrorNetTipViewId());
@@ -60,8 +68,13 @@ public class PageStateLayoutCreater implements PageState {
     }
 
     @Override
-    public void setProgressTipViewId(@IdRes int progressTipViewId) {
-        this.mLoadingTipViewId = progressTipViewId;
+    public void setLoadingTipViewId(@IdRes int loadingTipViewId) {
+        this.mLoadingTipViewId = loadingTipViewId;
+    }
+
+    @Override
+    public void setEmptyImgId(int emptyImgId) {
+        this.mEmptyImgId = emptyImgId;
     }
 
     @Override
@@ -108,6 +121,14 @@ public class PageStateLayoutCreater implements PageState {
     @Override
     public void setOnErrorNetListener(OnErrorNetClickListener listener) {
         this.mOnErrorNetClickListener = listener;
+    }
+
+    @Override
+    public void setEmptyImgSrc(@DrawableRes int resId) {
+        if (mEmptyImg != null) {
+            mEmptyImg.setImageResource(resId);
+            mEmptyImg.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -245,52 +266,65 @@ public class PageStateLayoutCreater implements PageState {
 
         if (mLoadingView != null) {
             mRootView.addView(mLoadingView, mLayoutParams);
-            mLoadingTipView = (TextView) mLoadingView.findViewById(mLoadingTipViewId);
+            if (mLoadingTipViewId != NO_ID) {
+                mLoadingTipView = mLoadingView.findViewById(mLoadingTipViewId);
+            }
         }
 
         if (mEmptyView != null) {
             mRootView.addView(mEmptyView, mLayoutParams);
-            mEmptyTipView = (TextView) mEmptyView.findViewById(mEmptyTipViewId);
+            if (mEmptyImgId != NO_ID) {
+                mEmptyImg = mEmptyView.findViewById(mEmptyImgId);
+            }
+            if (mEmptyTipViewId != NO_ID) {
+                mEmptyTipView = mEmptyView.findViewById(mEmptyTipViewId);
+            }
         }
 
         if (mErrorView != null) {
             mRootView.addView(mErrorView, mLayoutParams);
-            mErrorTipView = (TextView) mErrorView.findViewById(mErrorTipViewId);
             mErrorView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (mOnErrorClickListener != null) {
                         //点击时显示加载视图
-                        if (showErrorClickLoading)
+                        if (showErrorClickLoading) {
                             showLoadingView();
-                        else
+                        } else {
                             goneAllView();
+                        }
                         mOnErrorClickListener.onErrorClick();
                     }
                 }
             });
+            if (mErrorTipViewId != NO_ID) {
+                mErrorTipView = mErrorView.findViewById(mErrorTipViewId);
+            }
         }
 
         if (mErrorNetView != null) {
             mRootView.addView(mErrorNetView, mLayoutParams);
-            mErrorNetTipView = (TextView) mErrorNetView.findViewById(mErrorNetTipViewId);
             mErrorNetView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (mOnErrorNetClickListener != null) {
-                        if (showErrorClickLoading)
+                        if (showErrorClickLoading) {
                             showLoadingView();
-                        else
+                        } else {
                             goneAllView();
+                        }
                         mOnErrorNetClickListener.onErrorNetClick();
                     }
                 }
             });
+            if (mErrorNetTipViewId != NO_ID) {
+                mErrorNetTipView = mErrorNetView.findViewById(mErrorNetTipViewId);
+            }
         }
         goneAllView();
     }
 
-    protected View inflate(int layoutId) {
+    private View inflate(int layoutId) {
         return LayoutInflater.from(mContext).inflate(layoutId, mRootView, false);
     }
 
