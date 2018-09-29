@@ -1,15 +1,11 @@
 package com.mylhyl.pagestatelayout;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
-import android.support.annotation.StringRes;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import static android.view.View.NO_ID;
 
@@ -22,14 +18,14 @@ public class PageStateLayoutCreater implements PageState {
     private Context mContext;
     private ViewGroup mRootView;
     private View mContentView, mLoadingView, mEmptyView, mErrorView, mErrorNetView;
-    private ImageView mEmptyImg, mErrorImg, mErrorNetImg;
-    private TextView mLoadingTipView, mEmptyTipView, mErrorTipView, mErrorNetTipView;
+    private View mEmptyImgView, mErrorImgView, mErrorNetImgView;
+    private View mLoadingMsgView, mEmptyMsgView, mErrorMsgView, mErrorNetMsgView;
     private OnErrorClickListener mOnErrorClickListener;
     private OnErrorNetClickListener mOnErrorNetClickListener;
     private boolean showErrorClickLoading = true;
     private int mLoadingLayout = NO_ID, mEmptyLayout = NO_ID, mErrorLayout = NO_ID, mErrorNetLayout = NO_ID;
     private int mEmptyImgId = NO_ID, mErrorImgId = NO_ID, mErrorNetImgId = NO_ID;
-    private int mLoadingTipViewId = NO_ID, mEmptyTipViewId = NO_ID, mErrorTipViewId = NO_ID, mErrorNetTipViewId = NO_ID;
+    private int mLoadingMsgViewId = NO_ID, mEmptyMsgViewId = NO_ID, mErrorMsgViewId = NO_ID, mErrorNetMsgViewId = NO_ID;
 
     public PageStateLayoutCreater() {
         setLoadingLayout(mPageStateConfig.getLoadingLayout());
@@ -41,10 +37,10 @@ public class PageStateLayoutCreater implements PageState {
         setErrorImgId(mPageStateConfig.getErrorImgId());
         setErrorNetImgId(mPageStateConfig.getErrorNetImgId());
 
-        setLoadingTipViewId(mPageStateConfig.getLoadingTipViewId());
-        setEmptyTipViewId(mPageStateConfig.getEmptyTipViewId());
-        setErrorTipViewId(mPageStateConfig.getErrorTipViewId());
-        setErrorNetTipViewId(mPageStateConfig.getErrorNetTipViewId());
+        setLoadingMsgViewId(mPageStateConfig.getLoadingMsgViewId());
+        setEmptyMsgViewId(mPageStateConfig.getEmptyMsgViewId());
+        setErrorMsgViewId(mPageStateConfig.getErrorMsgViewId());
+        setErrorNetMsgViewId(mPageStateConfig.getErrorNetMsgViewId());
     }
 
     @Override
@@ -68,8 +64,8 @@ public class PageStateLayoutCreater implements PageState {
     }
 
     @Override
-    public void setLoadingTipViewId(@IdRes int loadingTipViewId) {
-        this.mLoadingTipViewId = loadingTipViewId;
+    public void setLoadingMsgViewId(int loadingMsgViewId) {
+        this.mLoadingMsgViewId = loadingMsgViewId;
     }
 
     @Override
@@ -78,8 +74,8 @@ public class PageStateLayoutCreater implements PageState {
     }
 
     @Override
-    public void setEmptyTipViewId(@IdRes int emptyTipViewId) {
-        this.mEmptyTipViewId = emptyTipViewId;
+    public void setEmptyMsgViewId(@IdRes int emptyMsgViewId) {
+        this.mEmptyMsgViewId = emptyMsgViewId;
     }
 
     @Override
@@ -88,8 +84,8 @@ public class PageStateLayoutCreater implements PageState {
     }
 
     @Override
-    public void setErrorTipViewId(@IdRes int errorTipViewId) {
-        this.mErrorTipViewId = errorTipViewId;
+    public void setErrorMsgViewId(@IdRes int errorMsgViewId) {
+        this.mErrorMsgViewId = errorMsgViewId;
     }
 
     @Override
@@ -98,8 +94,8 @@ public class PageStateLayoutCreater implements PageState {
     }
 
     @Override
-    public void setErrorNetTipViewId(@IdRes int errorNetTipViewId) {
-        this.mErrorNetTipViewId = errorNetTipViewId;
+    public void setErrorNetMsgViewId(@IdRes int errorNetMsgViewId) {
+        this.mErrorNetMsgViewId = errorNetMsgViewId;
     }
 
     @Override
@@ -133,57 +129,6 @@ public class PageStateLayoutCreater implements PageState {
     @Override
     public void setOnErrorNetListener(OnErrorNetClickListener listener) {
         this.mOnErrorNetClickListener = listener;
-    }
-
-    @Override
-    public void setEmptyImgDrawable(Drawable drawable) {
-        if (this.mEmptyImg != null) {
-            this.mEmptyImg.setImageDrawable(drawable);
-            this.mEmptyImg.setVisibility(View.VISIBLE);
-        }
-    }
-
-    @Override
-    public void setEmptyTip(@StringRes int resId) {
-        if (this.mEmptyTipView != null) {
-            this.mEmptyTipView.setText(resId);
-        }
-    }
-
-    @Override
-    public void setErrorImgDrawable(Drawable drawable) {
-        if (this.mErrorImg != null) {
-            this.mErrorImg.setImageDrawable(drawable);
-            this.mErrorImg.setVisibility(View.VISIBLE);
-        }
-    }
-
-    @Override
-    public void setErrorTip(@StringRes int resId) {
-        if (this.mErrorTipView != null) {
-            this.mErrorTipView.setText(resId);
-        }
-    }
-
-    @Override
-    public void setErrorNetImgDrawable(Drawable drawable) {
-        if (this.mErrorNetImg != null) {
-            this.mErrorNetImg.setImageDrawable(drawable);
-            this.mErrorNetImg.setVisibility(View.VISIBLE);
-        }
-    }
-
-    @Override
-    public void setErrorNetTip(@StringRes int resId) {
-        if (this.mErrorNetTipView != null) {
-            this.mErrorNetTipView.setText(resId);
-        }
-    }
-
-    @Override
-    public void showLoadingView(@StringRes int resId) {
-        showLoadingView();
-        setLoadingTip(resId);
     }
 
     @Override
@@ -245,56 +190,39 @@ public class PageStateLayoutCreater implements PageState {
     }
 
     @Override
-    public TextView getLoadingTipView() {
-        return this.mLoadingTipView;
+    public View getLoadingMsgView() {
+        return this.mLoadingMsgView;
+    }
+
+
+    @Override
+    public View getEmptyMsgView() {
+        return this.mEmptyMsgView;
     }
 
     @Override
-    public void setLoadingTip(@StringRes int resId) {
-        setLoadingTip(mContext.getString(resId));
+    public View getErrorMsgView() {
+        return this.mErrorMsgView;
     }
 
     @Override
-    public void setLoadingTip(CharSequence text) {
-        if (this.mLoadingTipView != null) {
-            this.mLoadingTipView.setText(text);
-        }
+    public View getErrorNetMsgView() {
+        return this.mErrorNetMsgView;
     }
 
     @Override
-    public TextView getEmptyTipView() {
-        return this.mEmptyTipView;
+    public View getEmptyImgView() {
+        return mEmptyImgView;
     }
 
     @Override
-    public void setEmptyTip(CharSequence text) {
-        if (this.mEmptyTipView != null) {
-            this.mEmptyTipView.setText(text);
-        }
+    public View getErrorImgView() {
+        return mErrorImgView;
     }
 
     @Override
-    public TextView getErrorTip() {
-        return this.mErrorTipView;
-    }
-
-    @Override
-    public void setErrorTip(CharSequence text) {
-        if (this.mErrorTipView != null) {
-            this.mErrorTipView.setText(text);
-        }
-    }
-
-    @Override
-    public TextView getErrorNetTip() {
-        return this.mErrorNetTipView;
-    }
-
-    @Override
-    public void setErrorNetTip(CharSequence text) {
-        if (this.mErrorNetTipView != null) {
-            this.mErrorNetTipView.setText(text);
-        }
+    public View getErrorNetImgView() {
+        return mErrorNetImgView;
     }
 
     @Override
@@ -313,16 +241,16 @@ public class PageStateLayoutCreater implements PageState {
         this.mRootView.addView(mErrorNetView, LayoutParams);
 
         //加载视图
-        if (this.mLoadingTipViewId != NO_ID) {
-            this.mLoadingTipView = mLoadingView.findViewById(mLoadingTipViewId);
+        if (this.mLoadingMsgViewId != NO_ID) {
+            this.mLoadingMsgView = mLoadingView.findViewById(mLoadingMsgViewId);
         }
 
         //空视图
         if (this.mEmptyImgId != NO_ID) {
-            this.mEmptyImg = mEmptyView.findViewById(mEmptyImgId);
+            this.mEmptyImgView = mEmptyView.findViewById(mEmptyImgId);
         }
-        if (this.mEmptyTipViewId != NO_ID) {
-            this.mEmptyTipView = mEmptyView.findViewById(mEmptyTipViewId);
+        if (this.mEmptyMsgViewId != NO_ID) {
+            this.mEmptyMsgView = mEmptyView.findViewById(mEmptyMsgViewId);
         }
 
         //加载失败视图
@@ -341,10 +269,10 @@ public class PageStateLayoutCreater implements PageState {
             });
         }
         if (this.mErrorImgId != NO_ID) {
-            this.mErrorImg = mErrorView.findViewById(mErrorImgId);
+            this.mErrorImgView = mErrorView.findViewById(mErrorImgId);
         }
-        if (this.mErrorTipViewId != NO_ID) {
-            this.mErrorTipView = mErrorView.findViewById(mErrorTipViewId);
+        if (this.mErrorMsgViewId != NO_ID) {
+            this.mErrorMsgView = mErrorView.findViewById(mErrorMsgViewId);
         }
 
         //网络异常视图
@@ -362,10 +290,10 @@ public class PageStateLayoutCreater implements PageState {
             });
         }
         if (this.mErrorNetImgId != NO_ID) {
-            this.mErrorNetImg = mErrorNetView.findViewById(mErrorNetImgId);
+            this.mErrorNetImgView = mErrorNetView.findViewById(mErrorNetImgId);
         }
-        if (this.mErrorNetTipViewId != NO_ID) {
-            this.mErrorNetTipView = mErrorNetView.findViewById(mErrorNetTipViewId);
+        if (this.mErrorNetMsgViewId != NO_ID) {
+            this.mErrorNetMsgView = mErrorNetView.findViewById(mErrorNetMsgViewId);
         }
         goneAllView();
     }

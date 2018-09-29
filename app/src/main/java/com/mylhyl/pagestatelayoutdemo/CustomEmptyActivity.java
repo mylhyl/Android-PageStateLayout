@@ -2,6 +2,7 @@ package com.mylhyl.pagestatelayoutdemo;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
 
 import com.mylhyl.pagestatelayout.PageStateLayout;
 
@@ -15,6 +16,9 @@ public class CustomEmptyActivity extends AppCompatActivity {
 
         mPageStateLayout = findViewById(R.id.pageStateLayout);
         mPageStateLayout.showEmptyView();
-//        mPageStateLayout.setEmptyTip("自定义的");
+//        TextView emptyMsgView = mPageStateLayout.getEmptyMsgView();
+//        if (emptyMsgView != null) {
+//            emptyMsgView.setText("自定义的");
+//        }
     }
 }

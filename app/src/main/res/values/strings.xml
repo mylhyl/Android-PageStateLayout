@@ -2,8 +2,8 @@
     <string name="app_name">PageStateLayout</string>
 
     <!--自定文字描述-->
-    <string name="library_psl_loadingTip">努力加载中...</string>
-    <string name="library_psl_emptyTip">来也空空去也空空</string>
-    <string name="library_psl_errorTip">加载失败乃加载成功之母</string>
-    <string name="library_psl_errorNetTip">世界上最遥远的距离就是没有网络</string>
+    <string name="library_psl_loadingMsg">努力加载中...</string>
+    <string name="library_psl_emptyMsg">来也空空去也空空</string>
+    <string name="library_psl_errorMsg">加载失败乃加载成功之母</string>
+    <string name="library_psl_errorNetMsg">世界上最遥远的距离就是没有网络</string>
 </resources>

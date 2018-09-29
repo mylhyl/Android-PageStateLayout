@@ -19,25 +19,46 @@ public class APP extends Application {
 //            }
 //        });
 
+        //全局替换所有
         PageStateLayoutCreater.setPageStateConfig(new PageStateConfig() {
             @Override
             protected int getLoadingLayout() {
-                return R.layout.share_page_loading;
+                return R.layout.share_psl_loading;
+            }
+
+            @Override
+            protected int getLoadingMsgViewId() {
+                return R.id.share_psl_loadingMsg;
             }
 
             @Override
             protected int getEmptyLayout() {
-                return R.layout.share_page_empty;
+                return R.layout.share_psl_empty;
+            }
+
+            @Override
+            protected int getEmptyMsgViewId() {
+                return R.id.share_psl_emptyMsg;
             }
 
             @Override
             protected int getErrorLayout() {
-                return R.layout.share_page_error;
+                return R.layout.share_psl_error;
+            }
+
+            @Override
+            protected int getErrorMsgViewId() {
+                return R.id.share_psl_errorMsg;
             }
 
             @Override
             protected int getErrorNetLayout() {
-                return R.layout.share_page_error_net;
+                return R.layout.share_psl_error_net;
+            }
+
+            @Override
+            protected int getErrorNetMsgViewId() {
+                return R.id.share_psl_errorNetMsg;
             }
         });
     }

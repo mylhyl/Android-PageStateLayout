@@ -3,9 +3,7 @@ package com.mylhyl.pagestatelayout;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
-import android.support.annotation.StringRes;
 import android.view.View;
-import android.widget.TextView;
 
 /**
  * Created by hupei on 2018/9/27 10:13.
@@ -20,7 +18,7 @@ public interface PageState {
 
     void setErrorNetLayout(@LayoutRes int errorNetLayoutId);
 
-    void setLoadingTipViewId(@IdRes int loadingTipViewId);
+    void setLoadingMsgViewId(@IdRes int loadingMsgViewId);
 
     /**
      * 设置空数据视图ImageView的id
@@ -32,17 +30,17 @@ public interface PageState {
     /**
      * 设置空数据视图TextView的id
      *
-     * @param emptyTipViewId
+     * @param emptyMsgViewId
      */
-    void setEmptyTipViewId(@IdRes int emptyTipViewId);
+    void setEmptyMsgViewId(@IdRes int emptyMsgViewId);
 
     void setErrorImgId(@IdRes int errorImgId);
 
-    void setErrorTipViewId(@IdRes int errorTipViewId);
+    void setErrorMsgViewId(@IdRes int errorMsgViewId);
 
     void setErrorNetImgId(@IdRes int errorNetImgId);
 
-    void setErrorNetTipViewId(@IdRes int errorNetTipViewId);
+    void setErrorNetMsgViewId(@IdRes int errorNetMsgViewId);
 
     /**
      * 点击错误视图时是否显示加载视图
@@ -81,40 +79,6 @@ public interface PageState {
      */
     void setOnErrorNetListener(OnErrorNetClickListener listener);
 
-    void setEmptyImgDrawable(Drawable drawable);
-
-    /**
-     * 设置空数据视图的文字描述
-     *
-     * @param resId
-     */
-    void setEmptyTip(@StringRes int resId);
-
-    void setErrorImgDrawable(Drawable drawable);
-
-    /**
-     * 设置错误视图的文字描述
-     *
-     * @param resId
-     */
-    void setErrorTip(@StringRes int resId);
-
-    void setErrorNetImgDrawable(Drawable drawable);
-
-    /**
-     * 设置错误视图的文字描述
-     *
-     * @param resId
-     */
-    void setErrorNetTip(@StringRes int resId);
-
-    /**
-     * 显示加载数据视图
-     *
-     * @param resId 视图文字描述id
-     */
-    void showLoadingView(@StringRes int resId);
-
     /**
      * 显示加载数据视图
      */
@@ -143,77 +107,57 @@ public interface PageState {
     /**
      * 获取空数据视图
      *
-     * @return
+     * @return View
      */
     View getEmptyView();
 
     /**
      * 获取错误视图
      *
-     * @return
+     * @return View
      */
     View getErrorView();
 
     /**
      * 获取网络错误视图
      *
-     * @return
+     * @return View
      */
     View getErrorNetView();
 
     /**
      * 获取加载数据文字描述控件
      *
-     * @return
+     * @return View
      */
-    TextView getLoadingTipView();
-
-    /**
-     * 设置加载数据视图的文字描述
-     *
-     * @param resId
-     */
-    void setLoadingTip(@StringRes int resId);
-
-    void setLoadingTip(CharSequence text);
-
+    View getLoadingMsgView();
 
     /**
      * 获取空数据文字描述控件
      *
-     * @return
+     * @return View
      */
-    TextView getEmptyTipView();
-
-    void setEmptyTip(CharSequence text);
+    View getEmptyMsgView();
 
     /**
      * 获取错误提示文字描述控件
      *
-     * @return
+     * @return View
      */
-    TextView getErrorTip();
-
-    /**
-     * 设置错误视图的文字描述
-     *
-     * @param text
-     */
-    void setErrorTip(CharSequence text);
+    View getErrorMsgView();
 
     /**
      * 获取网络错误提示文字描述控件
      *
-     * @return
+     * @return View
      */
-    TextView getErrorNetTip();
+    View getErrorNetMsgView();
 
-    /**
-     * 设置错误视图的文字描述
-     *
-     * @param text
-     */
-    void setErrorNetTip(CharSequence text);
+    View getEmptyImgView();
+
+    View getErrorImgView();
+
+    View getErrorNetImgView();
 
     /**
      * 创建

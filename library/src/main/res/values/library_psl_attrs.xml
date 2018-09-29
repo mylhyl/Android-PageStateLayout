@@ -1,25 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="PageStateLayout">
+        <!--加载视图layout-->
         <attr name="psl_loadingLayout" format="reference"/>
+        <!--空视图layout-->
         <attr name="psl_emptyLayout" format="reference"/>
+        <!--错误视图layout-->
         <attr name="psl_errorLayout" format="reference"/>
+        <!--网络错误视图layout-->
         <attr name="psl_errorNetLayout" format="reference"/>
-        <attr name="psl_loadingTipViewId" format="reference"/>
-        <attr name="psl_loadingTip"/>
-        <attr name="psl_emptyImgId" format="reference"/>
-        <attr name="psl_emptyImgSrc" format="reference"/>
-        <attr name="psl_emptyTipViewId" format="reference"/>
-        <attr name="psl_emptyTip"/>
-        <attr name="psl_errorImgId" format="reference"/>
-        <attr name="psl_errorImgSrc" format="reference"/>
-        <attr name="psl_errorTipViewId" format="reference"/>
-        <attr name="psl_errorTip"/>
-        <attr name="psl_errorNetImgId" format="reference"/>
-        <attr name="psl_errorNetImgSrc" format="reference"/>
-        <attr name="psl_errorNetTipViewId" format="reference"/>
-        <attr name="psl_errorNetTip"/>
+        <!--加载视图的文字View的Id-->
+        <attr name="psl_loadingMsgViewId" format="reference"/>
+        <!--加载视图的文字-->
+        <attr name="psl_loadingMsg"/>
 
+        <!--空视图的图片View的Id-->
+        <attr name="psl_emptyImgId" format="reference"/>
+        <!--空视图的图片资源-->
+        <attr name="psl_emptyImgSrc" format="reference"/>
+        <!--空视图的文字View的Id-->
+        <attr name="psl_emptyMsgViewId" format="reference"/>
+        <!--空视图的文字-->
+        <attr name="psl_emptyMsg"/>
+
+        <!--错误视图的图片View的Id-->
+        <attr name="psl_errorImgId" format="reference"/>
+        <!--错误视图的图片资源-->
+        <attr name="psl_errorImgSrc" format="reference"/>
+        <!--错误视图的文字View的Id-->
+        <attr name="psl_errorMsgViewId" format="reference"/>
+        <!--错误视图的文字-->
+        <attr name="psl_errorMsg"/>
+
+        <!--网络错误视图的图片View的Id-->
+        <attr name="psl_errorNetImgId" format="reference"/>
+        <!--网络错误视图的图片资源-->
+        <attr name="psl_errorNetImgSrc" format="reference"/>
+        <!--网络错误视图的文字View的Id-->
+        <attr name="psl_errorNetMsgViewId" format="reference"/>
+        <!--网络错误视图的文字-->
+        <attr name="psl_errorNetMsg"/>
+
+        <!--内容视图layout的Id，也就是加载成功显示的视图-->
         <attr name="psl_contentLayoutId" format="reference"/>
     </declare-styleable>
 </resources>

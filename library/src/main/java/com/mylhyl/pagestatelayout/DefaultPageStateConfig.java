@@ -26,37 +26,37 @@ public class DefaultPageStateConfig extends PageStateConfig {
     }
 
     @Override
-    protected int getLoadingTipViewId() {
-        return R.id.library_psl_tipLoading;
+    protected int getLoadingMsgViewId() {
+        return R.id.library_psl_loadingMsg;
     }
 
     @Override
     protected int getEmptyImgId() {
-        return R.id.library_psl_imgEmpty;
+        return R.id.library_psl_emptyImg;
     }
 
     @Override
-    protected int getEmptyTipViewId() {
-        return R.id.library_psl_tipEmpty;
+    protected int getEmptyMsgViewId() {
+        return R.id.library_psl_emptyMsg;
     }
 
     @Override
     protected int getErrorImgId() {
-        return R.id.library_psl_imgError;
+        return R.id.library_psl_errorImg;
     }
 
     @Override
-    protected int getErrorTipViewId() {
-        return R.id.library_psl_tipError;
+    protected int getErrorMsgViewId() {
+        return R.id.library_psl_errorMsg;
     }
 
     @Override
     protected int getErrorNetImgId() {
-        return R.id.library_psl_imgErrorNet;
+        return R.id.library_psl_errorNetImg;
     }
 
     @Override
-    protected int getErrorNetTipViewId() {
-        return R.id.library_psl_tipErrorNet;
+    protected int getErrorNetMsgViewId() {
+        return R.id.library_psl_errorNetMsg;
     }
 }

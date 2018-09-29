@@ -12,7 +12,7 @@
         android:src="@mipmap/ic_network_invalid"/>
 
     <TextView
-        android:id="@+id/page_tv_error_net"
+        android:id="@+id/share_psl_errorNetMsg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20px"

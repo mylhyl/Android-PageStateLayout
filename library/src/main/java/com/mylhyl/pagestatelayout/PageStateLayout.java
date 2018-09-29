@@ -7,11 +7,11 @@ import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.annotation.StringRes;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -50,15 +50,15 @@ public class PageStateLayout extends FrameLayout implements PageState {
         int errorNetImgId = ta.getResourceId(R.styleable.PageStateLayout_psl_errorNetImgId, NO_ID);
         Drawable errorNetImgDrawable = ta.getDrawable(R.styleable.PageStateLayout_psl_errorNetImgSrc);
 
-        int loadingTipViewId = ta.getResourceId(R.styleable.PageStateLayout_psl_loadingTipViewId, NO_ID);
-        int emptyTipViewId = ta.getResourceId(R.styleable.PageStateLayout_psl_emptyTipViewId, NO_ID);
-        int errorTipViewId = ta.getResourceId(R.styleable.PageStateLayout_psl_errorTipViewId, NO_ID);
-        int errorNetTipViewId = ta.getResourceId(R.styleable.PageStateLayout_psl_errorNetTipViewId, NO_ID);
+        int loadingMsgViewId = ta.getResourceId(R.styleable.PageStateLayout_psl_loadingMsgViewId, NO_ID);
+        int emptyMsgViewId = ta.getResourceId(R.styleable.PageStateLayout_psl_emptyMsgViewId, NO_ID);
+        int errorMsgViewId = ta.getResourceId(R.styleable.PageStateLayout_psl_errorMsgViewId, NO_ID);
+        int errorNetMsgViewId = ta.getResourceId(R.styleable.PageStateLayout_psl_errorNetMsgViewId, NO_ID);
 
-        CharSequence loadingTip = ta.getText(R.styleable.PageStateLayout_psl_loadingTip);
-        CharSequence emptyTip = ta.getText(R.styleable.PageStateLayout_psl_emptyTip);
-        CharSequence errorTip = ta.getText(R.styleable.PageStateLayout_psl_errorTip);
-        CharSequence errorNetTip = ta.getText(R.styleable.PageStateLayout_psl_errorNetTip);
+        CharSequence loadingMsg = ta.getText(R.styleable.PageStateLayout_psl_loadingMsg);
+        CharSequence emptyMsg = ta.getText(R.styleable.PageStateLayout_psl_emptyMsg);
+        CharSequence errorMsg = ta.getText(R.styleable.PageStateLayout_psl_errorMsg);
+        CharSequence errorNetMsg = ta.getText(R.styleable.PageStateLayout_psl_errorNetMsg);
 
         mContentLayoutId = ta.getResourceId(R.styleable.PageStateLayout_psl_contentLayoutId, NO_ID);
 
@@ -76,54 +76,60 @@ public class PageStateLayout extends FrameLayout implements PageState {
             if (errorNetLayout != NO_ID) {
                 setErrorNetLayout(errorNetLayout);
             }
-            if (loadingTipViewId != NO_ID) {
-                setLoadingTipViewId(loadingTipViewId);
+            if (loadingMsgViewId != NO_ID) {
+                setLoadingMsgViewId(loadingMsgViewId);
             }
             if (emptyImgId != NO_ID) {
                 setEmptyImgId(emptyImgId);
             }
-            if (emptyTipViewId != NO_ID) {
-                setEmptyTipViewId(emptyTipViewId);
+            if (emptyMsgViewId != NO_ID) {
+                setEmptyMsgViewId(emptyMsgViewId);
             }
             if (errorImgId != NO_ID) {
                 setErrorImgId(errorImgId);
             }
-            if (errorTipViewId != NO_ID) {
-                setErrorTipViewId(errorTipViewId);
+            if (errorMsgViewId != NO_ID) {
+                setErrorMsgViewId(errorMsgViewId);
             }
             if (errorNetImgId != NO_ID) {
                 setErrorNetImgId(errorNetImgId);
             }
-            if (errorNetTipViewId != NO_ID) {
-                setErrorNetTipViewId(errorNetTipViewId);
+            if (errorNetMsgViewId != NO_ID) {
+                setErrorNetMsgViewId(errorNetMsgViewId);
             }
             create();
 
-            if (emptyImgDrawable != null) {
-                setEmptyImgDrawable(emptyImgDrawable);
+            if (emptyImgDrawable != null && getEmptyImgView() != null
+                    && getEmptyImgView() instanceof ImageView) {
+                getEmptyImgView().setVisibility(VISIBLE);
+                ((ImageView) getEmptyImgView()).setImageDrawable(emptyImgDrawable);
             }
-            if (errorImgDrawable != null) {
-                setErrorImgDrawable(errorImgDrawable);
+            if (errorImgDrawable != null && getErrorImgView() != null
+                    && getErrorImgView() instanceof ImageView) {
+                getErrorImgView().setVisibility(VISIBLE);
+                ((ImageView) getErrorImgView()).setImageDrawable(errorImgDrawable);
             }
-            if (errorNetImgDrawable != null) {
-                setErrorNetImgDrawable(errorNetImgDrawable);
+            if (errorNetImgDrawable != null && getErrorNetImgView() != null
+                    && getErrorNetImgView() instanceof ImageView) {
+                getErrorNetImgView().setVisibility(VISIBLE);
+                ((ImageView) getErrorNetImgView()).setImageDrawable(errorNetImgDrawable);
             }
 
-            if (!TextUtils.isEmpty(loadingTip)) {
-                setLoadingTip(loadingTip);
+            if (!TextUtils.isEmpty(loadingMsg) && getLoadingMsgView() != null
+                    && getLoadingMsgView() instanceof TextView) {
+                ((TextView) getLoadingMsgView()).setText(loadingMsg);
             }
-
-            if (!TextUtils.isEmpty(loadingTip)) {
-                setLoadingTip(loadingTip);
+            if (!TextUtils.isEmpty(emptyMsg) && getEmptyMsgView() != null
+                    && getEmptyMsgView() instanceof TextView) {
+                ((TextView) getEmptyMsgView()).setText(emptyMsg);
             }
-            if (!TextUtils.isEmpty(emptyTip)) {
-                setEmptyTip(emptyTip);
+            if (!TextUtils.isEmpty(errorMsg) && getErrorMsgView() != null
+                    && getErrorMsgView() instanceof TextView) {
+                ((TextView) getErrorMsgView()).setText(errorMsg);
             }
-            if (!TextUtils.isEmpty(errorTip)) {
-                setErrorTip(errorTip);
-            }
-            if (!TextUtils.isEmpty(errorNetTip)) {
-                setErrorNetTip(errorNetTip);
+            if (!TextUtils.isEmpty(errorNetMsg) && getErrorNetMsgView() != null
+                    && getErrorNetMsgView() instanceof TextView) {
+                ((TextView) getErrorNetMsgView()).setText(errorNetMsg);
             }
         }
         ta.recycle();
@@ -150,8 +156,8 @@ public class PageStateLayout extends FrameLayout implements PageState {
     }
 
     @Override
-    public void setLoadingTipViewId(@IdRes int loadingTipViewId) {
-        mPageStateCreater.setLoadingTipViewId(loadingTipViewId);
+    public void setLoadingMsgViewId(@IdRes int loadingMsgViewId) {
+        mPageStateCreater.setLoadingMsgViewId(loadingMsgViewId);
     }
 
     @Override
@@ -160,8 +166,8 @@ public class PageStateLayout extends FrameLayout implements PageState {
     }
 
     @Override
-    public void setEmptyTipViewId(@IdRes int emptyTipViewId) {
-        mPageStateCreater.setEmptyTipViewId(emptyTipViewId);
+    public void setEmptyMsgViewId(@IdRes int emptyMsgViewId) {
+        mPageStateCreater.setEmptyMsgViewId(emptyMsgViewId);
     }
 
     @Override
@@ -170,8 +176,8 @@ public class PageStateLayout extends FrameLayout implements PageState {
     }
 
     @Override
-    public void setErrorTipViewId(@IdRes int errorTipViewId) {
-        mPageStateCreater.setErrorTipViewId(errorTipViewId);
+    public void setErrorMsgViewId(@IdRes int errorMsgViewId) {
+        mPageStateCreater.setErrorMsgViewId(errorMsgViewId);
     }
 
     @Override
@@ -180,8 +186,8 @@ public class PageStateLayout extends FrameLayout implements PageState {
     }
 
     @Override
-    public void setErrorNetTipViewId(@IdRes int errorNetTipViewId) {
-        mPageStateCreater.setErrorNetTipViewId(errorNetTipViewId);
+    public void setErrorNetMsgViewId(@IdRes int errorNetMsgViewId) {
+        mPageStateCreater.setErrorNetMsgViewId(errorNetMsgViewId);
     }
 
     @Override
@@ -212,41 +218,6 @@ public class PageStateLayout extends FrameLayout implements PageState {
     @Override
     public void setOnErrorNetListener(OnErrorNetClickListener listener) {
         mPageStateCreater.setOnErrorNetListener(listener);
-    }
-
-    @Override
-    public void setEmptyImgDrawable(Drawable drawable) {
-        mPageStateCreater.setEmptyImgDrawable(drawable);
-    }
-
-    @Override
-    public void setEmptyTip(@StringRes int resId) {
-        mPageStateCreater.setEmptyTip(resId);
-    }
-
-    @Override
-    public void setErrorImgDrawable(Drawable drawable) {
-        mPageStateCreater.setErrorImgDrawable(drawable);
-    }
-
-    @Override
-    public void setErrorTip(@StringRes int resId) {
-        mPageStateCreater.setEmptyTip(resId);
-    }
-
-    @Override
-    public void setErrorNetImgDrawable(Drawable drawable) {
-        mPageStateCreater.setErrorNetImgDrawable(drawable);
-    }
-
-    @Override
-    public void setErrorNetTip(@StringRes int resId) {
-        mPageStateCreater.setErrorNetTip(resId);
-    }
-
-    @Override
-    public void showLoadingView(@StringRes int resId) {
-        mPageStateCreater.showLoadingView(resId);
     }
 
     @Override
@@ -290,48 +261,38 @@ public class PageStateLayout extends FrameLayout implements PageState {
     }
 
     @Override
-    public TextView getLoadingTipView() {
-        return mPageStateCreater.getLoadingTipView();
+    public View getLoadingMsgView() {
+        return mPageStateCreater.getLoadingMsgView();
     }
 
     @Override
-    public void setLoadingTip(@StringRes int resId) {
-        mPageStateCreater.setLoadingTip(resId);
+    public View getEmptyMsgView() {
+        return mPageStateCreater.getEmptyMsgView();
     }
 
     @Override
-    public void setLoadingTip(CharSequence text) {
-        mPageStateCreater.setLoadingTip(text);
+    public View getErrorMsgView() {
+        return mPageStateCreater.getErrorMsgView();
     }
 
     @Override
-    public TextView getEmptyTipView() {
-        return mPageStateCreater.getEmptyTipView();
+    public View getErrorNetMsgView() {
+        return mPageStateCreater.getErrorNetMsgView();
     }
 
     @Override
-    public void setEmptyTip(CharSequence text) {
-        mPageStateCreater.setEmptyTip(text);
+    public View getEmptyImgView() {
+        return mPageStateCreater.getEmptyImgView();
     }
 
     @Override
-    public TextView getErrorTip() {
-        return mPageStateCreater.getErrorTip();
+    public View getErrorImgView() {
+        return mPageStateCreater.getErrorImgView();
     }
 
     @Override
-    public void setErrorTip(CharSequence text) {
-        mPageStateCreater.setErrorTip(text);
-    }
-
-    @Override
-    public TextView getErrorNetTip() {
-        return mPageStateCreater.getErrorNetTip();
-    }
-
-    @Override
-    public void setErrorNetTip(CharSequence text) {
-        mPageStateCreater.setErrorNetTip(text);
+    public View getErrorNetImgView() {
+        return mPageStateCreater.getErrorNetImgView();
     }
 
     @Override

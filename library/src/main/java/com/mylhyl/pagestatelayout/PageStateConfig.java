@@ -40,7 +40,7 @@ public abstract class PageStateConfig {
      *
      * @return
      */
-    protected int getLoadingTipViewId() {
+    protected int getLoadingMsgViewId() {
         return View.NO_ID;
     }
 
@@ -53,7 +53,7 @@ public abstract class PageStateConfig {
      *
      * @return
      */
-    protected int getEmptyTipViewId() {
+    protected int getEmptyMsgViewId() {
         return View.NO_ID;
     }
 
@@ -66,7 +66,7 @@ public abstract class PageStateConfig {
      *
      * @return
      */
-    protected int getErrorTipViewId() {
+    protected int getErrorMsgViewId() {
         return View.NO_ID;
     }
 
@@ -79,7 +79,7 @@ public abstract class PageStateConfig {
      *
      * @return
      */
-    protected int getErrorNetTipViewId() {
+    protected int getErrorNetMsgViewId() {
         return View.NO_ID;
     }
 }

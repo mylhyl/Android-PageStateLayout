@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="library_psl_loadingTip">正在加载...</string>
-    <string name="library_psl_emptyTip">暂无数据</string>
-    <string name="library_psl_errorTip">加载失败</string>
-    <string name="library_psl_errorNetTip">网络异常请检查</string>
+    <string name="library_psl_loadingMsg">正在加载...</string>
+    <string name="library_psl_emptyMsg">暂无数据</string>
+    <string name="library_psl_errorMsg">加载失败</string>
+    <string name="library_psl_errorNetMsg">网络异常请检查</string>
 </resources>

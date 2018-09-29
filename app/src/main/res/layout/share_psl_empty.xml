@@ -2,21 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:gravity="center_horizontal"
+              android:gravity="center"
               android:orientation="vertical">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="390px"
-        android:src="@mipmap/ic_pager_invalid"/>
+        android:src="@mipmap/ic_push_msg_empty"/>
 
     <TextView
-        android:id="@+id/page_tv_error"
+        android:id="@+id/share_psl_emptyMsg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20px"
-        android:text="数据出错了"
-        android:textColor="#7e7e7e"
-        android:textSize="15sp"/>
+        android:layout_marginTop="5dp"
+        android:text="亲，数据空空"/>
 </LinearLayout>

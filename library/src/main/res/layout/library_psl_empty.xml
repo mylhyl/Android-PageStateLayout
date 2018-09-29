@@ -6,14 +6,14 @@
               android:orientation="vertical">
 
     <ImageView
-        android:id="@id/library_psl_imgEmpty"
+        android:id="@id/library_psl_emptyImg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"/>
 
     <TextView
-        android:id="@id/library_psl_tipEmpty"
-        style="@style/LibraryPslEmptyTip"
+        android:id="@id/library_psl_emptyMsg"
+        style="@style/LibraryPslEmptyMsg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 </LinearLayout>

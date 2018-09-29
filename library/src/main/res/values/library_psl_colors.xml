@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="library_psl_loadingTip">#B6B6B6</color>
-    <color name="library_psl_emptyTip">#B6B6B6</color>
-    <color name="library_psl_errorTip">#B6B6B6</color>
-    <color name="library_psl_errorNetTip">#B6B6B6</color>
+    <color name="library_psl_loadingMsg">#B6B6B6</color>
+    <color name="library_psl_emptyMsg">#B6B6B6</color>
+    <color name="library_psl_errorMsg">#B6B6B6</color>
+    <color name="library_psl_errorNetMsg">#B6B6B6</color>
 </resources>
