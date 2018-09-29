@@ -18,6 +18,7 @@
         android:id="@+id/pageStateLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:psl_contentLayoutId="@id/recyclerView"
         app:psl_emptyImgSrc="@mipmap/ic_push_msg_empty"
         app:psl_errorImgSrc="@mipmap/ic_pager_invalid"
         app:psl_errorNetImgSrc="@mipmap/ic_network_invalid">

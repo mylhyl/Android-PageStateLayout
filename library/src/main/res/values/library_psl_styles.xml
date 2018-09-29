@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="LibraryPslLoadingTip">
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginLeft">30dp</item>
+        <item name="android:layout_marginRight">30dp</item>
+        <item name="android:text">@string/library_psl_loadingTip</item>
+        <item name="android:textColor">@color/library_psl_loadingTip</item>
+    </style>
+
+    <style name="LibraryPslEmptyTip">
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginLeft">30dp</item>
+        <item name="android:layout_marginRight">30dp</item>
+        <item name="android:text">@string/library_psl_emptyTip</item>
+        <item name="android:textColor">@color/library_psl_emptyTip</item>
+    </style>
+
+    <style name="LibraryPslErrorTip">
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginLeft">30dp</item>
+        <item name="android:layout_marginRight">30dp</item>
+        <item name="android:text">@string/library_psl_errorTip</item>
+        <item name="android:textColor">@color/library_psl_errorTip</item>
+    </style>
+
+    <style name="LibraryPslErrorNetTip">
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginLeft">30dp</item>
+        <item name="android:layout_marginRight">30dp</item>
+        <item name="android:text">@string/library_psl_errorNetTip</item>
+        <item name="android:textColor">@color/library_psl_errorNetTip</item>
+    </style>
+
+</resources>
