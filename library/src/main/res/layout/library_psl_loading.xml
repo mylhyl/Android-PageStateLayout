@@ -6,13 +6,15 @@
               android:orientation="vertical">
 
     <ProgressBar
+        android:id="@id/library_psl_loadingProgress"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:indeterminate="true"/>
 
     <TextView
         android:id="@id/library_psl_loadingMsg"
-        style="@style/LibraryPslLoadingMsg"
+        style="@style/LibraryPsl.LoadingMsg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 </LinearLayout>

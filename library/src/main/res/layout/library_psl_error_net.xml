@@ -13,7 +13,7 @@
 
     <TextView
         android:id="@id/library_psl_errorNetMsg"
-        style="@style/LibraryPslErrorNetMsg"
+        style="@style/LibraryPsl.ErrorNetMsg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 </LinearLayout>

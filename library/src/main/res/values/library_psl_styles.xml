@@ -1,34 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="LibraryPslLoadingMsg">
+    <style name="LibraryPsl">
+        <item name="android:layout_gravity">center</item>
         <item name="android:layout_marginTop">10dp</item>
         <item name="android:layout_marginLeft">30dp</item>
         <item name="android:layout_marginRight">30dp</item>
+    </style>
+
+    <style name="LibraryPsl.LoadingMsg">
         <item name="android:text">@string/library_psl_loadingMsg</item>
         <item name="android:textColor">@color/library_psl_loadingMsg</item>
     </style>
 
-    <style name="LibraryPslEmptyMsg">
-        <item name="android:layout_marginTop">10dp</item>
-        <item name="android:layout_marginLeft">30dp</item>
-        <item name="android:layout_marginRight">30dp</item>
+    <style name="LibraryPsl.EmptyMsg">
         <item name="android:text">@string/library_psl_emptyMsg</item>
         <item name="android:textColor">@color/library_psl_emptyMsg</item>
     </style>
 
-    <style name="LibraryPslErrorMsg">
-        <item name="android:layout_marginTop">10dp</item>
-        <item name="android:layout_marginLeft">30dp</item>
-        <item name="android:layout_marginRight">30dp</item>
+    <style name="LibraryPsl.ErrorMsg">
         <item name="android:text">@string/library_psl_errorMsg</item>
         <item name="android:textColor">@color/library_psl_errorMsg</item>
     </style>
 
-    <style name="LibraryPslErrorNetMsg">
-        <item name="android:layout_marginTop">10dp</item>
-        <item name="android:layout_marginLeft">30dp</item>
-        <item name="android:layout_marginRight">30dp</item>
+    <style name="LibraryPsl.ErrorNetMsg">
         <item name="android:text">@string/library_psl_errorNetMsg</item>
         <item name="android:textColor">@color/library_psl_errorNetMsg</item>
     </style>

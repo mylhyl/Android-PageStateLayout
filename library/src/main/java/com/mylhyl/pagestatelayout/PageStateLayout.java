@@ -3,10 +3,12 @@ package com.mylhyl.pagestatelayout;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
@@ -156,6 +158,11 @@ public class PageStateLayout extends FrameLayout implements PageState {
     }
 
     @Override
+    public void setLoadingProgressViewId(int loadingProgressViewId) {
+        mPageStateCreater.setLoadingProgressViewId(loadingProgressViewId);
+    }
+
+    @Override
     public void setLoadingMsgViewId(@IdRes int loadingMsgViewId) {
         mPageStateCreater.setLoadingMsgViewId(loadingMsgViewId);
     }
@@ -281,6 +288,11 @@ public class PageStateLayout extends FrameLayout implements PageState {
     }
 
     @Override
+    public View getLoadingProgressView() {
+        return mPageStateCreater.getLoadingProgressView();
+    }
+
+    @Override
     public View getEmptyImgView() {
         return mPageStateCreater.getEmptyImgView();
     }
@@ -298,6 +310,12 @@ public class PageStateLayout extends FrameLayout implements PageState {
     @Override
     public void create() {
         mPageStateCreater.create();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public PageStateLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+        init(attrs);
     }
 
     @Override

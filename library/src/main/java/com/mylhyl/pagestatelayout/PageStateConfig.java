@@ -1,6 +1,6 @@
 package com.mylhyl.pagestatelayout;
 
-import android.view.View;
+import static android.view.View.NO_ID;
 
 /**
  * Created by hupei on 2018/9/27 10:17.
@@ -35,17 +35,21 @@ public abstract class PageStateConfig {
      */
     protected abstract int getErrorNetLayout();
 
+    protected int getLoadingProgressId() {
+        return NO_ID;
+    }
+
     /**
      * 获取加载数据视图文字描述控件ID，子类实现
      *
      * @return
      */
     protected int getLoadingMsgViewId() {
-        return View.NO_ID;
+        return NO_ID;
     }
 
     protected int getEmptyImgId() {
-        return View.NO_ID;
+        return NO_ID;
     }
 
     /**
@@ -54,11 +58,11 @@ public abstract class PageStateConfig {
      * @return
      */
     protected int getEmptyMsgViewId() {
-        return View.NO_ID;
+        return NO_ID;
     }
 
     protected int getErrorImgId() {
-        return View.NO_ID;
+        return NO_ID;
     }
 
     /**
@@ -67,11 +71,11 @@ public abstract class PageStateConfig {
      * @return
      */
     protected int getErrorMsgViewId() {
-        return View.NO_ID;
+        return NO_ID;
     }
 
     protected int getErrorNetImgId() {
-        return View.NO_ID;
+        return NO_ID;
     }
 
     /**
@@ -80,6 +84,6 @@ public abstract class PageStateConfig {
      * @return
      */
     protected int getErrorNetMsgViewId() {
-        return View.NO_ID;
+        return NO_ID;
     }
 }

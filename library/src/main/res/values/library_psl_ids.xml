@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <item name="library_psl_loadingProgress" type="id"/>
     <item name="library_psl_loadingMsg" type="id"/>
     <item name="library_psl_emptyImg" type="id"/>
     <item name="library_psl_emptyMsg" type="id"/>

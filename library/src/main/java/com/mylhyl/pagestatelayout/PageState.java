@@ -1,6 +1,5 @@
 package com.mylhyl.pagestatelayout;
 
-import android.graphics.drawable.Drawable;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.view.View;
@@ -17,6 +16,8 @@ public interface PageState {
     void setErrorLayout(@LayoutRes int errorLayoutId);
 
     void setErrorNetLayout(@LayoutRes int errorNetLayoutId);
+
+    void setLoadingProgressViewId(@IdRes int loadingProgressViewId);
 
     void setLoadingMsgViewId(@IdRes int loadingMsgViewId);
 
@@ -152,6 +153,8 @@ public interface PageState {
      * @return View
      */
     View getErrorNetMsgView();
+
+    View getLoadingProgressView();
 
     View getEmptyImgView();
 

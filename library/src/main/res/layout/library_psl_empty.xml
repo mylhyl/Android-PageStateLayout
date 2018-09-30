@@ -13,7 +13,7 @@
 
     <TextView
         android:id="@id/library_psl_emptyMsg"
-        style="@style/LibraryPslEmptyMsg"
+        style="@style/LibraryPsl.EmptyMsg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 </LinearLayout>

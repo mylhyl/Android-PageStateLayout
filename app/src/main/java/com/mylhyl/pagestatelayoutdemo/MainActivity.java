@@ -8,9 +8,11 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ProgressBar;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.github.ybq.android.spinkit.style.ThreeBounce;
 import com.mylhyl.pagestatelayout.PageStateLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
@@ -50,6 +52,11 @@ public class MainActivity extends AppCompatActivity implements OnRefreshListener
         };
         mRecyclerView.setAdapter(mAdapter);
 
+        ProgressBar progressBar = (ProgressBar) mPageStateLayout.getLoadingProgressView();
+        //https://github.com/ybq/Android-SpinKit
+        ThreeBounce threeBounce = new ThreeBounce();
+        threeBounce.setColor(getResources().getColor(R.color.colorAccent));
+        progressBar.setIndeterminateDrawable(threeBounce);
         mRefreshLayout.autoRefresh();
     }
 

@@ -15,8 +15,8 @@
         <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
     </style>
 
-    <style name="LibraryPslLoadingMsg">
+    <style name="LibraryPsl.LoadingMsg">
         <item name="android:text">style重写加载视图</item>
-        <item name="android:textColor">#ff0000</item>
+        <item name="android:textColor">@color/colorAccent</item>
     </style>
 </resources>

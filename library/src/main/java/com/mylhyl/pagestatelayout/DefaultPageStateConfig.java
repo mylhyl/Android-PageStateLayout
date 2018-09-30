@@ -26,6 +26,11 @@ public class DefaultPageStateConfig extends PageStateConfig {
     }
 
     @Override
+    protected int getLoadingProgressId() {
+        return R.id.library_psl_loadingProgress;
+    }
+
+    @Override
     protected int getLoadingMsgViewId() {
         return R.id.library_psl_loadingMsg;
     }

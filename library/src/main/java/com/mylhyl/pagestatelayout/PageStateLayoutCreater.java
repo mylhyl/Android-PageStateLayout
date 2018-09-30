@@ -18,13 +18,13 @@ public class PageStateLayoutCreater implements PageState {
     private Context mContext;
     private ViewGroup mRootView;
     private View mContentView, mLoadingView, mEmptyView, mErrorView, mErrorNetView;
-    private View mEmptyImgView, mErrorImgView, mErrorNetImgView;
+    private View mLoadingProgressView, mEmptyImgView, mErrorImgView, mErrorNetImgView;
     private View mLoadingMsgView, mEmptyMsgView, mErrorMsgView, mErrorNetMsgView;
     private OnErrorClickListener mOnErrorClickListener;
     private OnErrorNetClickListener mOnErrorNetClickListener;
     private boolean showErrorClickLoading = true;
     private int mLoadingLayout = NO_ID, mEmptyLayout = NO_ID, mErrorLayout = NO_ID, mErrorNetLayout = NO_ID;
-    private int mEmptyImgId = NO_ID, mErrorImgId = NO_ID, mErrorNetImgId = NO_ID;
+    private int mLoadingProgressViewId = NO_ID, mEmptyImgId = NO_ID, mErrorImgId = NO_ID, mErrorNetImgId = NO_ID;
     private int mLoadingMsgViewId = NO_ID, mEmptyMsgViewId = NO_ID, mErrorMsgViewId = NO_ID, mErrorNetMsgViewId = NO_ID;
 
     public PageStateLayoutCreater() {
@@ -33,6 +33,7 @@ public class PageStateLayoutCreater implements PageState {
         setErrorLayout(mPageStateConfig.getErrorLayout());
         setErrorNetLayout(mPageStateConfig.getErrorNetLayout());
 
+        setLoadingProgressViewId(mPageStateConfig.getLoadingProgressId());
         setEmptyImgId(mPageStateConfig.getEmptyImgId());
         setErrorImgId(mPageStateConfig.getErrorImgId());
         setErrorNetImgId(mPageStateConfig.getErrorNetImgId());
@@ -61,6 +62,11 @@ public class PageStateLayoutCreater implements PageState {
     @Override
     public void setErrorNetLayout(@LayoutRes int errorNetLayoutId) {
         this.mErrorNetLayout = errorNetLayoutId;
+    }
+
+    @Override
+    public void setLoadingProgressViewId(int loadingProgressViewId) {
+        this.mLoadingProgressViewId = loadingProgressViewId;
     }
 
     @Override
@@ -211,18 +217,23 @@ public class PageStateLayoutCreater implements PageState {
     }
 
     @Override
+    public View getLoadingProgressView() {
+        return this.mLoadingProgressView;
+    }
+
+    @Override
     public View getEmptyImgView() {
-        return mEmptyImgView;
+        return this.mEmptyImgView;
     }
 
     @Override
     public View getErrorImgView() {
-        return mErrorImgView;
+        return this.mErrorImgView;
     }
 
     @Override
     public View getErrorNetImgView() {
-        return mErrorNetImgView;
+        return this.mErrorNetImgView;
     }
 
     @Override
@@ -241,6 +252,9 @@ public class PageStateLayoutCreater implements PageState {
         this.mRootView.addView(mErrorNetView, LayoutParams);
 
         //加载视图
+        if (this.mLoadingProgressViewId != NO_ID) {
+            this.mLoadingProgressView = mLoadingView.findViewById(mLoadingProgressViewId);
+        }
         if (this.mLoadingMsgViewId != NO_ID) {
             this.mLoadingMsgView = mLoadingView.findViewById(mLoadingMsgViewId);
         }
