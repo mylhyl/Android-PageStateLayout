@@ -1,15 +1,15 @@
 apply plugin: 'com.android.library'
+apply plugin: 'maven'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion 27
-
-
 
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 27
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0.20180930"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -31,4 +31,12 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
+publish {
+    userOrg = 'mylhyl'
+    groupId = 'com.mylhyl'
+    artifactId = 'pageStateLayout'
+    publishVersion = '1.0.0'
+    desc = 'android page state toggle'
+    website = "https://github.com/mylhyl/Android-PageStateLayout"
 }
