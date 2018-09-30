@@ -25,4 +25,8 @@
         android:id="@+id/menu_customEmpty"
         android:title="自定义空视图"
         app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/menu_codeAct"
+        android:title="代码引入"
+        app:showAsAction="ifRoom"/>
 </menu>

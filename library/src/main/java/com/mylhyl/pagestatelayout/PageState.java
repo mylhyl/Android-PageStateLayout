@@ -110,57 +110,57 @@ public interface PageState {
      *
      * @return View
      */
-    View getEmptyView();
+    <T extends View> T getEmptyView();
 
     /**
      * 获取错误视图
      *
      * @return View
      */
-    View getErrorView();
+    <T extends View> T getErrorView();
 
     /**
      * 获取网络错误视图
      *
      * @return View
      */
-    View getErrorNetView();
+    <T extends View> T getErrorNetView();
 
     /**
      * 获取加载数据文字描述控件
      *
      * @return View
      */
-    View getLoadingMsgView();
+    <T extends View> T getLoadingMsgView();
 
     /**
      * 获取空数据文字描述控件
      *
      * @return View
      */
-    View getEmptyMsgView();
+    <T extends View> T getEmptyMsgView();
 
     /**
      * 获取错误提示文字描述控件
      *
      * @return View
      */
-    View getErrorMsgView();
+    <T extends View> T getErrorMsgView();
 
     /**
      * 获取网络错误提示文字描述控件
      *
      * @return View
      */
-    View getErrorNetMsgView();
+    <T extends View> T getErrorNetMsgView();
 
-    View getLoadingProgressView();
+    <T extends View> T getLoadingProgressView();
 
-    View getEmptyImgView();
+    <T extends View> T getEmptyImgView();
 
-    View getErrorImgView();
+    <T extends View> T getErrorImgView();
 
-    View getErrorNetImgView();
+    <T extends View> T getErrorNetImgView();
 
     /**
      * 创建

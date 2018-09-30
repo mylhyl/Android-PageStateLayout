@@ -18,6 +18,8 @@
         </activity>
         <activity android:name=".CustomEmptyActivity">
         </activity>
+        <activity android:name=".DetailNoActionBarActivity">
+        </activity>
     </application>
 
 </manifest>

@@ -12,9 +12,8 @@ import static android.view.View.NO_ID;
 /**
  * Created by hupei on 2018/9/27 10:16.
  */
-public class PageStateLayoutCreater implements PageState {
+class PageStateLayoutCreater implements PageState {
 
-    private static PageStateConfig mPageStateConfig = new DefaultPageStateConfig();
     private Context mContext;
     private ViewGroup mRootView;
     private View mContentView, mLoadingView, mEmptyView, mErrorView, mErrorNetView;
@@ -26,23 +25,6 @@ public class PageStateLayoutCreater implements PageState {
     private int mLoadingLayout = NO_ID, mEmptyLayout = NO_ID, mErrorLayout = NO_ID, mErrorNetLayout = NO_ID;
     private int mLoadingProgressViewId = NO_ID, mEmptyImgId = NO_ID, mErrorImgId = NO_ID, mErrorNetImgId = NO_ID;
     private int mLoadingMsgViewId = NO_ID, mEmptyMsgViewId = NO_ID, mErrorMsgViewId = NO_ID, mErrorNetMsgViewId = NO_ID;
-
-    public PageStateLayoutCreater() {
-        setLoadingLayout(mPageStateConfig.getLoadingLayout());
-        setEmptyLayout(mPageStateConfig.getEmptyLayout());
-        setErrorLayout(mPageStateConfig.getErrorLayout());
-        setErrorNetLayout(mPageStateConfig.getErrorNetLayout());
-
-        setLoadingProgressViewId(mPageStateConfig.getLoadingProgressId());
-        setEmptyImgId(mPageStateConfig.getEmptyImgId());
-        setErrorImgId(mPageStateConfig.getErrorImgId());
-        setErrorNetImgId(mPageStateConfig.getErrorNetImgId());
-
-        setLoadingMsgViewId(mPageStateConfig.getLoadingMsgViewId());
-        setEmptyMsgViewId(mPageStateConfig.getEmptyMsgViewId());
-        setErrorMsgViewId(mPageStateConfig.getErrorMsgViewId());
-        setErrorNetMsgViewId(mPageStateConfig.getErrorNetMsgViewId());
-    }
 
     @Override
     public void setLoadingLayout(@LayoutRes int loadingLayoutId) {
@@ -200,7 +182,6 @@ public class PageStateLayoutCreater implements PageState {
         return this.mLoadingMsgView;
     }
 
-
     @Override
     public View getEmptyMsgView() {
         return this.mEmptyMsgView;
@@ -344,9 +325,5 @@ public class PageStateLayoutCreater implements PageState {
         if (mEmptyView != null) mEmptyView.setVisibility(View.GONE);
         if (mErrorView != null) mErrorView.setVisibility(View.GONE);
         if (mErrorNetView != null) mErrorNetView.setVisibility(View.GONE);
-    }
-
-    public static void setPageStateConfig(PageStateConfig pageStateConfig) {
-        mPageStateConfig = pageStateConfig;
     }
 }

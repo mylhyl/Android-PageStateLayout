@@ -145,6 +145,9 @@ public class MainActivity extends AppCompatActivity implements OnRefreshListener
             case R.id.menu_customEmpty:
                 startActivity(new Intent(this, CustomEmptyActivity.class));
                 break;
+            case R.id.menu_codeAct:
+                startActivity(new Intent(this, DetailNoActionBarActivity.class));
+                break;
         }
         mRefreshLayout.autoRefresh();
         return super.onOptionsItemSelected(item);

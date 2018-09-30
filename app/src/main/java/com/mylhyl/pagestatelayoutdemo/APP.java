@@ -3,7 +3,7 @@ package com.mylhyl.pagestatelayoutdemo;
 import android.app.Application;
 
 import com.mylhyl.pagestatelayout.PageStateConfig;
-import com.mylhyl.pagestatelayout.PageStateLayoutCreater;
+import com.mylhyl.pagestatelayout.PageStateLayout;
 
 /**
  * Created by hupei on 2018/9/27 19:57.
@@ -12,7 +12,7 @@ public class APP extends Application {
     static {
 
 //        //只自定义加载视图
-//        PageStateLayoutCreater.setPageStateConfig(new DefaultPageStateConfig(){
+//        PageStateLayout.setPageStateConfig(new DefaultPageStateConfig(){
 //            @Override
 //            protected int getLoadingLayout() {
 //                return R.layout.xxxxxx;
@@ -20,7 +20,7 @@ public class APP extends Application {
 //        });
 
         //全局替换所有
-        PageStateLayoutCreater.setPageStateConfig(new PageStateConfig() {
+        PageStateLayout.setPageStateConfig(new PageStateConfig() {
             @Override
             protected int getLoadingLayout() {
                 return R.layout.share_psl_loading;

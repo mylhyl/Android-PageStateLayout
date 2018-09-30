@@ -1,5 +1,6 @@
 package com.mylhyl.pagestatelayout;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
@@ -9,9 +10,11 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
+import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,8 +24,8 @@ import android.widget.TextView;
  */
 public class PageStateLayout extends FrameLayout implements PageState {
 
+    private static PageStateConfig mPageStateConfig = new DefaultPageStateConfig();
     private int mContentLayoutId = NO_ID;
-
     private PageStateLayoutCreater mPageStateCreater = new PageStateLayoutCreater();
 
     public PageStateLayout(@NonNull Context context) {
@@ -39,6 +42,7 @@ public class PageStateLayout extends FrameLayout implements PageState {
     }
 
     private void init(@Nullable AttributeSet attrs) {
+
         TypedArray ta = getContext().obtainStyledAttributes(attrs, R.styleable.PageStateLayout);
         int loadingLayout = ta.getResourceId(R.styleable.PageStateLayout_psl_loadingLayout, NO_ID);
         int emptyLayout = ta.getResourceId(R.styleable.PageStateLayout_psl_emptyLayout, NO_ID);
@@ -65,6 +69,22 @@ public class PageStateLayout extends FrameLayout implements PageState {
         mContentLayoutId = ta.getResourceId(R.styleable.PageStateLayout_psl_contentLayoutId, NO_ID);
 
         if (!isInEditMode()) {
+
+            setLoadingLayout(mPageStateConfig.getLoadingLayout());
+            setEmptyLayout(mPageStateConfig.getEmptyLayout());
+            setErrorLayout(mPageStateConfig.getErrorLayout());
+            setErrorNetLayout(mPageStateConfig.getErrorNetLayout());
+
+            setLoadingProgressViewId(mPageStateConfig.getLoadingProgressId());
+            setEmptyImgId(mPageStateConfig.getEmptyImgId());
+            setErrorImgId(mPageStateConfig.getErrorImgId());
+            setErrorNetImgId(mPageStateConfig.getErrorNetImgId());
+
+            setLoadingMsgViewId(mPageStateConfig.getLoadingMsgViewId());
+            setEmptyMsgViewId(mPageStateConfig.getEmptyMsgViewId());
+            setErrorMsgViewId(mPageStateConfig.getErrorMsgViewId());
+            setErrorNetMsgViewId(mPageStateConfig.getErrorNetMsgViewId());
+
             setRootView(this);
             if (loadingLayout != NO_ID) {
                 setLoadingLayout(loadingLayout);
@@ -103,17 +123,14 @@ public class PageStateLayout extends FrameLayout implements PageState {
 
             if (emptyImgDrawable != null && getEmptyImgView() != null
                     && getEmptyImgView() instanceof ImageView) {
-                getEmptyImgView().setVisibility(VISIBLE);
                 ((ImageView) getEmptyImgView()).setImageDrawable(emptyImgDrawable);
             }
             if (errorImgDrawable != null && getErrorImgView() != null
                     && getErrorImgView() instanceof ImageView) {
-                getErrorImgView().setVisibility(VISIBLE);
                 ((ImageView) getErrorImgView()).setImageDrawable(errorImgDrawable);
             }
             if (errorNetImgDrawable != null && getErrorNetImgView() != null
                     && getErrorNetImgView() instanceof ImageView) {
-                getErrorNetImgView().setVisibility(VISIBLE);
                 ((ImageView) getErrorNetImgView()).setImageDrawable(errorNetImgDrawable);
             }
 
@@ -253,58 +270,58 @@ public class PageStateLayout extends FrameLayout implements PageState {
     }
 
     @Override
-    public View getEmptyView() {
-        return mPageStateCreater.getEmptyView();
+    public <T extends View> T getEmptyView() {
+        return (T) mPageStateCreater.getEmptyView();
     }
 
     @Override
-    public View getErrorView() {
-        return mPageStateCreater.getErrorView();
+    public <T extends View> T getErrorView() {
+        return (T) mPageStateCreater.getErrorView();
     }
 
     @Override
-    public View getErrorNetView() {
-        return mPageStateCreater.getErrorNetView();
+    public <T extends View> T getErrorNetView() {
+        return (T) mPageStateCreater.getErrorNetView();
     }
 
     @Override
-    public View getLoadingMsgView() {
-        return mPageStateCreater.getLoadingMsgView();
+    public <T extends View> T getLoadingMsgView() {
+        return (T) mPageStateCreater.getLoadingMsgView();
     }
 
     @Override
-    public View getEmptyMsgView() {
-        return mPageStateCreater.getEmptyMsgView();
+    public <T extends View> T getEmptyMsgView() {
+        return (T) mPageStateCreater.getEmptyMsgView();
     }
 
     @Override
-    public View getErrorMsgView() {
-        return mPageStateCreater.getErrorMsgView();
+    public <T extends View> T getErrorMsgView() {
+        return (T) mPageStateCreater.getErrorMsgView();
     }
 
     @Override
-    public View getErrorNetMsgView() {
-        return mPageStateCreater.getErrorNetMsgView();
+    public <T extends View> T getErrorNetMsgView() {
+        return (T) mPageStateCreater.getErrorNetMsgView();
     }
 
     @Override
-    public View getLoadingProgressView() {
-        return mPageStateCreater.getLoadingProgressView();
+    public <T extends View> T getLoadingProgressView() {
+        return (T) mPageStateCreater.getLoadingProgressView();
     }
 
     @Override
-    public View getEmptyImgView() {
-        return mPageStateCreater.getEmptyImgView();
+    public <T extends View> T getEmptyImgView() {
+        return (T) mPageStateCreater.getEmptyImgView();
     }
 
     @Override
-    public View getErrorImgView() {
-        return mPageStateCreater.getErrorImgView();
+    public <T extends View> T getErrorImgView() {
+        return (T) mPageStateCreater.getErrorImgView();
     }
 
     @Override
-    public View getErrorNetImgView() {
-        return mPageStateCreater.getErrorNetImgView();
+    public <T extends View> T getErrorNetImgView() {
+        return (T) mPageStateCreater.getErrorNetImgView();
     }
 
     @Override
@@ -316,6 +333,46 @@ public class PageStateLayout extends FrameLayout implements PageState {
     public PageStateLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(attrs);
+    }
+
+    public static void setPageStateConfig(PageStateConfig pageStateConfig) {
+        mPageStateConfig = pageStateConfig;
+    }
+
+    public static PageState wrap(Activity activity, @IdRes int contentId) {
+        ViewGroup actContent = activity.findViewById(android.R.id.content);
+        ViewGroup rootLayout = (ViewGroup) (actContent).getChildAt(0);
+        return wrap(rootLayout, contentId);
+    }
+
+    public static PageState wrap(View rootLayout, @IdRes int contentId) {
+        View contentLayout = rootLayout.findViewById(contentId);
+        if (contentLayout == null) {
+            throw new RuntimeException("contentLayout can not be null");
+        }
+        ViewGroup.LayoutParams lp = contentLayout.getLayoutParams();
+
+        ViewGroup parent = (ViewGroup) contentLayout.getParent();
+        if (parent == null) {
+            throw new RuntimeException("parent of the contentLayout can not be null");
+        }
+        int contentViewIndex = parent.indexOfChild(contentLayout);
+
+        parent.removeView(contentLayout);
+        PageStateLayout pageStateLayout = new PageStateLayout(parent.getContext());
+        pageStateLayout.addView(contentLayout);
+        pageStateLayout.setContentView(contentLayout);
+
+        parent.addView(pageStateLayout, contentViewIndex, lp);
+        return pageStateLayout;
+    }
+
+    public static PageState wrap(Fragment fragment, @IdRes int contentId) {
+        return wrap(fragment.getView(), contentId);
+    }
+
+    public static PageState wrap(android.app.Fragment fragment, @IdRes int contentId) {
+        return wrap(fragment.getView(), contentId);
     }
 
     @Override
