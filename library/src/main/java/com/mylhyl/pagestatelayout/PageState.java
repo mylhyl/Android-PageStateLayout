@@ -162,8 +162,4 @@ public interface PageState {
 
     <T extends View> T getErrorNetImgView();
 
-    /**
-     * 创建
-     */
-    void create();
 }

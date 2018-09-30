@@ -217,8 +217,15 @@ class PageStateLayoutCreater implements PageState {
         return this.mErrorNetImgView;
     }
 
-    @Override
-    public void create() {
+    private void goneAllView() {
+        if (mLoadingView != null) mLoadingView.setVisibility(View.GONE);
+        if (mContentView != null) mContentView.setVisibility(View.GONE);
+        if (mEmptyView != null) mEmptyView.setVisibility(View.GONE);
+        if (mErrorView != null) mErrorView.setVisibility(View.GONE);
+        if (mErrorNetView != null) mErrorNetView.setVisibility(View.GONE);
+    }
+
+    void create() {
         checkParams();
         this.mLoadingView = inflate(mLoadingLayout);
         this.mEmptyView = inflate(mEmptyLayout);
@@ -317,13 +324,5 @@ class PageStateLayoutCreater implements PageState {
 
     private View inflate(int layoutId) {
         return LayoutInflater.from(this.mContext).inflate(layoutId, this.mRootView, false);
-    }
-
-    private void goneAllView() {
-        if (mLoadingView != null) mLoadingView.setVisibility(View.GONE);
-        if (mContentView != null) mContentView.setVisibility(View.GONE);
-        if (mEmptyView != null) mEmptyView.setVisibility(View.GONE);
-        if (mErrorView != null) mErrorView.setVisibility(View.GONE);
-        if (mErrorNetView != null) mErrorNetView.setVisibility(View.GONE);
     }
 }

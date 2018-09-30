@@ -36,7 +36,8 @@ public class PageStateLayout extends FrameLayout implements PageState {
         this(context, attrs, 0);
     }
 
-    public PageStateLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public PageStateLayout(@NonNull Context context, @Nullable AttributeSet attrs
+            , int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(attrs);
     }
@@ -119,7 +120,7 @@ public class PageStateLayout extends FrameLayout implements PageState {
             if (errorNetMsgViewId != NO_ID) {
                 setErrorNetMsgViewId(errorNetMsgViewId);
             }
-            create();
+            mPageStateCreater.create();
 
             if (emptyImgDrawable != null && getEmptyImgView() != null
                     && getEmptyImgView() instanceof ImageView) {
@@ -324,13 +325,9 @@ public class PageStateLayout extends FrameLayout implements PageState {
         return (T) mPageStateCreater.getErrorNetImgView();
     }
 
-    @Override
-    public void create() {
-        mPageStateCreater.create();
-    }
-
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public PageStateLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public PageStateLayout(@NonNull Context context, @Nullable AttributeSet attrs
+            , int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(attrs);
     }
@@ -345,7 +342,7 @@ public class PageStateLayout extends FrameLayout implements PageState {
         return wrap(rootLayout, contentId);
     }
 
-    public static PageState wrap(View rootLayout, @IdRes int contentId) {
+    private static PageState wrap(View rootLayout, @IdRes int contentId) {
         View contentLayout = rootLayout.findViewById(contentId);
         if (contentLayout == null) {
             throw new RuntimeException("contentLayout can not be null");
@@ -365,6 +362,14 @@ public class PageStateLayout extends FrameLayout implements PageState {
 
         parent.addView(pageStateLayout, contentViewIndex, lp);
         return pageStateLayout;
+    }
+
+    public static PageState wrap(Activity activity, @IdRes int contentParentId
+            , @IdRes int contentId) {
+        PageState pageState = new PageStateLayoutCreater();
+        pageState.setRootView(activity.findViewById(contentParentId));
+        pageState.setContentView(contentId);
+        return pageState;
     }
 
     public static PageState wrap(Fragment fragment, @IdRes int contentId) {
