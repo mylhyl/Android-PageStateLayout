@@ -9,76 +9,149 @@ import android.view.View;
  */
 public interface PageState {
 
-    void setLoadingLayout(@LayoutRes int loadingLayoutId);
+    /**
+     * 加载视图的布局 id
+     *
+     * @param loadingLayoutId
+     * @return PageState
+     */
+    PageState setLoadingLayout(@LayoutRes int loadingLayoutId);
 
-    void setEmptyLayout(@LayoutRes int emptyLayoutId);
+    /**
+     * 空视图的布局 id
+     *
+     * @param emptyLayoutId
+     * @return PageState
+     */
+    PageState setEmptyLayout(@LayoutRes int emptyLayoutId);
 
-    void setErrorLayout(@LayoutRes int errorLayoutId);
+    /**
+     * 错误视图的布局 id
+     *
+     * @param errorLayoutId
+     * @return PageState
+     */
+    PageState setErrorLayout(@LayoutRes int errorLayoutId);
 
-    void setErrorNetLayout(@LayoutRes int errorNetLayoutId);
+    /**
+     * 网络视图的布局 id
+     *
+     * @param errorNetLayoutId
+     * @return PageState
+     */
+    PageState setErrorNetLayout(@LayoutRes int errorNetLayoutId);
 
-    void setLoadingProgressViewId(@IdRes int loadingProgressViewId);
+    /**
+     * 加载视图进度ProgressBar的id
+     *
+     * @param loadingProgressViewId
+     * @return PageState
+     */
+    PageState setLoadingProgressViewId(@IdRes int loadingProgressViewId);
 
-    void setLoadingMsgViewId(@IdRes int loadingMsgViewId);
+    /**
+     * 加载视图文字描述TextView的id
+     *
+     * @param loadingMsgViewId
+     * @return PageState
+     */
+    PageState setLoadingMsgViewId(@IdRes int loadingMsgViewId);
 
     /**
      * 设置空数据视图ImageView的id
      *
      * @param emptyImgId
+     * @return PageState
      */
-    void setEmptyImgId(@IdRes int emptyImgId);
+    PageState setEmptyImgId(@IdRes int emptyImgId);
 
     /**
-     * 设置空数据视图TextView的id
+     * 设置空数据视图文字描述TextView的id
      *
      * @param emptyMsgViewId
+     * @return PageState
      */
-    void setEmptyMsgViewId(@IdRes int emptyMsgViewId);
+    PageState setEmptyMsgViewId(@IdRes int emptyMsgViewId);
 
-    void setErrorImgId(@IdRes int errorImgId);
+    /**
+     * 错误视图ImageView的id
+     *
+     * @param errorImgId
+     * @return PageState
+     */
+    PageState setErrorImgId(@IdRes int errorImgId);
 
-    void setErrorMsgViewId(@IdRes int errorMsgViewId);
+    /**
+     * 错误视图文字描述TextView的id
+     *
+     * @param errorMsgViewId
+     * @return PageState
+     */
+    PageState setErrorMsgViewId(@IdRes int errorMsgViewId);
 
-    void setErrorNetImgId(@IdRes int errorNetImgId);
+    /**
+     * 网络错误视图ImageView的id
+     *
+     * @param errorNetImgId
+     * @return PageState
+     */
+    PageState setErrorNetImgId(@IdRes int errorNetImgId);
 
-    void setErrorNetMsgViewId(@IdRes int errorNetMsgViewId);
+    /**
+     * 网络错误视图文字描述TextView的id
+     *
+     * @param errorNetMsgViewId
+     * @return PageState
+     */
+    PageState setErrorNetMsgViewId(@IdRes int errorNetMsgViewId);
 
     /**
      * 点击错误视图时是否显示加载视图
      *
      * @param show
+     * @return PageState
      */
-    void setErrorClickShowLoading(boolean show);
+    PageState setErrorClickShowLoading(boolean show);
 
     /**
      * 设置根视图
      *
      * @param rootView
+     * @return PageState
      */
-    void setRootView(View rootView);
+    PageState setRootView(View rootView);
 
-    void setContentView(@IdRes int contentId);
+    /**
+     * 内容视图的id
+     *
+     * @param contentId
+     * @return PageState
+     */
+    PageState setContentView(@IdRes int contentId);
 
     /**
      * 设置内容视图
      *
      * @param contentView
+     * @return PageState
      */
-    void setContentView(View contentView);
+    PageState setContentView(View contentView);
 
     /**
      * 设置错误视图点击事件
      *
      * @param listener
+     * @return PageState
      */
-    void setOnErrorListener(OnErrorClickListener listener);
+    PageState setOnErrorListener(OnErrorClickListener listener);
 
     /**
      * 设置网络错误视图点击事件
      *
      * @param listener
+     * @return PageState
      */
-    void setOnErrorNetListener(OnErrorNetClickListener listener);
+    PageState setOnErrorNetListener(OnErrorNetClickListener listener);
 
     /**
      * 显示加载数据视图
@@ -154,12 +227,36 @@ public interface PageState {
      */
     <T extends View> T getErrorNetMsgView();
 
+    /**
+     * 获取加载视图进度控件
+     *
+     * @param <T> View
+     * @return View
+     */
     <T extends View> T getLoadingProgressView();
 
+    /**
+     * 获取空视图图片控件
+     *
+     * @param <T> View
+     * @return View
+     */
     <T extends View> T getEmptyImgView();
 
+    /**
+     * 获取错误视图图片控件
+     *
+     * @param <T> View
+     * @return View
+     */
     <T extends View> T getErrorImgView();
 
+    /**
+     * 获取网络错误视图图片控件
+     *
+     * @param <T> View
+     * @return View
+     */
     <T extends View> T getErrorNetImgView();
 
 }

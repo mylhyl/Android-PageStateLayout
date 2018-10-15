@@ -156,93 +156,93 @@ public class PageStateLayout extends FrameLayout implements PageState {
     }
 
     @Override
-    public void setLoadingLayout(@LayoutRes int loadingLayoutId) {
-        mPageStateCreater.setLoadingLayout(loadingLayoutId);
+    public PageState setLoadingLayout(@LayoutRes int loadingLayoutId) {
+        return mPageStateCreater.setLoadingLayout(loadingLayoutId);
     }
 
     @Override
-    public void setEmptyLayout(@LayoutRes int emptyLayoutId) {
-        mPageStateCreater.setEmptyLayout(emptyLayoutId);
+    public PageState setEmptyLayout(@LayoutRes int emptyLayoutId) {
+        return mPageStateCreater.setEmptyLayout(emptyLayoutId);
     }
 
     @Override
-    public void setErrorLayout(@LayoutRes int errorLayoutId) {
-        mPageStateCreater.setErrorLayout(errorLayoutId);
+    public PageState setErrorLayout(@LayoutRes int errorLayoutId) {
+        return mPageStateCreater.setErrorLayout(errorLayoutId);
     }
 
     @Override
-    public void setErrorNetLayout(@LayoutRes int errorNetLayoutId) {
-        mPageStateCreater.setErrorNetLayout(errorNetLayoutId);
+    public PageState setErrorNetLayout(@LayoutRes int errorNetLayoutId) {
+        return mPageStateCreater.setErrorNetLayout(errorNetLayoutId);
     }
 
     @Override
-    public void setLoadingProgressViewId(int loadingProgressViewId) {
-        mPageStateCreater.setLoadingProgressViewId(loadingProgressViewId);
+    public PageState setLoadingProgressViewId(int loadingProgressViewId) {
+        return mPageStateCreater.setLoadingProgressViewId(loadingProgressViewId);
     }
 
     @Override
-    public void setLoadingMsgViewId(@IdRes int loadingMsgViewId) {
-        mPageStateCreater.setLoadingMsgViewId(loadingMsgViewId);
+    public PageState setLoadingMsgViewId(@IdRes int loadingMsgViewId) {
+        return mPageStateCreater.setLoadingMsgViewId(loadingMsgViewId);
     }
 
     @Override
-    public void setEmptyImgId(int emptyImgId) {
-        mPageStateCreater.setEmptyImgId(emptyImgId);
+    public PageState setEmptyImgId(int emptyImgId) {
+        return mPageStateCreater.setEmptyImgId(emptyImgId);
     }
 
     @Override
-    public void setEmptyMsgViewId(@IdRes int emptyMsgViewId) {
-        mPageStateCreater.setEmptyMsgViewId(emptyMsgViewId);
+    public PageState setEmptyMsgViewId(@IdRes int emptyMsgViewId) {
+        return mPageStateCreater.setEmptyMsgViewId(emptyMsgViewId);
     }
 
     @Override
-    public void setErrorImgId(int errorImgId) {
-        mPageStateCreater.setErrorImgId(errorImgId);
+    public PageState setErrorImgId(int errorImgId) {
+        return mPageStateCreater.setErrorImgId(errorImgId);
     }
 
     @Override
-    public void setErrorMsgViewId(@IdRes int errorMsgViewId) {
-        mPageStateCreater.setErrorMsgViewId(errorMsgViewId);
+    public PageState setErrorMsgViewId(@IdRes int errorMsgViewId) {
+        return mPageStateCreater.setErrorMsgViewId(errorMsgViewId);
     }
 
     @Override
-    public void setErrorNetImgId(int errorNetImgId) {
-        mPageStateCreater.setErrorNetImgId(errorNetImgId);
+    public PageState setErrorNetImgId(int errorNetImgId) {
+        return mPageStateCreater.setErrorNetImgId(errorNetImgId);
     }
 
     @Override
-    public void setErrorNetMsgViewId(@IdRes int errorNetMsgViewId) {
-        mPageStateCreater.setErrorNetMsgViewId(errorNetMsgViewId);
+    public PageState setErrorNetMsgViewId(@IdRes int errorNetMsgViewId) {
+        return mPageStateCreater.setErrorNetMsgViewId(errorNetMsgViewId);
     }
 
     @Override
-    public void setErrorClickShowLoading(boolean show) {
-        mPageStateCreater.setErrorClickShowLoading(show);
+    public PageState setErrorClickShowLoading(boolean show) {
+        return mPageStateCreater.setErrorClickShowLoading(show);
     }
 
     @Override
-    public void setRootView(View rootView) {
-        mPageStateCreater.setRootView(rootView);
+    public PageState setRootView(View rootView) {
+        return mPageStateCreater.setRootView(rootView);
     }
 
     @Override
-    public void setContentView(@IdRes int contentId) {
-        mPageStateCreater.setContentView(contentId);
+    public PageState setContentView(@IdRes int contentId) {
+        return mPageStateCreater.setContentView(contentId);
     }
 
     @Override
-    public void setContentView(View contentView) {
-        mPageStateCreater.setContentView(contentView);
+    public PageState setContentView(View contentView) {
+        return mPageStateCreater.setContentView(contentView);
     }
 
     @Override
-    public void setOnErrorListener(OnErrorClickListener listener) {
-        mPageStateCreater.setOnErrorListener(listener);
+    public PageState setOnErrorListener(OnErrorClickListener listener) {
+        return mPageStateCreater.setOnErrorListener(listener);
     }
 
     @Override
-    public void setOnErrorNetListener(OnErrorNetClickListener listener) {
-        mPageStateCreater.setOnErrorNetListener(listener);
+    public PageState setOnErrorNetListener(OnErrorNetClickListener listener) {
+        return mPageStateCreater.setOnErrorNetListener(listener);
     }
 
     @Override
