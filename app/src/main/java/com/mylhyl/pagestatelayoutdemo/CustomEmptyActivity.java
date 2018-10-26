@@ -22,7 +22,14 @@ public class CustomEmptyActivity extends AppCompatActivity {
         progressBar.setIndeterminateDrawable(doubleBounce);
 
         mPageStateLayout = findViewById(R.id.pageStateLayout);
-        mPageStateLayout.showEmptyView();
+        mPageStateLayout.showLoadingView();
+        mPageStateLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mPageStateLayout.showEmptyView();
+            }
+        }, 2000);
+
 //        TextView emptyMsgView = mPageStateLayout.getEmptyMsgView();
 //        if (emptyMsgView != null) {
 //            emptyMsgView.setText("自定义的");
