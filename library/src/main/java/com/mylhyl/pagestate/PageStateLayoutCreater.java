@@ -105,28 +105,6 @@ class PageStateLayoutCreater implements PageState {
     }
 
     @Override
-    public PageState setRootView(View rootView) {
-        this.mRootView = (ViewGroup) rootView;
-        this.mContext = rootView.getContext();
-        return this;
-    }
-
-    @Override
-    public PageState setContentView(@IdRes int contentId) {
-        setContentView(mRootView.findViewById(contentId));
-        return this;
-    }
-
-    @Override
-    public PageState setContentView(View contentView) {
-        this.mContentView = contentView;
-        if (this.mContentView != null) {
-            this.mContentView.setVisibility(View.GONE);
-        }
-        return this;
-    }
-
-    @Override
     public PageState setOnErrorListener(OnErrorClickListener listener) {
         this.mOnErrorClickListener = listener;
         return this;
@@ -237,6 +215,22 @@ class PageStateLayoutCreater implements PageState {
         if (mEmptyView != null) mEmptyView.setVisibility(View.GONE);
         if (mErrorView != null) mErrorView.setVisibility(View.GONE);
         if (mErrorNetView != null) mErrorNetView.setVisibility(View.GONE);
+    }
+
+    void setRootView(View rootView) {
+        this.mRootView = (ViewGroup) rootView;
+        this.mContext = rootView.getContext();
+    }
+
+    void setContentView(@IdRes int contentId) {
+        setContentView(mRootView.findViewById(contentId));
+    }
+
+    void setContentView(View contentView) {
+        this.mContentView = contentView;
+        if (this.mContentView != null) {
+            this.mContentView.setVisibility(View.GONE);
+        }
     }
 
     void create() {

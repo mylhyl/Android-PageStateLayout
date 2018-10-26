@@ -83,7 +83,7 @@ public class PageStateLayout extends FrameLayout implements PageState {
         mContentLayoutId = ta.getResourceId(R.styleable.PageStateLayout_psl_contentLayoutId, NO_ID);
 
         if (!isInEditMode()) {
-            setRootView(this);
+            mPageStateCreater.setRootView(this);
 
             setLoadingLayout(loadingLayout);
             setEmptyLayout(emptyLayout);
@@ -201,21 +201,6 @@ public class PageStateLayout extends FrameLayout implements PageState {
     }
 
     @Override
-    public PageState setRootView(View rootView) {
-        return mPageStateCreater.setRootView(rootView);
-    }
-
-    @Override
-    public PageState setContentView(@IdRes int contentId) {
-        return mPageStateCreater.setContentView(contentId);
-    }
-
-    @Override
-    public PageState setContentView(View contentView) {
-        return mPageStateCreater.setContentView(contentView);
-    }
-
-    @Override
     public PageState setOnErrorListener(OnErrorClickListener listener) {
         return mPageStateCreater.setOnErrorListener(listener);
     }
@@ -318,6 +303,19 @@ public class PageStateLayout extends FrameLayout implements PageState {
         return wrap(rootLayout, contentId);
     }
 
+    public static PageState wrap(Activity activity, @IdRes int contentParentId
+            , @IdRes int contentId) {
+        return wrap(activity.findViewById(contentParentId), contentId);
+    }
+
+    public static PageState wrap(Fragment fragment, @IdRes int contentId) {
+        return wrap(fragment.getView(), contentId);
+    }
+
+    public static PageState wrap(android.app.Fragment fragment, @IdRes int contentId) {
+        return wrap(fragment.getView(), contentId);
+    }
+
     private static PageState wrap(View rootLayout, @IdRes int contentId) {
         View contentLayout = rootLayout.findViewById(contentId);
         if (contentLayout == null) {
@@ -334,40 +332,23 @@ public class PageStateLayout extends FrameLayout implements PageState {
         parent.removeView(contentLayout);
         PageStateLayout pageStateLayout = new PageStateLayout(parent.getContext());
         pageStateLayout.addView(contentLayout);
-        pageStateLayout.setContentView(contentLayout);
+        pageStateLayout.mPageStateCreater.setContentView(contentLayout);
 
         parent.addView(pageStateLayout, contentViewIndex, lp);
         return pageStateLayout;
-    }
-
-    public static PageState wrap(Activity activity, @IdRes int contentParentId
-            , @IdRes int contentId) {
-        PageState pageState = new PageStateLayoutCreater();
-        pageState.setRootView(activity.findViewById(contentParentId));
-        pageState.setContentView(contentId);
-        return pageState;
-    }
-
-    public static PageState wrap(Fragment fragment, @IdRes int contentId) {
-        return wrap(fragment.getView(), contentId);
-    }
-
-    public static PageState wrap(android.app.Fragment fragment, @IdRes int contentId) {
-        return wrap(fragment.getView(), contentId);
     }
 
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
         if (mContentLayoutId != NO_ID) {
-            View contentLayout = findViewById(mContentLayoutId);
-            setContentView(contentLayout);
+            mPageStateCreater.setContentView(mContentLayoutId);
         } else {
             if (getChildCount() > 5) {
                 throw new IllegalStateException("PageStateLayout can host only one direct child");
             }
             View view = getChildAt(4);
-            setContentView(view);
+            mPageStateCreater.setContentView(view);
         }
     }
 }

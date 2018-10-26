@@ -114,30 +114,6 @@ public interface PageState {
     PageState setErrorClickShowLoading(boolean show);
 
     /**
-     * 设置根视图
-     *
-     * @param rootView
-     * @return PageState
-     */
-    PageState setRootView(View rootView);
-
-    /**
-     * 内容视图的id
-     *
-     * @param contentId
-     * @return PageState
-     */
-    PageState setContentView(@IdRes int contentId);
-
-    /**
-     * 设置内容视图
-     *
-     * @param contentView
-     * @return PageState
-     */
-    PageState setContentView(View contentView);
-
-    /**
      * 设置错误视图点击事件
      *
      * @param listener
