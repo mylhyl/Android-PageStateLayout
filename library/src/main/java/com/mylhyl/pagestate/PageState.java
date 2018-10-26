@@ -106,12 +106,12 @@ public interface PageState {
     PageState setErrorNetMsgViewId(@IdRes int errorNetMsgViewId);
 
     /**
-     * 点击错误视图时是否显示加载视图
+     * 错误视图事件是否显示加载视图
      *
      * @param show
      * @return PageState
      */
-    PageState setErrorClickShowLoading(boolean show);
+    PageState setClickShowLoadView(boolean show);
 
     /**
      * 设置错误视图点击事件

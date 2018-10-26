@@ -6,6 +6,7 @@ import android.support.annotation.LayoutRes;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 
 import static android.view.View.NO_ID;
 
@@ -21,7 +22,7 @@ class PageStateLayoutCreater implements PageState {
     private View mLoadingMsgView, mEmptyMsgView, mErrorMsgView, mErrorNetMsgView;
     private OnErrorClickListener mOnErrorClickListener;
     private OnErrorNetClickListener mOnErrorNetClickListener;
-    private boolean showErrorClickLoading = true;
+    private boolean showClickLoadView = true;
     private int mLoadingLayout = NO_ID, mEmptyLayout = NO_ID, mErrorLayout = NO_ID, mErrorNetLayout = NO_ID;
     private int mLoadingProgressViewId = NO_ID, mEmptyImgId = NO_ID, mErrorImgId = NO_ID, mErrorNetImgId = NO_ID;
     private int mLoadingMsgViewId = NO_ID, mEmptyMsgViewId = NO_ID, mErrorMsgViewId = NO_ID, mErrorNetMsgViewId = NO_ID;
@@ -99,8 +100,8 @@ class PageStateLayoutCreater implements PageState {
     }
 
     @Override
-    public PageState setErrorClickShowLoading(boolean show) {
-        this.showErrorClickLoading = show;
+    public PageState setClickShowLoadView(boolean show) {
+        this.showClickLoadView = show;
         return this;
     }
 
@@ -228,9 +229,6 @@ class PageStateLayoutCreater implements PageState {
 
     void setContentView(View contentView) {
         this.mContentView = contentView;
-        if (this.mContentView != null) {
-            this.mContentView.setVisibility(View.GONE);
-        }
     }
 
     void create() {
@@ -240,12 +238,12 @@ class PageStateLayoutCreater implements PageState {
         this.mErrorView = inflate(mErrorLayout);
         this.mErrorNetView = inflate(mErrorNetLayout);
 
-        final ViewGroup.LayoutParams LayoutParams = new ViewGroup.LayoutParams(ViewGroup
-                .LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        this.mRootView.addView(mLoadingView, LayoutParams);
-        this.mRootView.addView(mEmptyView, LayoutParams);
-        this.mRootView.addView(mErrorView, LayoutParams);
-        this.mRootView.addView(mErrorNetView, LayoutParams);
+        final LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT
+                , LayoutParams.MATCH_PARENT);
+        this.mRootView.addView(mLoadingView, layoutParams);
+        this.mRootView.addView(mEmptyView, layoutParams);
+        this.mRootView.addView(mErrorView, layoutParams);
+        this.mRootView.addView(mErrorNetView, layoutParams);
 
         if (this.mLoadingProgressViewId != NO_ID) {
             this.mLoadingProgressView = mLoadingView.findViewById(mLoadingProgressViewId);
@@ -253,7 +251,6 @@ class PageStateLayoutCreater implements PageState {
         if (this.mLoadingMsgViewId != NO_ID) {
             this.mLoadingMsgView = mLoadingView.findViewById(mLoadingMsgViewId);
         }
-
         if (this.mEmptyImgId != NO_ID) {
             this.mEmptyImgView = mEmptyView.findViewById(mEmptyImgId);
         }
@@ -265,7 +262,7 @@ class PageStateLayoutCreater implements PageState {
             this.mErrorView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (showErrorClickLoading) {
+                    if (showClickLoadView) {
                         showLoadingView();
                     } else {
                         goneAllView();
@@ -285,7 +282,7 @@ class PageStateLayoutCreater implements PageState {
             this.mErrorNetView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (showErrorClickLoading) {
+                    if (showClickLoadView) {
                         showLoadingView();
                     } else {
                         goneAllView();

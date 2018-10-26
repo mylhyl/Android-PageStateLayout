@@ -46,5 +46,7 @@
 
         <!--内容视图layout的Id，也就是加载成功显示的视图-->
         <attr name="psl_contentLayoutId" format="reference"/>
+
+        <attr name="psl_clickShowLoadView" format="boolean"/>
     </declare-styleable>
 </resources>

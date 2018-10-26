@@ -81,6 +81,8 @@ public class PageStateLayout extends FrameLayout implements PageState {
         CharSequence errorNetMsg = ta.getText(R.styleable.PageStateLayout_psl_errorNetMsg);
 
         mContentLayoutId = ta.getResourceId(R.styleable.PageStateLayout_psl_contentLayoutId, NO_ID);
+        boolean clickShowLoadView = ta.getBoolean(R.styleable.PageStateLayout_psl_clickShowLoadView
+                , true);
 
         if (!isInEditMode()) {
             mPageStateCreater.setRootView(this);
@@ -131,6 +133,8 @@ public class PageStateLayout extends FrameLayout implements PageState {
                     && getErrorNetMsgView() instanceof TextView) {
                 ((TextView) getErrorNetMsgView()).setText(errorNetMsg);
             }
+
+            setClickShowLoadView(clickShowLoadView);
         }
         ta.recycle();
     }
@@ -196,8 +200,8 @@ public class PageStateLayout extends FrameLayout implements PageState {
     }
 
     @Override
-    public PageState setErrorClickShowLoading(boolean show) {
-        return mPageStateCreater.setErrorClickShowLoading(show);
+    public PageState setClickShowLoadView(boolean show) {
+        return mPageStateCreater.setClickShowLoadView(show);
     }
 
     @Override
@@ -303,19 +307,6 @@ public class PageStateLayout extends FrameLayout implements PageState {
         return wrap(rootLayout, contentId);
     }
 
-    public static PageState wrap(Activity activity, @IdRes int contentParentId
-            , @IdRes int contentId) {
-        return wrap(activity.findViewById(contentParentId), contentId);
-    }
-
-    public static PageState wrap(Fragment fragment, @IdRes int contentId) {
-        return wrap(fragment.getView(), contentId);
-    }
-
-    public static PageState wrap(android.app.Fragment fragment, @IdRes int contentId) {
-        return wrap(fragment.getView(), contentId);
-    }
-
     private static PageState wrap(View rootLayout, @IdRes int contentId) {
         View contentLayout = rootLayout.findViewById(contentId);
         if (contentLayout == null) {
@@ -336,6 +327,19 @@ public class PageStateLayout extends FrameLayout implements PageState {
 
         parent.addView(pageStateLayout, contentViewIndex, lp);
         return pageStateLayout;
+    }
+
+    public static PageState wrap(Activity activity, @IdRes int contentParentId
+            , @IdRes int contentId) {
+        return wrap(activity.findViewById(contentParentId), contentId);
+    }
+
+    public static PageState wrap(Fragment fragment, @IdRes int contentId) {
+        return wrap(fragment.getView(), contentId);
+    }
+
+    public static PageState wrap(android.app.Fragment fragment, @IdRes int contentId) {
+        return wrap(fragment.getView(), contentId);
     }
 
     @Override
