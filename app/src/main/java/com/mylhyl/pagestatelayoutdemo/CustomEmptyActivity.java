@@ -6,8 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ProgressBar;
 
 import com.github.ybq.android.spinkit.style.DoubleBounce;
-import com.github.ybq.android.spinkit.style.RotatingPlane;
-import com.mylhyl.pagestatelayout.PageStateLayout;
+import com.mylhyl.pagestate.PageStateLayout;
 
 public class CustomEmptyActivity extends AppCompatActivity {
     private PageStateLayout mPageStateLayout;

@@ -17,15 +17,15 @@
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:indeterminate="true"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:indeterminate="true"/>
 
-    <com.mylhyl.pagestatelayout.PageStateLayout
+    <com.mylhyl.pagestate.PageStateLayout
         android:id="@+id/pageStateLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:psl_emptyLayout="@layout/share_psl_empty"
         app:psl_emptyMsg="获取不到程序猿"
         app:psl_emptyMsgViewId="@id/share_psl_emptyMsg">
-    </com.mylhyl.pagestatelayout.PageStateLayout>
+    </com.mylhyl.pagestate.PageStateLayout>
 </LinearLayout>

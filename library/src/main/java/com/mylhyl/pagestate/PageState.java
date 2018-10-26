@@ -1,4 +1,4 @@
-package com.mylhyl.pagestatelayout;
+package com.mylhyl.pagestate;
 
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;

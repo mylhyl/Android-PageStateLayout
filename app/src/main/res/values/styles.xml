@@ -17,6 +17,7 @@
 
     <style name="LibraryPsl.LoadingMsg">
         <item name="android:text">style重写加载视图</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/colorAccent</item>
     </style>
 </resources>

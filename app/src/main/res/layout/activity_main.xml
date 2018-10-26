@@ -14,7 +14,7 @@
         app:title="@string/app_name"/>
 
     <!--app:psl_contentLayoutId="@id/recyclerView" 如果不指定，那么本库只能包含一个子视图-->
-    <com.mylhyl.pagestatelayout.PageStateLayout
+    <com.mylhyl.pagestate.PageStateLayout
         android:id="@+id/pageStateLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -34,5 +34,5 @@
                 android:layout_height="match_parent"/>
 
         </com.scwang.smartrefresh.layout.SmartRefreshLayout>
-    </com.mylhyl.pagestatelayout.PageStateLayout>
+    </com.mylhyl.pagestate.PageStateLayout>
 </LinearLayout>

@@ -9,6 +9,9 @@
         <attr name="psl_errorLayout" format="reference"/>
         <!--网络错误视图layout-->
         <attr name="psl_errorNetLayout" format="reference"/>
+
+        <!--加载视图的进度View的Id-->
+        <attr name="psl_loadingProgressViewId" format="reference"/>
         <!--加载视图的文字View的Id-->
         <attr name="psl_loadingMsgViewId" format="reference"/>
         <!--加载视图的文字-->

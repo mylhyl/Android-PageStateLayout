@@ -1,4 +1,4 @@
-package com.mylhyl.pagestatelayout;
+package com.mylhyl.pagestate;
 
 /**
  * Created by hupei on 2018/9/27 10:14.

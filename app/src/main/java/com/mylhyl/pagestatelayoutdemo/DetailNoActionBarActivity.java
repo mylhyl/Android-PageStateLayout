@@ -5,11 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
 
-import com.mylhyl.pagestatelayout.PageState;
-import com.mylhyl.pagestatelayout.PageStateLayout;
+import com.mylhyl.pagestate.PageState;
+import com.mylhyl.pagestate.PageStateLayout;
 
 public class DetailNoActionBarActivity extends AppCompatActivity {
 

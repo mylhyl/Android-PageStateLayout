@@ -1,4 +1,4 @@
-package com.mylhyl.pagestatelayout;
+package com.mylhyl.pagestate;
 
 import org.junit.Test;
 

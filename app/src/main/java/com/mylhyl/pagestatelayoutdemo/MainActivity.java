@@ -13,7 +13,7 @@ import android.widget.ProgressBar;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.github.ybq.android.spinkit.style.ThreeBounce;
-import com.mylhyl.pagestatelayout.PageStateLayout;
+import com.mylhyl.pagestate.PageStateLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
