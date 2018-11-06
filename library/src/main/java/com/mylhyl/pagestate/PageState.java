@@ -157,6 +157,7 @@ public interface PageState {
     /**
      * 获取空数据视图
      *
+     * @param <T> View
      * @return View
      */
     <T extends View> T getEmptyView();
@@ -164,6 +165,7 @@ public interface PageState {
     /**
      * 获取错误视图
      *
+     * @param <T> View
      * @return View
      */
     <T extends View> T getErrorView();
@@ -171,6 +173,7 @@ public interface PageState {
     /**
      * 获取网络错误视图
      *
+     * @param <T> View
      * @return View
      */
     <T extends View> T getErrorNetView();
@@ -178,6 +181,7 @@ public interface PageState {
     /**
      * 获取加载数据文字描述控件
      *
+     * @param <T> View
      * @return View
      */
     <T extends View> T getLoadingMsgView();
@@ -185,6 +189,7 @@ public interface PageState {
     /**
      * 获取空数据文字描述控件
      *
+     * @param <T> View
      * @return View
      */
     <T extends View> T getEmptyMsgView();
@@ -192,6 +197,7 @@ public interface PageState {
     /**
      * 获取错误提示文字描述控件
      *
+     * @param <T> View
      * @return View
      */
     <T extends View> T getErrorMsgView();
@@ -199,6 +205,7 @@ public interface PageState {
     /**
      * 获取网络错误提示文字描述控件
      *
+     * @param <T> View
      * @return View
      */
     <T extends View> T getErrorNetMsgView();
