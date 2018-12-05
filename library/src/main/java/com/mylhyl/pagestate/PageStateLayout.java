@@ -301,6 +301,13 @@ public class PageStateLayout extends FrameLayout implements PageState {
         init(attrs);
     }
 
+    /**
+     * Activity中使用
+     *
+     * @param activity  activity
+     * @param contentId 内容视图的layoutId
+     * @return PageState
+     */
     public static PageState wrap(Activity activity, @IdRes int contentId) {
         ViewGroup actContent = activity.findViewById(android.R.id.content);
         ViewGroup rootLayout = (ViewGroup) (actContent).getChildAt(0);
@@ -329,15 +336,37 @@ public class PageStateLayout extends FrameLayout implements PageState {
         return pageStateLayout;
     }
 
+    /**
+     * Activity中使用
+     *
+     * @param activity
+     * @param contentParentId 内容视图的父视图layoutId
+     * @param contentId       内容视图layoutId
+     * @return PageState
+     */
     public static PageState wrap(Activity activity, @IdRes int contentParentId
             , @IdRes int contentId) {
         return wrap(activity.findViewById(contentParentId), contentId);
     }
 
+    /**
+     * v4.Fragment使用
+     *
+     * @param fragment  v4.Fragment
+     * @param contentId 内容视图layoutId
+     * @return PageState
+     */
     public static PageState wrap(Fragment fragment, @IdRes int contentId) {
         return wrap(fragment.getView(), contentId);
     }
 
+    /**
+     * app.Fragment使用
+     *
+     * @param fragment  app.Fragment
+     * @param contentId 内容视图layoutId
+     * @return PageState
+     */
     public static PageState wrap(android.app.Fragment fragment, @IdRes int contentId) {
         return wrap(fragment.getView(), contentId);
     }
