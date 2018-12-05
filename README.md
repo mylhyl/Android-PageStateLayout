@@ -2,8 +2,17 @@
 Adnroid界面数据从网络加载情况下的状态切换：包括加载中、加载失败、加载空数据、网络异常
 
 # 引用
+ ```xml
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
  [ ![Download](https://api.bintray.com/packages/mylhyl/maven/pageStateLayout/images/download.svg) ](https://bintray.com/mylhyl/maven/pageStateLayout/_latestVersion)  
- `implementation 'com.mylhyl:pageStateLayout:latestVersion'`  
+`implementation 'com.github.mylhyl:Android-PageStateLayout:latestVersion'`
+
  [下载APK体验](https://fir.im/vnqd)或手机扫描下面二维码  
  <img src="preview/qrdown.png"/>
 
