@@ -17,7 +17,7 @@ Adnroid界面数据从网络加载情况下的状态切换：包括加载中、�
  <img src="preview/qrdown.png"/>
 
 # 使用
-* layout中使用
+* layout中使用，注意PageStateLayout中只能包含一个子布局（需要显示的数据内容）
 ```xml
     <com.mylhyl.pagestate.PageStateLayout
         android:id="@+id/pageStateLayout"
@@ -39,9 +39,41 @@ Adnroid界面数据从网络加载情况下的状态切换：包括加载中、�
 ```
 * 代码中使用
 ```java
+ //contentId：是与其它4个状态切换显示的数据内容布局id
 PageStateLayout.wrap(Activity activity, int contentId)
 PageStateLayout.wrap(Fragment fragment, int contentId)
+```
 更多请查看`wrap`方法重载
+
+```xml
+//如下：RelativeLayout为显示数据的布局，那么contentId 传R.id.psl_content
+PageStateLayout.wrap(MainActivity.this, R.id.psl_content)
+        <RelativeLayout
+            android:id="@+id/psl_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="61dp"
+                app:srcCompat="@mipmap/ic_launcher"/>
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="点赞"/>
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/button"
+                android:text="标题"/>
+        </RelativeLayout>
 ```
 
 # 提供方法
