@@ -10,8 +10,8 @@ Adnroid界面数据从网络加载情况下的状态切换：包括加载中、�
 		}
 	}
 ```
- [ ![Download](https://api.bintray.com/packages/mylhyl/maven/pageStateLayout/images/download.svg) ](https://bintray.com/mylhyl/maven/pageStateLayout/_latestVersion)  
-`implementation 'com.github.mylhyl:Android-PageStateLayout:latestVersion'`
+ [ ![Download](https://jitpack.io/v/mylhyl/Android-PageStateLayout.svg)](https://jitpack.io/#mylhyl/Android-PageStateLayout)  
+ `implementation 'com.github.mylhyl:Android-PageStateLayout:latestVersion'`
 
  [下载APK体验](https://fir.im/vnqd)或手机扫描下面二维码  
  <img src="preview/qrdown.png"/>
