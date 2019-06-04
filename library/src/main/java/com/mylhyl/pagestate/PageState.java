@@ -106,7 +106,7 @@ public interface PageState {
     PageState setErrorNetMsgViewId(@IdRes int errorNetMsgViewId);
 
     /**
-     * 错误视图事件是否显示加载视图
+     * 错误视图事件响应时，是否显示加载视图
      *
      * @param show
      * @return PageState
@@ -122,7 +122,7 @@ public interface PageState {
     PageState setOnErrorListener(OnErrorClickListener listener);
 
     /**
-     * 设置网络错误视图点击事件
+     * 设置网络错误视图点击事件，如果不设置此监听，默认将使用{@link #setOnErrorListener(OnErrorClickListener)}
      *
      * @param listener
      * @return PageState

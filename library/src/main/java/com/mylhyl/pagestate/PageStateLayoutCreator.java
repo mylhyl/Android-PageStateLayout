@@ -13,7 +13,7 @@ import static android.view.View.NO_ID;
 /**
  * Created by hupei on 2018/9/27 10:16.
  */
-class PageStateLayoutCreater implements PageState {
+class PageStateLayoutCreator implements PageState {
 
     private Context mContext;
     private ViewGroup mRootView;
@@ -210,14 +210,6 @@ class PageStateLayoutCreater implements PageState {
         return this.mErrorNetImgView;
     }
 
-    private void goneAllView() {
-        if (mLoadingView != null) mLoadingView.setVisibility(View.GONE);
-        if (mContentView != null) mContentView.setVisibility(View.GONE);
-        if (mEmptyView != null) mEmptyView.setVisibility(View.GONE);
-        if (mErrorView != null) mErrorView.setVisibility(View.GONE);
-        if (mErrorNetView != null) mErrorNetView.setVisibility(View.GONE);
-    }
-
     void setRootView(View rootView) {
         this.mRootView = (ViewGroup) rootView;
         this.mContext = rootView.getContext();
@@ -258,19 +250,22 @@ class PageStateLayoutCreater implements PageState {
             this.mEmptyMsgView = mEmptyView.findViewById(mEmptyMsgViewId);
         }
 
-        if (this.mOnErrorClickListener != null) {
-            this.mErrorView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (showClickLoadView) {
-                        showLoadingView();
-                    } else {
-                        goneAllView();
-                    }
+        this.mErrorView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (showClickLoadView) {
+                    showLoadingView();
+                } else {
+                    goneAllView();
+                }
+
+                if (mOnErrorClickListener != null) {
                     mOnErrorClickListener.onErrorClick();
                 }
-            });
-        }
+            }
+        });
+
         if (this.mErrorImgId != NO_ID) {
             this.mErrorImgView = mErrorView.findViewById(mErrorImgId);
         }
@@ -278,19 +273,26 @@ class PageStateLayoutCreater implements PageState {
             this.mErrorMsgView = mErrorView.findViewById(mErrorMsgViewId);
         }
 
-        if (this.mOnErrorNetClickListener != null) {
-            this.mErrorNetView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (showClickLoadView) {
-                        showLoadingView();
-                    } else {
-                        goneAllView();
-                    }
-                    mOnErrorNetClickListener.onErrorNetClick();
+        this.mErrorNetView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (showClickLoadView) {
+                    showLoadingView();
+                } else {
+                    goneAllView();
                 }
-            });
-        }
+
+                if (mOnErrorNetClickListener != null) {
+                    mOnErrorNetClickListener.onErrorNetClick();
+                    return;
+                }
+
+                if (mOnErrorClickListener != null) {
+                    mOnErrorClickListener.onErrorClick();
+                }
+            }
+        });
+
         if (this.mErrorNetImgId != NO_ID) {
             this.mErrorNetImgView = mErrorNetView.findViewById(mErrorNetImgId);
         }
@@ -298,6 +300,14 @@ class PageStateLayoutCreater implements PageState {
             this.mErrorNetMsgView = mErrorNetView.findViewById(mErrorNetMsgViewId);
         }
         goneAllView();
+    }
+
+    private void goneAllView() {
+        if (mLoadingView != null) mLoadingView.setVisibility(View.GONE);
+        if (mContentView != null) mContentView.setVisibility(View.GONE);
+        if (mEmptyView != null) mEmptyView.setVisibility(View.GONE);
+        if (mErrorView != null) mErrorView.setVisibility(View.GONE);
+        if (mErrorNetView != null) mErrorNetView.setVisibility(View.GONE);
     }
 
     private void checkParams() {

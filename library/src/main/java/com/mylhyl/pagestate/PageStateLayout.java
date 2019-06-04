@@ -25,7 +25,7 @@ import android.widget.TextView;
 public class PageStateLayout extends FrameLayout implements PageState {
 
     private int mContentLayoutId = NO_ID;
-    private PageStateLayoutCreater mPageStateCreater = new PageStateLayoutCreater();
+    private PageStateLayoutCreator mPageStateCreator = new PageStateLayoutCreator();
 
     public PageStateLayout(@NonNull Context context) {
         this(context, null);
@@ -85,7 +85,7 @@ public class PageStateLayout extends FrameLayout implements PageState {
                 , true);
 
         if (!isInEditMode()) {
-            mPageStateCreater.setRootView(this);
+            mPageStateCreator.setRootView(this);
 
             setLoadingLayout(loadingLayout);
             setEmptyLayout(emptyLayout);
@@ -102,7 +102,7 @@ public class PageStateLayout extends FrameLayout implements PageState {
             setErrorMsgViewId(errorMsgViewId);
             setErrorNetMsgViewId(errorNetMsgViewId);
 
-            mPageStateCreater.create();
+            mPageStateCreator.create();
 
             if (emptyImgDrawable != null && getEmptyImgView() != null
                     && getEmptyImgView() instanceof ImageView) {
@@ -141,157 +141,157 @@ public class PageStateLayout extends FrameLayout implements PageState {
 
     @Override
     public PageState setLoadingLayout(@LayoutRes int loadingLayoutId) {
-        return mPageStateCreater.setLoadingLayout(loadingLayoutId);
+        return mPageStateCreator.setLoadingLayout(loadingLayoutId);
     }
 
     @Override
     public PageState setEmptyLayout(@LayoutRes int emptyLayoutId) {
-        return mPageStateCreater.setEmptyLayout(emptyLayoutId);
+        return mPageStateCreator.setEmptyLayout(emptyLayoutId);
     }
 
     @Override
     public PageState setErrorLayout(@LayoutRes int errorLayoutId) {
-        return mPageStateCreater.setErrorLayout(errorLayoutId);
+        return mPageStateCreator.setErrorLayout(errorLayoutId);
     }
 
     @Override
     public PageState setErrorNetLayout(@LayoutRes int errorNetLayoutId) {
-        return mPageStateCreater.setErrorNetLayout(errorNetLayoutId);
+        return mPageStateCreator.setErrorNetLayout(errorNetLayoutId);
     }
 
     @Override
     public PageState setLoadingProgressViewId(int loadingProgressViewId) {
-        return mPageStateCreater.setLoadingProgressViewId(loadingProgressViewId);
+        return mPageStateCreator.setLoadingProgressViewId(loadingProgressViewId);
     }
 
     @Override
     public PageState setLoadingMsgViewId(@IdRes int loadingMsgViewId) {
-        return mPageStateCreater.setLoadingMsgViewId(loadingMsgViewId);
+        return mPageStateCreator.setLoadingMsgViewId(loadingMsgViewId);
     }
 
     @Override
     public PageState setEmptyImgId(int emptyImgId) {
-        return mPageStateCreater.setEmptyImgId(emptyImgId);
+        return mPageStateCreator.setEmptyImgId(emptyImgId);
     }
 
     @Override
     public PageState setEmptyMsgViewId(@IdRes int emptyMsgViewId) {
-        return mPageStateCreater.setEmptyMsgViewId(emptyMsgViewId);
+        return mPageStateCreator.setEmptyMsgViewId(emptyMsgViewId);
     }
 
     @Override
     public PageState setErrorImgId(int errorImgId) {
-        return mPageStateCreater.setErrorImgId(errorImgId);
+        return mPageStateCreator.setErrorImgId(errorImgId);
     }
 
     @Override
     public PageState setErrorMsgViewId(@IdRes int errorMsgViewId) {
-        return mPageStateCreater.setErrorMsgViewId(errorMsgViewId);
+        return mPageStateCreator.setErrorMsgViewId(errorMsgViewId);
     }
 
     @Override
     public PageState setErrorNetImgId(int errorNetImgId) {
-        return mPageStateCreater.setErrorNetImgId(errorNetImgId);
+        return mPageStateCreator.setErrorNetImgId(errorNetImgId);
     }
 
     @Override
     public PageState setErrorNetMsgViewId(@IdRes int errorNetMsgViewId) {
-        return mPageStateCreater.setErrorNetMsgViewId(errorNetMsgViewId);
+        return mPageStateCreator.setErrorNetMsgViewId(errorNetMsgViewId);
     }
 
     @Override
     public PageState setClickShowLoadView(boolean show) {
-        return mPageStateCreater.setClickShowLoadView(show);
+        return mPageStateCreator.setClickShowLoadView(show);
     }
 
     @Override
     public PageState setOnErrorListener(OnErrorClickListener listener) {
-        return mPageStateCreater.setOnErrorListener(listener);
+        return mPageStateCreator.setOnErrorListener(listener);
     }
 
     @Override
     public PageState setOnErrorNetListener(OnErrorNetClickListener listener) {
-        return mPageStateCreater.setOnErrorNetListener(listener);
+        return mPageStateCreator.setOnErrorNetListener(listener);
     }
 
     @Override
     public void showLoadingView() {
-        mPageStateCreater.showLoadingView();
+        mPageStateCreator.showLoadingView();
     }
 
     @Override
     public void showContentView() {
-        mPageStateCreater.showContentView();
+        mPageStateCreator.showContentView();
     }
 
     @Override
     public void showEmptyView() {
-        mPageStateCreater.showEmptyView();
+        mPageStateCreator.showEmptyView();
     }
 
     @Override
     public void showErrorView() {
-        mPageStateCreater.showErrorView();
+        mPageStateCreator.showErrorView();
     }
 
     @Override
     public void showErrorNetView() {
-        mPageStateCreater.showErrorNetView();
+        mPageStateCreator.showErrorNetView();
     }
 
     @Override
     public <T extends View> T getEmptyView() {
-        return (T) mPageStateCreater.getEmptyView();
+        return (T) mPageStateCreator.getEmptyView();
     }
 
     @Override
     public <T extends View> T getErrorView() {
-        return (T) mPageStateCreater.getErrorView();
+        return (T) mPageStateCreator.getErrorView();
     }
 
     @Override
     public <T extends View> T getErrorNetView() {
-        return (T) mPageStateCreater.getErrorNetView();
+        return (T) mPageStateCreator.getErrorNetView();
     }
 
     @Override
     public <T extends View> T getLoadingMsgView() {
-        return (T) mPageStateCreater.getLoadingMsgView();
+        return (T) mPageStateCreator.getLoadingMsgView();
     }
 
     @Override
     public <T extends View> T getEmptyMsgView() {
-        return (T) mPageStateCreater.getEmptyMsgView();
+        return (T) mPageStateCreator.getEmptyMsgView();
     }
 
     @Override
     public <T extends View> T getErrorMsgView() {
-        return (T) mPageStateCreater.getErrorMsgView();
+        return (T) mPageStateCreator.getErrorMsgView();
     }
 
     @Override
     public <T extends View> T getErrorNetMsgView() {
-        return (T) mPageStateCreater.getErrorNetMsgView();
+        return (T) mPageStateCreator.getErrorNetMsgView();
     }
 
     @Override
     public <T extends View> T getLoadingProgressView() {
-        return (T) mPageStateCreater.getLoadingProgressView();
+        return (T) mPageStateCreator.getLoadingProgressView();
     }
 
     @Override
     public <T extends View> T getEmptyImgView() {
-        return (T) mPageStateCreater.getEmptyImgView();
+        return (T) mPageStateCreator.getEmptyImgView();
     }
 
     @Override
     public <T extends View> T getErrorImgView() {
-        return (T) mPageStateCreater.getErrorImgView();
+        return (T) mPageStateCreator.getErrorImgView();
     }
 
     @Override
     public <T extends View> T getErrorNetImgView() {
-        return (T) mPageStateCreater.getErrorNetImgView();
+        return (T) mPageStateCreator.getErrorNetImgView();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -330,7 +330,7 @@ public class PageStateLayout extends FrameLayout implements PageState {
         parent.removeView(contentLayout);
         PageStateLayout pageStateLayout = new PageStateLayout(parent.getContext());
         pageStateLayout.addView(contentLayout);
-        pageStateLayout.mPageStateCreater.setContentView(contentLayout);
+        pageStateLayout.mPageStateCreator.setContentView(contentLayout);
 
         parent.addView(pageStateLayout, contentViewIndex, lp);
         return pageStateLayout;
@@ -375,13 +375,13 @@ public class PageStateLayout extends FrameLayout implements PageState {
     protected void onFinishInflate() {
         super.onFinishInflate();
         if (mContentLayoutId != NO_ID) {
-            mPageStateCreater.setContentView(mContentLayoutId);
+            mPageStateCreator.setContentView(mContentLayoutId);
         } else {
             if (getChildCount() > 5) {
                 throw new IllegalStateException("PageStateLayout can host only one direct child");
             }
             View view = getChildAt(4);
-            mPageStateCreater.setContentView(view);
+            mPageStateCreator.setContentView(view);
         }
     }
 }
