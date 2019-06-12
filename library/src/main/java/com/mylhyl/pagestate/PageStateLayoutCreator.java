@@ -1,12 +1,13 @@
 package com.mylhyl.pagestate;
 
 import android.content.Context;
-import android.support.annotation.IdRes;
-import android.support.annotation.LayoutRes;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+
+import androidx.annotation.IdRes;
+import androidx.annotation.LayoutRes;
 
 import static android.view.View.NO_ID;
 

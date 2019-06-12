@@ -2,11 +2,12 @@ package com.mylhyl.pagestatelayoutdemo;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.ProgressBar;
 
 import com.github.ybq.android.spinkit.style.DoubleBounce;
 import com.mylhyl.pagestate.PageStateLayout;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class CustomEmptyActivity extends AppCompatActivity {
     private PageStateLayout mPageStateLayout;

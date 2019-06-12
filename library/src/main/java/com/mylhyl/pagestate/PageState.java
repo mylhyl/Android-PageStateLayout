@@ -1,8 +1,9 @@
 package com.mylhyl.pagestate;
 
-import android.support.annotation.IdRes;
-import android.support.annotation.LayoutRes;
 import android.view.View;
+
+import androidx.annotation.IdRes;
+import androidx.annotation.LayoutRes;
 
 /**
  * Created by hupei on 2018/9/27 10:13.

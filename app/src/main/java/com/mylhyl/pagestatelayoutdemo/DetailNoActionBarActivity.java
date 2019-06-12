@@ -1,14 +1,15 @@
 package com.mylhyl.pagestatelayoutdemo;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
 import com.mylhyl.pagestate.PageState;
 import com.mylhyl.pagestate.PageStateLayout;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 public class DetailNoActionBarActivity extends AppCompatActivity {
 
