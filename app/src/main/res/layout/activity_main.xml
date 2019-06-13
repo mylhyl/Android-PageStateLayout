@@ -13,26 +13,26 @@
         style="@style/AppTheme.Toolbar"
         app:title="@string/app_name"/>
 
-    <!--app:psl_contentLayoutId="@id/recyclerView" 如果不指定，那么本库只能包含一个子视图-->
-    <com.mylhyl.pagestate.PageStateLayout
-        android:id="@+id/pageStateLayout"
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/smartRefreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:psl_contentLayoutId="@id/recyclerView"
-        app:psl_emptyImgSrc="@mipmap/ic_push_msg_empty"
-        app:psl_errorImgSrc="@mipmap/ic_pager_invalid"
-        app:psl_errorNetImgSrc="@mipmap/ic_network_invalid">
-
-        <com.scwang.smartrefresh.layout.SmartRefreshLayout
-            android:id="@+id/smartRefreshLayout"
+        android:layout_height="match_parent">
+        <!--app:psl_contentLayoutId="@id/recyclerView" 如果不指定，那么只能包含一个子视图-->
+        <!--也可直接用原生 FrameLayout或 RelativeLayout 代替PageStateLayout，代码中则使有用 PageStateLayout.wrap(activity,int,int)-->
+        <com.mylhyl.pagestate.PageStateLayout
+            android:id="@+id/pageStateLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:psl_contentLayoutId="@id/recyclerView"
+            app:psl_emptyImgSrc="@mipmap/ic_push_msg_empty"
+            app:psl_errorImgSrc="@mipmap/ic_pager_invalid"
+            app:psl_errorNetImgSrc="@mipmap/ic_network_invalid">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 
-        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
-    </com.mylhyl.pagestate.PageStateLayout>
+        </com.mylhyl.pagestate.PageStateLayout>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 </LinearLayout>

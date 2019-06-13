@@ -36,15 +36,13 @@ public class PageStateLayout extends FrameLayout implements PageState {
         this(context, attrs, 0);
     }
 
-    public PageStateLayout(@NonNull Context context, @Nullable AttributeSet attrs
-            , int defStyleAttr) {
+    public PageStateLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(attrs);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public PageStateLayout(@NonNull Context context, @Nullable AttributeSet attrs
-            , int defStyleAttr, int defStyleRes) {
+    public PageStateLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(attrs);
     }
@@ -97,7 +95,7 @@ public class PageStateLayout extends FrameLayout implements PageState {
         return wrap(fragment.getView(), contentId);
     }
 
-    private static PageState wrap(View rootLayout, @IdRes int contentId) {
+    public static PageState wrap(View rootLayout, @IdRes int contentId) {
         View contentLayout = rootLayout.findViewById(contentId);
         if (contentLayout == null) {
             throw new RuntimeException("contentLayout can not be null");
@@ -291,36 +289,32 @@ public class PageStateLayout extends FrameLayout implements PageState {
     private void init(@Nullable AttributeSet attrs) {
 
         TypedArray ta = getContext().obtainStyledAttributes(attrs, R.styleable.PageStateLayout);
-        int loadingLayout = ta.getResourceId(R.styleable.PageStateLayout_psl_loadingLayout
-                , R.layout.library_psl_loading);
-        int emptyLayout = ta.getResourceId(R.styleable.PageStateLayout_psl_emptyLayout
-                , R.layout.library_psl_empty);
-        int errorLayout = ta.getResourceId(R.styleable.PageStateLayout_psl_errorLayout
-                , R.layout.library_psl_error);
-        int errorNetLayout = ta.getResourceId(R.styleable.PageStateLayout_psl_errorNetLayout
-                , R.layout.library_psl_error_net);
+        int loadingLayout = ta.getResourceId(R.styleable.PageStateLayout_psl_loadingLayout,
+                R.layout.library_psl_loading);
+        int emptyLayout = ta.getResourceId(R.styleable.PageStateLayout_psl_emptyLayout, R.layout.library_psl_empty);
+        int errorLayout = ta.getResourceId(R.styleable.PageStateLayout_psl_errorLayout, R.layout.library_psl_error);
+        int errorNetLayout = ta.getResourceId(R.styleable.PageStateLayout_psl_errorNetLayout,
+                R.layout.library_psl_error_net);
 
-        int loadingProgressId = ta.getResourceId(R.styleable.PageStateLayout_psl_loadingProgressViewId
-                , R.id.library_psl_loadingProgress);
-        int emptyImgId = ta.getResourceId(R.styleable.PageStateLayout_psl_emptyImgId
-                , R.id.library_psl_emptyImg);
-        int errorImgId = ta.getResourceId(R.styleable.PageStateLayout_psl_errorImgId
-                , R.id.library_psl_errorImg);
-        int errorNetImgId = ta.getResourceId(R.styleable.PageStateLayout_psl_errorNetImgId
-                , R.id.library_psl_errorNetImg);
+        int loadingProgressId = ta.getResourceId(R.styleable.PageStateLayout_psl_loadingProgressViewId,
+                R.id.library_psl_loadingProgress);
+        int emptyImgId = ta.getResourceId(R.styleable.PageStateLayout_psl_emptyImgId, R.id.library_psl_emptyImg);
+        int errorImgId = ta.getResourceId(R.styleable.PageStateLayout_psl_errorImgId, R.id.library_psl_errorImg);
+        int errorNetImgId = ta.getResourceId(R.styleable.PageStateLayout_psl_errorNetImgId,
+                R.id.library_psl_errorNetImg);
 
         Drawable emptyImgDrawable = ta.getDrawable(R.styleable.PageStateLayout_psl_emptyImgSrc);
         Drawable errorImgDrawable = ta.getDrawable(R.styleable.PageStateLayout_psl_errorImgSrc);
         Drawable errorNetImgDrawable = ta.getDrawable(R.styleable.PageStateLayout_psl_errorNetImgSrc);
 
-        int loadingMsgViewId = ta.getResourceId(R.styleable.PageStateLayout_psl_loadingMsgViewId
-                , R.id.library_psl_loadingMsg);
-        int emptyMsgViewId = ta.getResourceId(R.styleable.PageStateLayout_psl_emptyMsgViewId
-                , R.id.library_psl_emptyMsg);
-        int errorMsgViewId = ta.getResourceId(R.styleable.PageStateLayout_psl_errorMsgViewId
-                , R.id.library_psl_errorMsg);
-        int errorNetMsgViewId = ta.getResourceId(R.styleable.PageStateLayout_psl_errorNetMsgViewId
-                , R.id.library_psl_errorNetMsg);
+        int loadingMsgViewId = ta.getResourceId(R.styleable.PageStateLayout_psl_loadingMsgViewId,
+                R.id.library_psl_loadingMsg);
+        int emptyMsgViewId = ta.getResourceId(R.styleable.PageStateLayout_psl_emptyMsgViewId,
+                R.id.library_psl_emptyMsg);
+        int errorMsgViewId = ta.getResourceId(R.styleable.PageStateLayout_psl_errorMsgViewId,
+                R.id.library_psl_errorMsg);
+        int errorNetMsgViewId = ta.getResourceId(R.styleable.PageStateLayout_psl_errorNetMsgViewId,
+                R.id.library_psl_errorNetMsg);
 
         CharSequence loadingMsg = ta.getText(R.styleable.PageStateLayout_psl_loadingMsg);
         CharSequence emptyMsg = ta.getText(R.styleable.PageStateLayout_psl_emptyMsg);
@@ -328,8 +322,7 @@ public class PageStateLayout extends FrameLayout implements PageState {
         CharSequence errorNetMsg = ta.getText(R.styleable.PageStateLayout_psl_errorNetMsg);
 
         mContentLayoutId = ta.getResourceId(R.styleable.PageStateLayout_psl_contentLayoutId, NO_ID);
-        boolean clickShowLoadView = ta.getBoolean(R.styleable.PageStateLayout_psl_clickShowLoadView
-                , true);
+        boolean clickShowLoadView = ta.getBoolean(R.styleable.PageStateLayout_psl_clickShowLoadView, true);
 
         if (!isInEditMode()) {
             mPageStateCreator.setRootView(this);
@@ -351,33 +344,31 @@ public class PageStateLayout extends FrameLayout implements PageState {
 
             mPageStateCreator.create();
 
-            if (emptyImgDrawable != null && getEmptyImgView() != null
-                    && getEmptyImgView() instanceof ImageView) {
+            if (emptyImgDrawable != null && getEmptyImgView() != null && getEmptyImgView() instanceof ImageView) {
                 ((ImageView) getEmptyImgView()).setImageDrawable(emptyImgDrawable);
             }
-            if (errorImgDrawable != null && getErrorImgView() != null
-                    && getErrorImgView() instanceof ImageView) {
+
+            if (errorImgDrawable != null && getErrorImgView() != null && getErrorImgView() instanceof ImageView) {
                 ((ImageView) getErrorImgView()).setImageDrawable(errorImgDrawable);
             }
-            if (errorNetImgDrawable != null && getErrorNetImgView() != null
-                    && getErrorNetImgView() instanceof ImageView) {
+
+            if (errorNetImgDrawable != null && getErrorNetImgView() != null && getErrorNetImgView() instanceof ImageView) {
                 ((ImageView) getErrorNetImgView()).setImageDrawable(errorNetImgDrawable);
             }
 
-            if (!TextUtils.isEmpty(loadingMsg) && getLoadingMsgView() != null
-                    && getLoadingMsgView() instanceof TextView) {
+            if (!TextUtils.isEmpty(loadingMsg) && getLoadingMsgView() != null && getLoadingMsgView() instanceof TextView) {
                 ((TextView) getLoadingMsgView()).setText(loadingMsg);
             }
-            if (!TextUtils.isEmpty(emptyMsg) && getEmptyMsgView() != null
-                    && getEmptyMsgView() instanceof TextView) {
+
+            if (!TextUtils.isEmpty(emptyMsg) && getEmptyMsgView() != null && getEmptyMsgView() instanceof TextView) {
                 ((TextView) getEmptyMsgView()).setText(emptyMsg);
             }
-            if (!TextUtils.isEmpty(errorMsg) && getErrorMsgView() != null
-                    && getErrorMsgView() instanceof TextView) {
+
+            if (!TextUtils.isEmpty(errorMsg) && getErrorMsgView() != null && getErrorMsgView() instanceof TextView) {
                 ((TextView) getErrorMsgView()).setText(errorMsg);
             }
-            if (!TextUtils.isEmpty(errorNetMsg) && getErrorNetMsgView() != null
-                    && getErrorNetMsgView() instanceof TextView) {
+
+            if (!TextUtils.isEmpty(errorNetMsg) && getErrorNetMsgView() != null && getErrorNetMsgView() instanceof TextView) {
                 ((TextView) getErrorNetMsgView()).setText(errorNetMsg);
             }
 
