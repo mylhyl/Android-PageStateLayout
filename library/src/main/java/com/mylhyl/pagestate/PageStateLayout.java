@@ -35,108 +35,84 @@ public class PageStateLayout extends FrameLayout implements PageState {
         this(context, attrs, 0);
     }
 
-    public PageStateLayout(@NonNull Context context, @Nullable AttributeSet attrs
-            , int defStyleAttr) {
+    public PageStateLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(attrs);
     }
 
-    private void init(@Nullable AttributeSet attrs) {
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public PageStateLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+        init(attrs);
+    }
 
-        TypedArray ta = getContext().obtainStyledAttributes(attrs, R.styleable.PageStateLayout);
-        int loadingLayout = ta.getResourceId(R.styleable.PageStateLayout_psl_loadingLayout
-                , R.layout.library_psl_loading);
-        int emptyLayout = ta.getResourceId(R.styleable.PageStateLayout_psl_emptyLayout
-                , R.layout.library_psl_empty);
-        int errorLayout = ta.getResourceId(R.styleable.PageStateLayout_psl_errorLayout
-                , R.layout.library_psl_error);
-        int errorNetLayout = ta.getResourceId(R.styleable.PageStateLayout_psl_errorNetLayout
-                , R.layout.library_psl_error_net);
+    /**
+     * Activity中使用
+     *
+     * @param activity  activity
+     * @param contentId 内容视图的layoutId
+     * @return PageState
+     */
+    public static PageState wrap(Activity activity, @IdRes int contentId) {
+        ViewGroup actContent = activity.findViewById(android.R.id.content);
+        ViewGroup rootLayout = (ViewGroup) (actContent).getChildAt(0);
+        return wrap(rootLayout, contentId);
+    }
 
-        int loadingProgressId = ta.getResourceId(R.styleable.PageStateLayout_psl_loadingProgressViewId
-                , R.id.library_psl_loadingProgress);
-        int emptyImgId = ta.getResourceId(R.styleable.PageStateLayout_psl_emptyImgId
-                , R.id.library_psl_emptyImg);
-        int errorImgId = ta.getResourceId(R.styleable.PageStateLayout_psl_errorImgId
-                , R.id.library_psl_errorImg);
-        int errorNetImgId = ta.getResourceId(R.styleable.PageStateLayout_psl_errorNetImgId
-                , R.id.library_psl_errorNetImg);
-
-        Drawable emptyImgDrawable = ta.getDrawable(R.styleable.PageStateLayout_psl_emptyImgSrc);
-        Drawable errorImgDrawable = ta.getDrawable(R.styleable.PageStateLayout_psl_errorImgSrc);
-        Drawable errorNetImgDrawable = ta.getDrawable(R.styleable.PageStateLayout_psl_errorNetImgSrc);
-
-        int loadingMsgViewId = ta.getResourceId(R.styleable.PageStateLayout_psl_loadingMsgViewId
-                , R.id.library_psl_loadingMsg);
-        int emptyMsgViewId = ta.getResourceId(R.styleable.PageStateLayout_psl_emptyMsgViewId
-                , R.id.library_psl_emptyMsg);
-        int errorMsgViewId = ta.getResourceId(R.styleable.PageStateLayout_psl_errorMsgViewId
-                , R.id.library_psl_errorMsg);
-        int errorNetMsgViewId = ta.getResourceId(R.styleable.PageStateLayout_psl_errorNetMsgViewId
-                , R.id.library_psl_errorNetMsg);
-
-        CharSequence loadingMsg = ta.getText(R.styleable.PageStateLayout_psl_loadingMsg);
-        CharSequence emptyMsg = ta.getText(R.styleable.PageStateLayout_psl_emptyMsg);
-        CharSequence errorMsg = ta.getText(R.styleable.PageStateLayout_psl_errorMsg);
-        CharSequence errorNetMsg = ta.getText(R.styleable.PageStateLayout_psl_errorNetMsg);
-
-        mContentLayoutId = ta.getResourceId(R.styleable.PageStateLayout_psl_contentLayoutId, NO_ID);
-        boolean clickShowLoadView = ta.getBoolean(R.styleable.PageStateLayout_psl_clickShowLoadView
-                , true);
-
-        if (!isInEditMode()) {
-            mPageStateCreator.setRootView(this);
-
-            setLoadingLayout(loadingLayout);
-            setEmptyLayout(emptyLayout);
-            setErrorLayout(errorLayout);
-            setErrorNetLayout(errorNetLayout);
-
-            setLoadingProgressViewId(loadingProgressId);
-            setEmptyImgId(emptyImgId);
-            setErrorImgId(errorImgId);
-            setErrorNetImgId(errorNetImgId);
-
-            setLoadingMsgViewId(loadingMsgViewId);
-            setEmptyMsgViewId(emptyMsgViewId);
-            setErrorMsgViewId(errorMsgViewId);
-            setErrorNetMsgViewId(errorNetMsgViewId);
-
-            mPageStateCreator.create();
-
-            if (emptyImgDrawable != null && getEmptyImgView() != null
-                    && getEmptyImgView() instanceof ImageView) {
-                ((ImageView) getEmptyImgView()).setImageDrawable(emptyImgDrawable);
-            }
-            if (errorImgDrawable != null && getErrorImgView() != null
-                    && getErrorImgView() instanceof ImageView) {
-                ((ImageView) getErrorImgView()).setImageDrawable(errorImgDrawable);
-            }
-            if (errorNetImgDrawable != null && getErrorNetImgView() != null
-                    && getErrorNetImgView() instanceof ImageView) {
-                ((ImageView) getErrorNetImgView()).setImageDrawable(errorNetImgDrawable);
-            }
-
-            if (!TextUtils.isEmpty(loadingMsg) && getLoadingMsgView() != null
-                    && getLoadingMsgView() instanceof TextView) {
-                ((TextView) getLoadingMsgView()).setText(loadingMsg);
-            }
-            if (!TextUtils.isEmpty(emptyMsg) && getEmptyMsgView() != null
-                    && getEmptyMsgView() instanceof TextView) {
-                ((TextView) getEmptyMsgView()).setText(emptyMsg);
-            }
-            if (!TextUtils.isEmpty(errorMsg) && getErrorMsgView() != null
-                    && getErrorMsgView() instanceof TextView) {
-                ((TextView) getErrorMsgView()).setText(errorMsg);
-            }
-            if (!TextUtils.isEmpty(errorNetMsg) && getErrorNetMsgView() != null
-                    && getErrorNetMsgView() instanceof TextView) {
-                ((TextView) getErrorNetMsgView()).setText(errorNetMsg);
-            }
-
-            setClickShowLoadView(clickShowLoadView);
+    public static PageState wrap(View rootLayout, @IdRes int contentId) {
+        View contentLayout = rootLayout.findViewById(contentId);
+        if (contentLayout == null) {
+            throw new RuntimeException("contentLayout can not be null");
         }
-        ta.recycle();
+        ViewGroup.LayoutParams lp = contentLayout.getLayoutParams();
+
+        ViewGroup parent = (ViewGroup) contentLayout.getParent();
+        if (parent == null) {
+            throw new RuntimeException("parent of the contentLayout can not be null");
+        }
+        int contentViewIndex = parent.indexOfChild(contentLayout);
+
+        parent.removeView(contentLayout);
+        PageStateLayout pageStateLayout = new PageStateLayout(parent.getContext());
+        pageStateLayout.addView(contentLayout);
+        pageStateLayout.mPageStateCreator.setContentView(contentLayout);
+
+        parent.addView(pageStateLayout, contentViewIndex, lp);
+        return pageStateLayout;
+    }
+
+    /**
+     * Activity中使用
+     *
+     * @param activity
+     * @param contentParentId 内容视图的父视图layoutId
+     * @param contentId       内容视图layoutId
+     * @return PageState
+     */
+    public static PageState wrap(Activity activity, @IdRes int contentParentId, @IdRes int contentId) {
+        return wrap(activity.findViewById(contentParentId), contentId);
+    }
+
+    /**
+     * v4.Fragment使用
+     *
+     * @param fragment  v4.Fragment
+     * @param contentId 内容视图layoutId
+     * @return PageState
+     */
+    public static PageState wrap(Fragment fragment, @IdRes int contentId) {
+        return wrap(fragment.getView(), contentId);
+    }
+
+    /**
+     * app.Fragment使用
+     *
+     * @param fragment  app.Fragment
+     * @param contentId 内容视图layoutId
+     * @return PageState
+     */
+    public static PageState wrap(android.app.Fragment fragment, @IdRes int contentId) {
+        return wrap(fragment.getView(), contentId);
     }
 
     @Override
@@ -294,83 +270,6 @@ public class PageStateLayout extends FrameLayout implements PageState {
         return (T) mPageStateCreator.getErrorNetImgView();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public PageStateLayout(@NonNull Context context, @Nullable AttributeSet attrs
-            , int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-        init(attrs);
-    }
-
-    /**
-     * Activity中使用
-     *
-     * @param activity  activity
-     * @param contentId 内容视图的layoutId
-     * @return PageState
-     */
-    public static PageState wrap(Activity activity, @IdRes int contentId) {
-        ViewGroup actContent = activity.findViewById(android.R.id.content);
-        ViewGroup rootLayout = (ViewGroup) (actContent).getChildAt(0);
-        return wrap(rootLayout, contentId);
-    }
-
-    private static PageState wrap(View rootLayout, @IdRes int contentId) {
-        View contentLayout = rootLayout.findViewById(contentId);
-        if (contentLayout == null) {
-            throw new RuntimeException("contentLayout can not be null");
-        }
-        ViewGroup.LayoutParams lp = contentLayout.getLayoutParams();
-
-        ViewGroup parent = (ViewGroup) contentLayout.getParent();
-        if (parent == null) {
-            throw new RuntimeException("parent of the contentLayout can not be null");
-        }
-        int contentViewIndex = parent.indexOfChild(contentLayout);
-
-        parent.removeView(contentLayout);
-        PageStateLayout pageStateLayout = new PageStateLayout(parent.getContext());
-        pageStateLayout.addView(contentLayout);
-        pageStateLayout.mPageStateCreator.setContentView(contentLayout);
-
-        parent.addView(pageStateLayout, contentViewIndex, lp);
-        return pageStateLayout;
-    }
-
-    /**
-     * Activity中使用
-     *
-     * @param activity
-     * @param contentParentId 内容视图的父视图layoutId
-     * @param contentId       内容视图layoutId
-     * @return PageState
-     */
-    public static PageState wrap(Activity activity, @IdRes int contentParentId
-            , @IdRes int contentId) {
-        return wrap(activity.findViewById(contentParentId), contentId);
-    }
-
-    /**
-     * v4.Fragment使用
-     *
-     * @param fragment  v4.Fragment
-     * @param contentId 内容视图layoutId
-     * @return PageState
-     */
-    public static PageState wrap(Fragment fragment, @IdRes int contentId) {
-        return wrap(fragment.getView(), contentId);
-    }
-
-    /**
-     * app.Fragment使用
-     *
-     * @param fragment  app.Fragment
-     * @param contentId 内容视图layoutId
-     * @return PageState
-     */
-    public static PageState wrap(android.app.Fragment fragment, @IdRes int contentId) {
-        return wrap(fragment.getView(), contentId);
-    }
-
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
@@ -383,5 +282,96 @@ public class PageStateLayout extends FrameLayout implements PageState {
             View view = getChildAt(4);
             mPageStateCreator.setContentView(view);
         }
+    }
+
+    private void init(@Nullable AttributeSet attrs) {
+
+        TypedArray ta = getContext().obtainStyledAttributes(attrs, R.styleable.PageStateLayout);
+        int loadingLayout = ta.getResourceId(R.styleable.PageStateLayout_psl_loadingLayout,
+                R.layout.library_psl_loading);
+        int emptyLayout = ta.getResourceId(R.styleable.PageStateLayout_psl_emptyLayout, R.layout.library_psl_empty);
+        int errorLayout = ta.getResourceId(R.styleable.PageStateLayout_psl_errorLayout, R.layout.library_psl_error);
+        int errorNetLayout = ta.getResourceId(R.styleable.PageStateLayout_psl_errorNetLayout,
+                R.layout.library_psl_error_net);
+
+        int loadingProgressId = ta.getResourceId(R.styleable.PageStateLayout_psl_loadingProgressViewId,
+                R.id.library_psl_loadingProgress);
+        int emptyImgId = ta.getResourceId(R.styleable.PageStateLayout_psl_emptyImgId, R.id.library_psl_emptyImg);
+        int errorImgId = ta.getResourceId(R.styleable.PageStateLayout_psl_errorImgId, R.id.library_psl_errorImg);
+        int errorNetImgId = ta.getResourceId(R.styleable.PageStateLayout_psl_errorNetImgId,
+                R.id.library_psl_errorNetImg);
+
+        Drawable emptyImgDrawable = ta.getDrawable(R.styleable.PageStateLayout_psl_emptyImgSrc);
+        Drawable errorImgDrawable = ta.getDrawable(R.styleable.PageStateLayout_psl_errorImgSrc);
+        Drawable errorNetImgDrawable = ta.getDrawable(R.styleable.PageStateLayout_psl_errorNetImgSrc);
+
+        int loadingMsgViewId = ta.getResourceId(R.styleable.PageStateLayout_psl_loadingMsgViewId,
+                R.id.library_psl_loadingMsg);
+        int emptyMsgViewId = ta.getResourceId(R.styleable.PageStateLayout_psl_emptyMsgViewId,
+                R.id.library_psl_emptyMsg);
+        int errorMsgViewId = ta.getResourceId(R.styleable.PageStateLayout_psl_errorMsgViewId,
+                R.id.library_psl_errorMsg);
+        int errorNetMsgViewId = ta.getResourceId(R.styleable.PageStateLayout_psl_errorNetMsgViewId,
+                R.id.library_psl_errorNetMsg);
+
+        CharSequence loadingMsg = ta.getText(R.styleable.PageStateLayout_psl_loadingMsg);
+        CharSequence emptyMsg = ta.getText(R.styleable.PageStateLayout_psl_emptyMsg);
+        CharSequence errorMsg = ta.getText(R.styleable.PageStateLayout_psl_errorMsg);
+        CharSequence errorNetMsg = ta.getText(R.styleable.PageStateLayout_psl_errorNetMsg);
+
+        mContentLayoutId = ta.getResourceId(R.styleable.PageStateLayout_psl_contentLayoutId, NO_ID);
+        boolean clickShowLoadView = ta.getBoolean(R.styleable.PageStateLayout_psl_clickShowLoadView, true);
+
+        if (!isInEditMode()) {
+            mPageStateCreator.setRootView(this);
+
+            setLoadingLayout(loadingLayout);
+            setEmptyLayout(emptyLayout);
+            setErrorLayout(errorLayout);
+            setErrorNetLayout(errorNetLayout);
+
+            setLoadingProgressViewId(loadingProgressId);
+            setEmptyImgId(emptyImgId);
+            setErrorImgId(errorImgId);
+            setErrorNetImgId(errorNetImgId);
+
+            setLoadingMsgViewId(loadingMsgViewId);
+            setEmptyMsgViewId(emptyMsgViewId);
+            setErrorMsgViewId(errorMsgViewId);
+            setErrorNetMsgViewId(errorNetMsgViewId);
+
+            mPageStateCreator.create();
+
+            if (emptyImgDrawable != null && getEmptyImgView() != null && getEmptyImgView() instanceof ImageView) {
+                ((ImageView) getEmptyImgView()).setImageDrawable(emptyImgDrawable);
+            }
+
+            if (errorImgDrawable != null && getErrorImgView() != null && getErrorImgView() instanceof ImageView) {
+                ((ImageView) getErrorImgView()).setImageDrawable(errorImgDrawable);
+            }
+
+            if (errorNetImgDrawable != null && getErrorNetImgView() != null && getErrorNetImgView() instanceof ImageView) {
+                ((ImageView) getErrorNetImgView()).setImageDrawable(errorNetImgDrawable);
+            }
+
+            if (!TextUtils.isEmpty(loadingMsg) && getLoadingMsgView() != null && getLoadingMsgView() instanceof TextView) {
+                ((TextView) getLoadingMsgView()).setText(loadingMsg);
+            }
+
+            if (!TextUtils.isEmpty(emptyMsg) && getEmptyMsgView() != null && getEmptyMsgView() instanceof TextView) {
+                ((TextView) getEmptyMsgView()).setText(emptyMsg);
+            }
+
+            if (!TextUtils.isEmpty(errorMsg) && getErrorMsgView() != null && getErrorMsgView() instanceof TextView) {
+                ((TextView) getErrorMsgView()).setText(errorMsg);
+            }
+
+            if (!TextUtils.isEmpty(errorNetMsg) && getErrorNetMsgView() != null && getErrorNetMsgView() instanceof TextView) {
+                ((TextView) getErrorNetMsgView()).setText(errorNetMsg);
+            }
+
+            setClickShowLoadView(clickShowLoadView);
+        }
+        ta.recycle();
     }
 }
