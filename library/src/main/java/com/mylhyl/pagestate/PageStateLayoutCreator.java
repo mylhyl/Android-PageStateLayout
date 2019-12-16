@@ -254,15 +254,14 @@ class PageStateLayoutCreator implements PageState {
         this.mErrorView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if (mOnErrorClickListener == null) {
+                    return;
+                }
+                mOnErrorClickListener.onErrorClick();
                 if (showClickLoadView) {
                     showLoadingView();
                 } else {
                     goneAllView();
-                }
-
-                if (mOnErrorClickListener != null) {
-                    mOnErrorClickListener.onErrorClick();
                 }
             }
         });
@@ -277,19 +276,18 @@ class PageStateLayoutCreator implements PageState {
         this.mErrorNetView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (mOnErrorNetClickListener == null && mOnErrorClickListener == null) {
+                    return;
+                }
+                if (mOnErrorNetClickListener != null) {
+                    mOnErrorNetClickListener.onErrorNetClick();
+                } else if (mOnErrorNetClickListener == null && mOnErrorClickListener != null) {
+                    mOnErrorClickListener.onErrorClick();
+                }
                 if (showClickLoadView) {
                     showLoadingView();
                 } else {
                     goneAllView();
-                }
-
-                if (mOnErrorNetClickListener != null) {
-                    mOnErrorNetClickListener.onErrorNetClick();
-                    return;
-                }
-
-                if (mOnErrorClickListener != null) {
-                    mOnErrorClickListener.onErrorClick();
                 }
             }
         });

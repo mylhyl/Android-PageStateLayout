@@ -28,5 +28,10 @@
         app:psl_emptyMsg="获取不到程序猿"
         app:psl_emptyMsgViewId="@id/share_psl_emptyMsg"
         app:psl_loadingLayout="@layout/share_psl_loading">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="程序猿来了"/>
     </com.mylhyl.pagestate.PageStateLayout>
 </LinearLayout>
