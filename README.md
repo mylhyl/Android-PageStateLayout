@@ -11,7 +11,7 @@ Adnroid界面数据从网络加载情况下的状态切换：包括加载中、�
 	}
 ```
 
- `implementation 'com.github.mylhyl:Android-PageStateLayout:1.0.4'`
+ `implementation 'com.github.mylhyl:Android-PageStateLayout:1.0.5'`
 
  [下载APK体验](https://fir.im/vnqd)或手机扫描下面二维码  
  <img src="preview/qrdown.png"/>
