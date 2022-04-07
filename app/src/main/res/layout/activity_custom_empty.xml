@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:psl_emptyLayout="@layout/share_psl_empty"
-        app:psl_emptyMsg="获取不到程序猿"
+        app:psl_emptyMsg="@string/library_psl_emptyMsg"
         app:psl_emptyMsgViewId="@id/share_psl_emptyMsg"
         app:psl_loadingLayout="@layout/share_psl_loading">
 
