@@ -22,7 +22,7 @@
         <attr name="psl_loadingMsgViewId" format="reference"/>
 
         <!--加载视图的文字-->
-        <attr name="psl_loadingMsg"/>
+        <attr name="psl_loadingMsg" format="reference"/>
 
 
         <!--空视图的图片View的Id-->
@@ -35,7 +35,7 @@
         <attr name="psl_emptyMsgViewId" format="reference"/>
 
         <!--空视图的文字-->
-        <attr name="psl_emptyMsg"/>
+        <attr name="psl_emptyMsg" format="reference"/>
 
 
         <!--错误视图的图片View的Id-->
@@ -48,7 +48,7 @@
         <attr name="psl_errorMsgViewId" format="reference"/>
 
         <!--错误视图的文字-->
-        <attr name="psl_errorMsg"/>
+        <attr name="psl_errorMsg" format="reference"/>
 
 
         <!--网络错误视图的图片View的Id-->
@@ -61,7 +61,7 @@
         <attr name="psl_errorNetMsgViewId" format="reference"/>
 
         <!--网络错误视图的文字-->
-        <attr name="psl_errorNetMsg"/>
+        <attr name="psl_errorNetMsg" format="reference"/>
 
 
         <!--内容视图layout的Id，也就是加载成功显示的视图-->
