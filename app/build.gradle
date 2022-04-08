@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'maven-publish'
 
 android {
     compileSdkVersion 28
@@ -23,6 +24,8 @@ android {
     }
 
 }
+
+
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
